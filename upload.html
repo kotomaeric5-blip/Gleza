@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create — Gleza</title>
+    <meta name="description" content="Create and share memes, jokes and stories on Gleza.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <a href="index.html" class="logo">
+            <span class="logo-icon">G</span>
+            <span class="logo-text">Gleza</span>
+        </a>
+
+        <button
+            class="search-btn"
+            aria-label="Search"
+            type="button"
+        >
+            🔍
+        </button>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main>
+
+        <!-- PAGE INTRO -->
+        <section class="page-hero">
+
+            <p class="small-text">
+                ✨ CREATE SOMETHING
+            </p>
+
+            <h1>
+                Share it with <span>Gleza.</span>
+            </h1>
+
+            <p>
+                Got something funny to share? Put it out there.
+            </p>
+
+        </section>
+
+
+        <!-- CREATE FORM -->
+        <section class="create-section">
+
+            <div class="create-card">
+
+                <!-- CONTENT TYPE -->
+                <div class="form-group">
+
+                    <label>
+                        What are you posting?
+                    </label>
+
+                    <div class="post-type-options">
+
+                        <button
+                            type="button"
+                            class="post-type-option active"
+                            data-post-type="meme"
+                        >
+                            😂
+                            <span>Meme</span>
+                        </button>
+
+                        <button
+                            type="button"
+                            class="post-type-option"
+                            data-post-type="joke"
+                        >
+                            🤣
+                            <span>Joke</span>
+                        </button>
+
+                        <button
+                            type="button"
+                            class="post-type-option"
+                            data-post-type="story"
+                        >
+                            📝
+                            <span>Story</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MEME SECTION -->
+                <div
+                    class="form-group"
+                    id="memeSection"
+                >
+
+                    <label>
+                        Upload your meme
+                    </label>
+
+                    <p class="posting-note">
+                        The meme itself should be inside the image.
+                    </p>
+
+                    <label
+                        for="postImage"
+                        class="image-upload"
+                    >
+
+                        <span class="upload-icon">
+                            📸
+                        </span>
+
+                        <strong>
+                            Add your meme image
+                        </strong>
+
+                        <small>
+                            JPG, PNG or WEBP
+                        </small>
+
+                        <input
+                            type="file"
+                            id="postImage"
+                            accept="image/jpeg,image/png,image/webp"
+                            hidden
+                        >
+
+                    </label>
+
+                </div>
+
+
+                <!-- TEXT SECTION -->
+                <div
+                    class="form-group"
+                    id="textSection"
+                    style="display: none;"
+                >
+
+                    <label
+                        for="postText"
+                        id="contentLabel"
+                    >
+                        Write your joke
+                    </label>
+
+                    <textarea
+                        id="postText"
+                        name="postText"
+                        rows="7"
+                        maxlength="1000"
+                        placeholder="Write your joke... 😂"
+                    ></textarea>
+
+                    <div class="character-count">
+                        <span id="characterCount">0</span>/1000
+                    </div>
+
+                </div>
+
+
+                <!-- HUMOR CATEGORY -->
+                <div class="form-group">
+
+                    <label for="humorCategory">
+                        Category
+                    </label>
+
+                    <select id="humorCategory">
+
+                        <option value="funny">
+                            😂 Funny
+                        </option>
+
+                        <option value="savage">
+                            💀 Savage
+                        </option>
+
+                        <option value="one-liners">
+                            🤣 One-Liners
+                        </option>
+
+                        <option value="relationship">
+                            ❤️ Relationship
+                        </option>
+
+                        <option value="school">
+                            🏫 School
+                        </option>
+
+                        <option value="money">
+                            💰 Money
+                        </option>
+
+                        <option value="family">
+                            👨‍👩‍👧 Family
+                        </option>
+
+                        <option value="sports">
+                            ⚽ Sports
+                        </option>
+
+                        <option value="gaming">
+                            🎮 Gaming
+                        </option>
+
+                        <option value="ghana">
+                            🇬🇭 Ghana
+                        </option>
+
+                        <option value="african">
+                            🌍 African
+                        </option>
+
+                        <option value="animals">
+                            🐶 Animals
+                        </option>
+
+                        <option value="food">
+                            🍔 Food
+                        </option>
+
+                        <option value="random">
+                            🎲 Random
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- POST BUTTON -->
+                <button
+                    type="button"
+                    class="publish-btn"
+                    id="publishPost"
+                >
+                    🚀 Post to Gleza
+                </button>
+
+
+                <p class="posting-note">
+                    Your post will appear on Gleza after posting.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- MOBILE NAVIGATION -->
+    <nav class="bottom-nav">
+
+        <a
+            href="index.html"
+            class="bottom-item"
+        >
+            <span>⌂</span>
+            <small>Home</small>
+        </a>
+
+        <a
+            href="trending.html"
+            class="bottom-item"
+        >
+            <span>🔥</span>
+            <small>Trending</small>
+        </a>
+
+        <a
+            href="upload.html"
+            class="create-button active"
+            aria-label="Create"
+        >
+            +
+        </a>
+
+        <a
+            href="liked.html"
+            class="bottom-item"
+        >
+            <span>❤️</span>
+            <small>Liked</small>
+        </a>
+
+        <a
+            href="profile.html"
+            class="bottom-item"
+        >
+            <span>👤</span>
+            <small>Profile</small>
+        </a>
+
+    </nav>
+
+
+    <!-- SHARED GLEZA JAVASCRIPT -->
+    <script src="script.js"></script>
+
+
+    <!-- UPLOAD PAGE JAVASCRIPT -->
+    <script>
+
+    /* =========================================================
+       GLEZA UPLOAD PAGE
+       Handles:
+       - Memes
+       - Jokes
+       - Stories
+       - Supabase Storage
+       - Supabase Authentication
+       - Publishing
+    ========================================================= */
+
+    (function () {
+
+
+        /* =========================================================
+           API
+        ========================================================= */
+
+        const API_URL = "/api";
+
+
+        /* =========================================================
+           SUPABASE
+        ========================================================= */
+
+        let supabaseClient = null;
+
+        let supabaseReady = null;
+
+
+        function loadSupabase() {
+
+            supabaseReady =
+                new Promise(
+                    async function (resolve, reject) {
+
+                        try {
+
+                            const response =
+                                await fetch(
+                                    "/api/config"
+                                );
+
+                            if (!response.ok) {
+
+                                throw new Error(
+                                    "Could not load Supabase configuration."
+                                );
+
+                            }
+
+
+                            const config =
+                                await response.json();
+
+
+                            if (
+                                !config.supabaseUrl ||
+                                !config.supabasePublishableKey
+                            ) {
+
+                                throw new Error(
+                                    "Supabase configuration is incomplete."
+                                );
+
+                            }
+
+
+                            /*
+                             * Check whether Supabase
+                             * has already been loaded.
+                             */
+
+                            if (
+                                window.supabase &&
+                                typeof window.supabase.createClient ===
+                                "function"
+                            ) {
+
+                                supabaseClient =
+                                    window.supabase.createClient(
+                                        config.supabaseUrl,
+                                        config.supabasePublishableKey
+                                    );
+
+                                console.log(
+                                    "UPLOAD PAGE SUPABASE READY"
+                                );
+
+                                resolve(
+                                    supabaseClient
+                                );
+
+                                return;
+                            }
+
+
+                            /*
+                             * Load Supabase library
+                             */
+
+                            const script =
+                                document.createElement(
+                                    "script"
+                                );
+
+
+                            script.src =
+                                "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
+
+
+                            script.onload =
+                                function () {
+
+                                    try {
+
+                                        supabaseClient =
+                                            window.supabase.createClient(
+                                                config.supabaseUrl,
+                                                config.supabasePublishableKey
+                                            );
+
+
+                                        console.log(
+                                            "UPLOAD PAGE SUPABASE READY"
+                                        );
+
+
+                                        resolve(
+                                            supabaseClient
+                                        );
+
+                                    } catch (error) {
+
+                                        reject(
+                                            error
+                                        );
+
+                                    }
+
+                                };
+
+
+                            script.onerror =
+                                function () {
+
+                                    reject(
+                                        new Error(
+                                            "Could not load Supabase library."
+                                        )
+                                    );
+
+                                };
+
+
+                            document.head.appendChild(
+                                script
+                            );
+
+
+                        } catch (error) {
+
+                            console.error(
+                                "UPLOAD SUPABASE ERROR:",
+                                error
+                            );
+
+                            reject(
+                                error
+                            );
+
+                        }
+
+                    }
+                );
+
+        }
+
+
+        loadSupabase();
+
+
+        /* =========================================================
+           ELEMENTS
+        ========================================================= */
+
+        const postTypeButtons =
+            document.querySelectorAll(
+                ".post-type-option"
+            );
+
+
+        const postText =
+            document.getElementById(
+                "postText"
+            );
+
+
+        const characterCount =
+            document.getElementById(
+                "characterCount"
+            );
+
+
+        const postImage =
+            document.getElementById(
+                "postImage"
+            );
+
+
+        const publishPost =
+            document.getElementById(
+                "publishPost"
+            );
+
+
+        const memeSection =
+            document.getElementById(
+                "memeSection"
+            );
+
+
+        const textSection =
+            document.getElementById(
+                "textSection"
+            );
+
+
+        const contentLabel =
+            document.getElementById(
+                "contentLabel"
+            );
+
+
+        const humorCategory =
+            document.getElementById(
+                "humorCategory"
+            );
+
+
+        let selectedPostType =
+            "meme";
+
+
+        /* =========================================================
+           UPDATE FORM
+        ========================================================= */
+
+        function updateCreateForm() {
+
+            if (
+                !memeSection ||
+                !textSection
+            ) {
+
+                return;
+
+            }
+
+
+            if (
+                selectedPostType === "meme"
+            ) {
+
+                memeSection.style.display =
+                    "";
+
+
+                textSection.style.display =
+                    "none";
+
+
+                if (postText) {
+
+                    postText.value =
+                        "";
+
+                }
+
+
+                if (characterCount) {
+
+                    characterCount.textContent =
+                        "0";
+
+                }
+
+
+            } else {
+
+                memeSection.style.display =
+                    "none";
+
+
+                textSection.style.display =
+                    "";
+
+
+                if (contentLabel) {
+
+                    if (
+                        selectedPostType ===
+                        "joke"
+                    ) {
+
+                        contentLabel.textContent =
+                            "Write your joke";
+
+
+                        if (postText) {
+
+                            postText.placeholder =
+                                "Write your joke... 😂";
+
+                        }
+
+                    } else {
+
+                        contentLabel.textContent =
+                            "Write your story";
+
+
+                        if (postText) {
+
+                            postText.placeholder =
+                                "Tell us your story... 📝";
+
+                        }
+
+                    }
+
+                }
+
+
+                if (postImage) {
+
+                    postImage.value =
+                        "";
+
+                }
+
+            }
+
+        }
+
+
+        /* =========================================================
+           POST TYPE BUTTONS
+        ========================================================= */
+
+        postTypeButtons.forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        postTypeButtons.forEach(
+                            function (btn) {
+
+                                btn.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                        this.classList.add(
+                            "active"
+                        );
+
+
+                        selectedPostType =
+                            this.dataset.postType ||
+                            "meme";
+
+
+                        updateCreateForm();
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =========================================================
+           CHARACTER COUNT
+        ========================================================= */
+
+        if (
+            postText &&
+            characterCount
+        ) {
+
+            function updateCharacterCount() {
+
+                characterCount.textContent =
+                    postText.value.length;
+
+            }
+
+
+            postText.addEventListener(
+                "input",
+                updateCharacterCount
+            );
+
+
+            updateCharacterCount();
+
+        }
+
+
+        /* =========================================================
+           MEME IMAGE SELECTION
+        ========================================================= */
+
+        if (postImage) {
+
+            postImage.addEventListener(
+                "change",
+                function () {
+
+                    const file =
+                        this.files?.[0];
+
+
+                    if (!file) {
+
+                        return;
+
+                    }
+
+
+                    /*
+                     * Validate image type
+                     */
+
+                    const allowedTypes = [
+                        "image/jpeg",
+                        "image/png",
+                        "image/webp"
+                    ];
+
+
+                    if (
+                        !allowedTypes.includes(
+                            file.type
+                        )
+                    ) {
+
+                        alert(
+                            "Please select a JPG, PNG or WEBP image."
+                        );
+
+
+                        this.value =
+                            "";
+
+
+                        return;
+
+                    }
+
+
+                    /*
+                     * 10 MB maximum
+                     */
+
+                    const maxSize =
+                        10 * 1024 * 1024;
+
+
+                    if (
+                        file.size >
+                        maxSize
+                    ) {
+
+                        alert(
+                            "Your meme image must be 10 MB or smaller."
+                        );
+
+
+                        this.value =
+                            "";
+
+
+                        return;
+
+                    }
+
+
+                    const imageUpload =
+                        document.querySelector(
+                            ".image-upload"
+                        );
+
+
+                    if (imageUpload) {
+
+                        const title =
+                            imageUpload.querySelector(
+                                "strong"
+                            );
+
+
+                        const small =
+                            imageUpload.querySelector(
+                                "small"
+                            );
+
+
+                        if (title) {
+
+                            title.textContent =
+                                "📷 " +
+                                file.name;
+
+                        }
+
+
+                        if (small) {
+
+                            small.textContent =
+                                "Meme image selected";
+
+                        }
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* =========================================================
+           GET LOGGED-IN USER
+        ========================================================= */
+
+        async function getLoggedInUser() {
+
+            await supabaseReady;
+
+
+            if (!supabaseClient) {
+
+                throw new Error(
+                    "Supabase is not ready yet."
+                );
+
+            }
+
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient.auth.getSession();
+
+
+            if (error) {
+
+                throw new Error(
+                    "Could not check your login session."
+                );
+
+            }
+
+
+            const session =
+                data?.session;
+
+
+            if (!session) {
+
+                throw new Error(
+                    "You must be logged in to post on Gleza."
+                );
+
+            }
+
+
+            return {
+                user:
+                    session.user,
+
+                accessToken:
+                    session.access_token
+
+            };
+
+        }
+
+
+        /* =========================================================
+           CREATE SAFE FILE NAME
+        ========================================================= */
+
+        function createSafeFileName(
+            fileName
+        ) {
+
+            const extension =
+                fileName.includes(".")
+                    ? fileName
+                        .split(".")
+                        .pop()
+                        .toLowerCase()
+                    : "jpg";
+
+
+            const safeExtension =
+                [
+                    "jpg",
+                    "jpeg",
+                    "png",
+                    "webp"
+                ].includes(
+                    extension
+                )
+                    ? extension
+                    : "jpg";
+
+
+            return (
+                Date.now() +
+                "-" +
+                Math.random()
+                    .toString(36)
+                    .substring(2, 10) +
+                "." +
+                safeExtension
+            );
+
+        }
+
+
+        /* =========================================================
+           UPLOAD MEME IMAGE
+        ========================================================= */
+
+        async function uploadMemeImage(
+            file,
+            userId
+        ) {
+
+            await supabaseReady;
+
+
+            if (!supabaseClient) {
+
+                throw new Error(
+                    "Supabase is not ready."
+                );
+
+            }
+
+
+            /*
+             * Put each user's memes
+             * inside their own folder.
+             */
+
+            const fileName =
+                createSafeFileName(
+                    file.name
+                );
+
+
+            const storagePath =
+                userId +
+                "/" +
+                fileName;
+
+
+            console.log(
+                "UPLOADING MEME TO:",
+                storagePath
+            );
+
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient
+                    .storage
+                    .from("memes")
+                    .upload(
+                        storagePath,
+                        file,
+                        {
+                            cacheControl:
+                                "3600",
+
+                            upsert:
+                                false,
+
+                            contentType:
+                                file.type
+                        }
+                    );
+
+
+            if (error) {
+
+                console.error(
+                    "MEME STORAGE ERROR:",
+                    error
+                );
+
+
+                throw new Error(
+                    "Could not upload your meme image.\n\n" +
+                    error.message
+                );
+
+            }
+
+
+            console.log(
+                "MEME UPLOAD SUCCESS:",
+                data
+            );
+
+
+            /*
+             * Get public URL
+             */
+
+            const {
+                data: publicData
+            } =
+                supabaseClient
+                    .storage
+                    .from("memes")
+                    .getPublicUrl(
+                        storagePath
+                    );
+
+
+            const publicUrl =
+                publicData?.publicUrl;
+
+
+            if (!publicUrl) {
+
+                throw new Error(
+                    "Could not create a public URL for your meme."
+                );
+
+            }
+
+
+            console.log(
+                "MEME PUBLIC URL:",
+                publicUrl
+            );
+
+
+            return {
+                path:
+                    storagePath,
+
+                url:
+                    publicUrl
+
+            };
+
+        }
+
+
+        /* =========================================================
+           DELETE MEME IF POST CREATION FAILS
+        ========================================================= */
+
+        async function deleteUploadedMeme(
+            storagePath
+        ) {
+
+            if (
+                !supabaseClient ||
+                !storagePath
+            ) {
+
+                return;
+
+            }
+
+
+            try {
+
+                const {
+                    error
+                } =
+                    await supabaseClient
+                        .storage
+                        .from("memes")
+                        .remove([
+                            storagePath
+                        ]);
+
+
+                if (error) {
+
+                    console.error(
+                        "MEME CLEANUP ERROR:",
+                        error
+                    );
+
+                } else {
+
+                    console.log(
+                        "FAILED POST IMAGE CLEANED UP"
+                    );
+
+                }
+
+            } catch (error) {
+
+                console.error(
+                    "MEME CLEANUP ERROR:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        /* =========================================================
+           PUBLISH POST
+        ========================================================= */
+
+        if (publishPost) {
+
+            publishPost.addEventListener(
+                "click",
+                async function () {
+
+                    /*
+                     * Prevent double-click publishing
+                     */
+
+                    if (
+                        publishPost.disabled
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    let uploadedMeme =
+                        null;
+
+
+                    try {
+
+                        /*
+                         * -----------------------------------------
+                         * GET USER
+                         * -----------------------------------------
+                         */
+
+                        const {
+                            user,
+                            accessToken
+                        } =
+                            await getLoggedInUser();
+
+
+                        console.log(
+                            "UPLOAD USER:",
+                            user.id
+                        );
+
+
+                        /*
+                         * -----------------------------------------
+                         * CATEGORY
+                         * -----------------------------------------
+                         */
+
+                        const category =
+                            humorCategory?.value ||
+                            "funny";
+
+
+                        /*
+                         * -----------------------------------------
+                         * MEME
+                         * -----------------------------------------
+                         */
+
+                        if (
+                            selectedPostType ===
+                            "meme"
+                        ) {
+
+                            const image =
+                                postImage?.files?.[0] ||
+                                null;
+
+
+                            if (!image) {
+
+                                alert(
+                                    "Please upload your meme image 😂"
+                                );
+
+                                return;
+
+                            }
+
+
+                            /*
+                             * Disable button
+                             */
+
+                            const originalButtonText =
+                                publishPost.innerHTML;
+
+
+                            publishPost.disabled =
+                                true;
+
+
+                            publishPost.innerHTML =
+                                "⏳ Uploading image...";
+
+
+                            /*
+                             * Upload image
+                             */
+
+                            uploadedMeme =
+                                await uploadMemeImage(
+                                    image,
+                                    user.id
+                                );
+
+
+                            console.log(
+                                "MEME IMAGE READY:",
+                                uploadedMeme
+                            );
+
+
+                            /*
+                             * Now publish the post
+                             */
+
+                            publishPost.innerHTML =
+                                "🚀 Publishing meme...";
+
+
+                            const response =
+                                await fetch(
+                                    API_URL +
+                                    "/posts",
+                                    {
+                                        method:
+                                            "POST",
+
+                                        headers: {
+                                            "Content-Type":
+                                                "application/json",
+
+                                            "Authorization":
+                                                "Bearer " +
+                                                accessToken
+                                        },
+
+                                        body:
+                                            JSON.stringify({
+
+                                                type:
+                                                    "meme",
+
+                                                content:
+                                                    "",
+
+                                                image_url:
+                                                    uploadedMeme.url,
+
+                                                category:
+                                                    category
+
+                                            })
+                                    }
+                                );
+
+
+                            const responseText =
+                                await response.text();
+
+
+                            console.log(
+                                "SERVER RESPONSE:",
+                                responseText
+                            );
+
+
+                            let result =
+                                {};
+
+
+                            try {
+
+                                result =
+                                    responseText
+                                        ? JSON.parse(
+                                            responseText
+                                        )
+                                        : {};
+
+                            } catch (
+                                jsonError
+                            ) {
+
+                                throw new Error(
+                                    "The server returned an invalid response:\n\n" +
+                                    responseText.substring(
+                                        0,
+                                        300
+                                    )
+                                );
+
+                            }
+
+
+                            if (
+                                !response.ok
+                            ) {
+
+                                throw new Error(
+                                    result.error ||
+                                    "Could not publish your meme."
+                                );
+
+                            }
+
+
+                            console.log(
+                                "MEME POST SUCCESS:",
+                                result
+                            );
+
+
+                            alert(
+                                "Your meme has been posted to Gleza! 😂🚀"
+                            );
+
+
+                            /*
+                             * Reset meme input
+                             */
+
+                            if (postImage) {
+
+                                postImage.value =
+                                    "";
+
+                            }
+
+
+                            const imageUpload =
+                                document.querySelector(
+                                    ".image-upload"
+                                );
+
+
+                            if (imageUpload) {
+
+                                const title =
+                                    imageUpload.querySelector(
+                                        "strong"
+                                    );
+
+
+                                const small =
+                                    imageUpload.querySelector(
+                                        "small"
+                                    );
+
+
+                                if (title) {
+
+                                    title.textContent =
+                                        "Add your meme image";
+
+                                }
+
+
+                                if (small) {
+
+                                    small.textContent =
+                                        "JPG, PNG or WEBP";
+
+                                }
+
+                            }
+
+
+                            if (humorCategory) {
+
+                                humorCategory.value =
+                                    "funny";
+
+                            }
+
+
+                            publishPost.disabled =
+                                false;
+
+
+                            publishPost.innerHTML =
+                                originalButtonText;
+
+
+                            return;
+
+                        }
+
+
+                        /*
+                         * -----------------------------------------
+                         * JOKE / STORY
+                         * -----------------------------------------
+                         */
+
+                        const text =
+                            postText?.value.trim() ||
+                            "";
+
+
+                        if (!text) {
+
+                            alert(
+                                selectedPostType ===
+                                "joke"
+                                    ? "Please write your joke 😂"
+                                    : "Please write your story 📝"
+                            );
+
+                            return;
+
+                        }
+
+
+                        /*
+                         * Disable button
+                         */
+
+                        const originalButtonText =
+                            publishPost.innerHTML;
+
+
+                        publishPost.disabled =
+                            true;
+
+
+                        publishPost.innerHTML =
+                            "⏳ Publishing...";
+
+
+                        /*
+                         * Send joke/story
+                         */
+
+                        const response =
+                            await fetch(
+                                API_URL +
+                                "/posts",
+                                {
+                                    method:
+                                        "POST",
+
+                                    headers: {
+                                        "Content-Type":
+                                            "application/json",
+
+                                        "Authorization":
+                                            "Bearer " +
+                                            accessToken
+                                    },
+
+                                    body:
+                                        JSON.stringify({
+
+                                            type:
+                                                selectedPostType,
+
+                                            content:
+                                                text,
+
+                                            image_url:
+                                                "",
+
+                                            category:
+                                                category
+
+                                        })
+                                }
+                            );
+
+
+                        const responseText =
+                            await response.text();
+
+
+                        console.log(
+                            "SERVER RESPONSE:",
+                            responseText
+                        );
+
+
+                        let result =
+                            {};
+
+
+                        try {
+
+                            result =
+                                responseText
+                                    ? JSON.parse(
+                                        responseText
+                                    )
+                                    : {};
+
+                        } catch (
+                            jsonError
+                        ) {
+
+                            throw new Error(
+                                "The server returned an invalid response:\n\n" +
+                                responseText.substring(
+                                    0,
+                                    300
+                                )
+                            );
+
+                        }
+
+
+                        if (
+                            !response.ok
+                        ) {
+
+                            throw new Error(
+                                result.error ||
+                                "Could not publish post."
+                            );
+
+                        }
+
+
+                        console.log(
+                            "TEXT POST SUCCESS:",
+                            result
+                        );
+
+
+                        alert(
+                            selectedPostType ===
+                            "joke"
+                                ? "Your joke has been posted to Gleza! 😂🚀"
+                                : "Your story has been posted to Gleza! 📝🚀"
+                        );
+
+
+                        /*
+                         * Reset text form
+                         */
+
+                        if (postText) {
+
+                            postText.value =
+                                "";
+
+                        }
+
+
+                        if (characterCount) {
+
+                            characterCount.textContent =
+                                "0";
+
+                        }
+
+
+                        if (humorCategory) {
+
+                            humorCategory.value =
+                                "funny";
+
+                        }
+
+
+                        publishPost.disabled =
+                            false;
+
+
+                        publishPost.innerHTML =
+                            originalButtonText;
+
+
+                    } catch (error) {
+
+                        console.error(
+                            "GLEZA PUBLISH ERROR:",
+                            error
+                        );
+
+
+                        /*
+                         * If meme storage succeeded
+                         * but database publishing failed,
+                         * remove the unused image.
+                         */
+
+                        if (
+                            uploadedMeme &&
+                            uploadedMeme.path
+                        ) {
+
+                            await deleteUploadedMeme(
+                                uploadedMeme.path
+                            );
+
+                        }
+
+
+                        alert(
+                            "Could not publish your post.\n\n" +
+                            error.message
+                        );
+
+
+                        publishPost.disabled =
+                            false;
+
+
+                        publishPost.innerHTML =
+                            "🚀 Post to Gleza";
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* =========================================================
+           INITIAL FORM STATE
+        ========================================================= */
+
+        updateCreateForm();
+
+
+    })();
+
+    </script>
+
+</body>
+</html>

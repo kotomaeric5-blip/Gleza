@@ -1,0 +1,1949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Profile — Gleza</title>
+
+    <meta
+        name="description"
+        content="View your Gleza profile and posts."
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================================================
+         HEADER
+    ========================================================== -->
+
+    <header class="header">
+
+        <a href="index.html" class="logo">
+
+            <span class="logo-icon">
+                G
+            </span>
+
+            <span class="logo-text">
+                Gleza
+            </span>
+
+        </a>
+
+
+        <div class="profile-header-actions">
+
+            <!-- PROFILE HAMBURGER -->
+
+            <button
+                class="profile-menu-btn"
+                id="profileMenuBtn"
+                type="button"
+                aria-label="Open profile menu"
+                style="display: none;"
+            >
+                ☰
+            </button>
+
+
+            <!-- SEARCH -->
+
+            <button
+                class="search-btn"
+                aria-label="Search"
+                type="button"
+                onclick="window.location.href='search.html'"
+            >
+                🔍
+            </button>
+
+        </div>
+
+
+        <!-- =====================================================
+             PROFILE HAMBURGER MENU
+        ====================================================== -->
+
+        <div
+            class="profile-menu-panel"
+            id="profileMenuPanel"
+            style="display: none;"
+        >
+
+            <div class="profile-menu-header">
+
+                <strong>
+                    Account & More
+                </strong>
+
+                <button
+                    class="profile-menu-close"
+                    id="profileMenuClose"
+                    type="button"
+                    aria-label="Close menu"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- EDIT PROFILE -->
+
+            <a
+                href="edit-profile.html"
+                class="profile-menu-item"
+            >
+
+                <span class="profile-menu-icon">
+                    ✏️
+                </span>
+
+                <span class="profile-menu-text">
+
+                    <strong>
+                        Edit Profile
+                    </strong>
+
+                    <small>
+                        Change your profile information.
+                    </small>
+
+                </span>
+
+                <span class="profile-menu-arrow">
+                    →
+                </span>
+
+            </a>
+
+
+           
+
+
+            <!-- HELP & SUPPORT -->
+
+            <a
+                href="help.html"
+                class="profile-menu-item"
+            >
+
+                <span class="profile-menu-icon">
+                    🆘
+                </span>
+
+                <span class="profile-menu-text">
+
+                    <strong>
+                        Help & Support
+                    </strong>
+
+                    <small>
+                        Get help or report a problem.
+                    </small>
+
+                </span>
+
+                <span class="profile-menu-arrow">
+                    →
+                </span>
+
+            </a>
+
+
+            <!-- LOG OUT -->
+
+  
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+         MAIN
+    ========================================================== -->
+
+    <main>
+
+        <!-- =====================================================
+             PROFILE HEADER
+        ====================================================== -->
+
+        <section class="profile-section">
+
+            <div
+                class="profile-avatar"
+                id="profileAvatar"
+            >
+
+                <div class="gleza-avatar-logo">
+                    G
+                </div>
+
+            </div>
+
+
+            <div class="profile-info">
+
+                <h1 id="profileName">
+                    Loading...
+                </h1>
+
+                <p
+                    class="username"
+                    id="profileUsername"
+                >
+                    Gleza member
+                </p>
+
+                <p class="profile-bio">
+                    Just here to laugh and make people laugh 😂
+                </p>
+
+            </div>
+
+
+            <!-- FOLLOW BUTTON -->
+
+            <button
+                class="follow-profile-btn"
+                id="followProfile"
+                type="button"
+                style="display: none;"
+            >
+                👥 Follow
+            </button>
+
+        </section>
+
+
+        <!-- =====================================================
+             PROFILE STATS
+        ====================================================== -->
+
+        <!-- POSTS — NOT CLICKABLE -->
+
+        <div class="profile-stat">
+
+            <strong>
+                0
+            </strong>
+
+            <span>
+                Posts
+            </span>
+
+        </div>
+
+
+        <!-- LIKES — NOT CLICKABLE -->
+
+        <div class="profile-stat">
+
+            <strong>
+                0
+            </strong>
+
+            <span>
+                Likes
+            </span>
+
+        </div>
+
+
+        <!-- FOLLOWERS — CLICKABLE -->
+
+        <button
+            class="profile-stat profile-stat-clickable"
+            id="followersStat"
+            type="button"
+        >
+
+            <strong>
+                0
+            </strong>
+
+            <span>
+                Followers
+            </span>
+
+        </button>
+
+
+        <!-- FOLLOWING — CLICKABLE -->
+
+        <button
+            class="profile-stat profile-stat-clickable"
+            id="followingStat"
+            type="button"
+        >
+
+            <strong>
+                0
+            </strong>
+
+            <span>
+                Following
+            </span>
+
+        </button>
+
+
+        <!-- =====================================================
+             PROFILE TABS
+        ====================================================== -->
+
+        <nav class="profile-tabs">
+
+            <button
+                class="profile-tab active"
+                data-profile-tab="posts"
+            >
+                📝 Posts
+            </button>
+
+        </nav>
+
+
+        <!-- =====================================================
+             MY POSTS
+        ====================================================== -->
+
+        <section
+            class="content-section profile-content"
+            id="profilePosts"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="section-label">
+                        📝 YOUR CONTENT
+                    </p>
+
+                    <h2>
+                        Your posts
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="content-grid">
+
+                <!-- SAMPLE MEME -->
+
+                <article
+                    class="post-card post-card-meme"
+                    data-id="profile-sample-meme"
+                    data-type="meme"
+                    data-humor="funny"
+                    data-title=""
+                    data-content=""
+                    data-image=""
+                >
+
+                    <div class="post-image meme-one">
+
+                        <div class="post-image-placeholder">
+                            😂
+                        </div>
+
+                    </div>
+
+
+                    <div class="post-actions">
+
+                        <button
+                            class="like-btn"
+                            type="button"
+                        >
+                            ❤️ 0
+                        </button>
+
+
+                        <button
+                            class="comment-btn"
+                            type="button"
+                        >
+                            💬 0
+                        </button>
+
+
+                        <button
+                            class="copy-link-btn"
+                            type="button"
+                        >
+                            🔗 Copy
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================================
+         MOBILE NAVIGATION
+    ========================================================== -->
+
+    <nav class="bottom-nav">
+
+        <!-- HOME -->
+
+        <a
+            href="index.html"
+            class="bottom-item"
+        >
+
+            <span>
+                ⌂
+            </span>
+
+            <small>
+                Home
+            </small>
+
+        </a>
+
+
+        <!-- TRENDING -->
+
+        <a
+            href="trending.html"
+            class="bottom-item"
+        >
+
+            <span>
+                🔥
+            </span>
+
+            <small>
+                Trending
+            </small>
+
+        </a>
+
+
+        <!-- CREATE -->
+
+        <a
+            href="upload.html"
+            class="create-button"
+            aria-label="Create"
+        >
+            +
+        </a>
+
+
+        <!-- LIKED -->
+
+        <a
+            href="liked.html"
+            class="bottom-item"
+        >
+
+            <span>
+                ❤️
+            </span>
+
+            <small>
+                Liked
+            </small>
+
+        </a>
+
+
+        <!-- PROFILE -->
+
+        <a
+            href="profile.html"
+            class="bottom-item active"
+        >
+
+            <span>
+                👤
+            </span>
+
+            <small>
+                Profile
+            </small>
+
+        </a>
+
+    </nav>
+
+
+    <!-- =========================================================
+         EXISTING GLEZA SCRIPT
+    ========================================================== -->
+
+    <script src="script.js"></script>
+
+
+    <script>
+
+        let profileSupabase = null;
+
+
+        const profileParams =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const viewedUserId =
+            profileParams.get("user");
+
+
+        async function loadProfileUser() {
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/api/config"
+                    );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Could not load Gleza configuration."
+                    );
+
+                }
+
+
+                const config =
+                    await response.json();
+
+
+                const script =
+                    document.createElement(
+                        "script"
+                    );
+
+
+                script.src =
+                    "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
+
+
+                script.onload =
+                    async function () {
+
+                        try {
+
+                            profileSupabase =
+                                window.supabase.createClient(
+                                    config.supabaseUrl,
+                                    config.supabasePublishableKey
+                                );
+
+const {
+    data: { user },
+    error
+} =
+    await profileSupabase.auth.getUser();
+
+
+if (error) {
+
+    console.error(
+        "PROFILE AUTH CHECK ERROR:",
+        error
+    );
+
+}
+
+
+// Guests are allowed to view profiles.
+// Logged-in users can also view profiles.
+
+
+                        const profileUserId =
+    viewedUserId ||
+    (user ? user.id : null);
+
+if (!profileUserId) {
+
+    window.location.href =
+        "account.html";
+
+    return;
+
+}
+
+                            /* =================================================
+                               FOLLOWERS / FOLLOWING NAVIGATION
+                            ================================================= */
+
+                            const followersStat =
+                                document.getElementById(
+                                    "followersStat"
+                                );
+
+
+                            const followingStat =
+                                document.getElementById(
+                                    "followingStat"
+                                );
+
+
+                            if (followersStat) {
+
+                                followersStat.addEventListener(
+                                    "click",
+                                    function () {
+
+                                        window.location.href =
+                                            "connections.html?type=followers&user=" +
+                                            encodeURIComponent(
+                                                profileUserId
+                                            );
+
+                                    }
+                                );
+
+                            }
+
+
+                            if (followingStat) {
+
+                                followingStat.addEventListener(
+                                    "click",
+                                    function () {
+
+                                        window.location.href =
+                                            "connections.html?type=following&user=" +
+                                            encodeURIComponent(
+                                                profileUserId
+                                            );
+
+                                    }
+                                );
+
+                            }
+
+
+                            const followButton =
+                                document.getElementById(
+                                    "followProfile"
+                                );
+
+const isOwnProfile =
+    user ? profileUserId === user.id : false;
+
+                            /* =================================================
+                               PROFILE HAMBURGER MENU
+                            ================================================= */
+
+                            const profileMenuBtn =
+                                document.getElementById(
+                                    "profileMenuBtn"
+                                );
+
+
+                            const profileMenuPanel =
+                                document.getElementById(
+                                    "profileMenuPanel"
+                                );
+
+
+                            const profileMenuClose =
+                                document.getElementById(
+                                    "profileMenuClose"
+                                );
+
+
+                            const profileLogoutBtn =
+                                document.getElementById(
+                                    "profileLogoutBtn"
+                                );
+
+
+                            /*
+                               Only show hamburger
+                               on the logged-in user's
+                               own profile.
+                            */
+
+                            if (profileMenuBtn) {
+
+                                profileMenuBtn.style.display =
+                                    isOwnProfile
+                                        ? "flex"
+                                        : "none";
+
+                            }
+
+
+                            /*
+                               Open menu
+                            */
+
+                            if (
+                                profileMenuBtn &&
+                                profileMenuPanel
+                            ) {
+
+                                profileMenuBtn.addEventListener(
+                                    "click",
+                                    function (event) {
+
+                                        event.preventDefault();
+
+                                        event.stopPropagation();
+
+                                        profileMenuPanel.style.display =
+                                            "block";
+
+                                    }
+                                );
+
+                            }
+
+
+                            /*
+                               Close menu
+                            */
+
+                            if (
+                                profileMenuClose &&
+                                profileMenuPanel
+                            ) {
+
+                                profileMenuClose.addEventListener(
+                                    "click",
+                                    function (event) {
+
+                                        event.preventDefault();
+
+                                        event.stopPropagation();
+
+                                        profileMenuPanel.style.display =
+                                            "none";
+
+                                    }
+                                );
+
+                            }
+
+
+                            /*
+                               Close when clicking
+                               outside the menu.
+                            */
+
+                            document.addEventListener(
+                                "click",
+                                function (event) {
+
+                                    if (
+                                        !profileMenuPanel ||
+                                        profileMenuPanel.style.display ===
+                                            "none"
+                                    ) {
+
+                                        return;
+
+                                    }
+
+
+                                    if (
+                                        !profileMenuPanel.contains(
+                                            event.target
+                                        ) &&
+                                        !profileMenuBtn.contains(
+                                            event.target
+                                        )
+                                    ) {
+
+                                        profileMenuPanel.style.display =
+                                            "none";
+
+                                    }
+
+                                }
+                            );
+
+
+                            /*
+                               Close with Escape
+                            */
+
+                            document.addEventListener(
+                                "keydown",
+                                function (event) {
+
+                                    if (
+                                        event.key ===
+                                        "Escape"
+                                    ) {
+
+                                        if (
+                                            profileMenuPanel
+                                        ) {
+
+                                            profileMenuPanel.style.display =
+                                                "none";
+
+                                        }
+
+                                    }
+
+                                }
+                            );
+
+
+                            /* =================================================
+                               LOG OUT
+                            ================================================= */
+
+                            if (profileLogoutBtn) {
+
+                                profileLogoutBtn.addEventListener(
+                                    "click",
+                                    async function () {
+
+                                        try {
+
+                                            profileLogoutBtn.disabled =
+                                                true;
+
+
+                                            profileLogoutBtn.innerHTML = `
+
+                                                <span class="profile-menu-icon">
+                                                    ⏳
+                                                </span>
+
+                                                <span class="profile-menu-text">
+
+                                                    <strong>
+                                                        Logging out...
+                                                    </strong>
+
+                                                    <small>
+                                                        Please wait.
+                                                    </small>
+
+                                                </span>
+
+                                            `;
+
+
+                                            const {
+                                                error: logoutError
+                                            } =
+                                                await profileSupabase.auth.signOut();
+
+
+                                            if (logoutError) {
+
+                                                throw logoutError;
+
+                                            }
+
+
+                                            window.location.href =
+                                                "account.html";
+
+
+                                        } catch (error) {
+
+                                            console.error(
+                                                "LOGOUT ERROR:",
+                                                error
+                                            );
+
+
+                                            alert(
+                                                error.message ||
+                                                "Could not log out."
+                                            );
+
+
+                                            profileLogoutBtn.disabled =
+                                                false;
+
+
+                                            profileLogoutBtn.innerHTML = `
+
+                                                <span class="profile-menu-icon">
+                                                    🚪
+                                                </span>
+
+                                                <span class="profile-menu-text">
+
+                                                    <strong>
+                                                        Log Out
+                                                    </strong>
+
+                                                    <small>
+                                                        Sign out of your Gleza account.
+                                                    </small>
+
+                                                </span>
+
+                                                <span class="profile-menu-arrow">
+                                                    →
+                                                </span>
+
+                                            `;
+
+                                        }
+
+                                    }
+                                );
+
+                            }
+
+
+                            console.log(
+                                "PROFILE USER ID:",
+                                profileUserId
+                            );
+
+console.log(
+    "LOGGED IN USER ID:",
+    user ? user.id : "Guest"
+);
+
+
+                            console.log(
+                                "IS OWN PROFILE:",
+                                isOwnProfile
+                            );
+
+
+                            /* =================================================
+                               FOLLOW BUTTON
+                            ================================================= */
+
+                            if (followButton) {
+
+                                if (isOwnProfile) {
+
+                                    followButton.style.display =
+                                        "none";
+
+                                } else {
+
+                                    followButton.style.display =
+                                        "block";
+
+
+                                    try {
+
+                                        const {
+                                            data: sessionData,
+                                            error: sessionError
+                                        } =
+                                            await profileSupabase.auth.getSession();
+
+
+                                        if (
+                                            sessionError ||
+                                            !sessionData?.session
+                                        ) {
+
+                                            console.log(
+                                                "Could not check follow status."
+                                            );
+
+                                        } else {
+
+                                            const accessToken =
+                                                sessionData.session.access_token;
+
+
+                                            const followStatusResponse =
+                                                await fetch(
+                                                    "/api/users/" +
+                                                    profileUserId +
+                                                    "/follow-status",
+                                                    {
+                                                        method: "GET",
+
+                                                        headers: {
+                                                            "Authorization":
+                                                                "Bearer " +
+                                                                accessToken
+                                                        }
+                                                    }
+                                                );
+
+
+                                            const followStatus =
+                                                await followStatusResponse.json();
+
+
+                                            console.log(
+                                                "FOLLOW STATUS:",
+                                                followStatus
+                                            );
+
+
+                                            if (
+                                                followStatusResponse.ok &&
+                                                followStatus.success &&
+                                                followStatus.following
+                                            ) {
+
+                                                followButton.textContent =
+                                                    "✓ Following";
+
+
+                                                followButton.classList.add(
+                                                    "following"
+                                                );
+
+                                            } else {
+
+                                                followButton.textContent =
+                                                    "👥 Follow";
+
+
+                                                followButton.classList.remove(
+                                                    "following"
+                                                );
+
+                                            }
+
+                                        }
+
+                                    } catch (error) {
+
+                                        console.error(
+                                            "FOLLOW STATUS ERROR:",
+                                            error
+                                        );
+
+                                    }
+
+                                }
+
+                            }
+
+
+                            /* =================================================
+                               FOLLOW / UNFOLLOW USER
+                            ================================================= */
+
+                            if (
+                                followButton &&
+                                !isOwnProfile
+                            ) {
+
+                                followButton.addEventListener(
+                                    "click",
+                                    async function () {
+
+                                     try {
+
+    const user =
+        await requireGlezaLogin();
+
+    if (!user) {
+        return;
+    }
+
+    const {
+        data: sessionData,
+        error: sessionError
+    } =
+        await profileSupabase.auth.getSession();
+
+    if (
+        sessionError ||
+        !sessionData?.session
+    ) {
+
+        alert(
+            "Please log in again."
+        );
+
+        return;
+
+    }
+
+
+                                            const accessToken =
+                                                sessionData.session.access_token;
+
+
+                                            const isFollowing =
+                                                followButton.classList.contains(
+                                                    "following"
+                                                );
+
+
+                                            followButton.disabled =
+                                                true;
+
+
+                                            const response =
+                                                await fetch(
+                                                    "/api/users/" +
+                                                    profileUserId +
+                                                    "/follow",
+                                                    {
+                                                        method:
+                                                            isFollowing
+                                                                ? "DELETE"
+                                                                : "POST",
+
+                                                        headers: {
+                                                            "Authorization":
+                                                                "Bearer " +
+                                                                accessToken
+                                                        }
+                                                    }
+                                                );
+
+
+                                            const result =
+                                                await response.json();
+
+
+                                            console.log(
+                                                "FOLLOW / UNFOLLOW RESPONSE:",
+                                                result
+                                            );
+
+
+                                            if (
+                                                !response.ok ||
+                                                !result.success
+                                            ) {
+
+                                                throw new Error(
+                                                    result.error ||
+                                                    "Could not update follow status."
+                                                );
+
+                                            }
+
+
+                                            if (
+                                                result.following
+                                            ) {
+
+                                                followButton.textContent =
+                                                    "✓ Following";
+
+
+                                                followButton.classList.add(
+                                                    "following"
+                                                );
+
+                                            } else {
+
+                                                followButton.textContent =
+                                                    "👥 Follow";
+
+
+                                                followButton.classList.remove(
+                                                    "following"
+                                                );
+
+                                            }
+
+                                        } catch (error) {
+
+                                            console.error(
+                                                "FOLLOW / UNFOLLOW ERROR:",
+                                                error
+                                            );
+
+
+                                            alert(
+                                                error.message ||
+                                                "Could not update follow status."
+                                            );
+
+                                        } finally {
+
+                                            followButton.disabled =
+                                                false;
+
+                                        }
+
+                                    }
+                                );
+
+                            }
+
+
+                            console.log(
+                                "VIEWING PROFILE FOR USER:",
+                                profileUserId
+                            );
+
+
+                            /* =================================================
+                               SHOW USER INFORMATION
+                            ================================================= */
+
+                            const profileResponse =
+                                await fetch(
+                                    `${API_URL}/users/${profileUserId}/profile`
+                                );
+
+
+                            const profileData =
+                                await profileResponse.json();
+
+
+                            if (profileResponse.ok) {
+
+                                document.getElementById(
+                                    "profileName"
+                                ).textContent =
+                                    profileData.name ||
+                                    "Gleza User";
+
+
+                                document.getElementById(
+                                    "profileUsername"
+                                ).textContent =
+                                    profileData.username
+                                        ? "@" +
+                                          profileData.username
+                                        : "Gleza member";
+
+
+                                const bioElement =
+                                    document.querySelector(
+                                        ".profile-bio"
+                                    );
+
+
+                                if (bioElement) {
+
+                                    bioElement.textContent =
+                                        profileData.bio ||
+                                        "Just here to laugh and make people laugh 😂";
+
+                                }
+
+
+                                /* =================================================
+                                   LOAD PROFILE AVATAR
+                                ================================================= */
+
+                                const profileAvatar =
+                                    document.getElementById(
+                                        "profileAvatar"
+                                    );
+
+
+                                if (
+                                    profileAvatar &&
+                                    profileData.avatar_url
+                                ) {
+
+                                    profileAvatar.innerHTML = `
+
+                                        <img
+                                            src="${profileData.avatar_url}"
+                                            alt="Profile photo"
+                                        >
+
+                                    `;
+
+                                }
+
+                            }
+
+
+                            /* =================================================
+                               LOAD USER POSTS
+                            ================================================= */
+
+                         console.log(
+    "LOADING POSTS FOR USER:",
+    profileUserId
+);
+
+                            const postsResponse =
+                                await fetch(
+                                    "/api/users/" +
+                                    profileUserId +
+                                    "/posts"
+                                );
+
+
+                            const postsData =
+                                await postsResponse.json();
+
+
+                            console.log(
+                                "PROFILE POSTS RESPONSE:",
+                                postsData
+                            );
+
+
+                            if (
+                                !postsResponse.ok ||
+                                !postsData.success
+                            ) {
+
+                                throw new Error(
+                                    postsData.error ||
+                                    "Could not load your posts."
+                                );
+
+                            }
+
+
+                            const posts =
+                                postsData.posts ||
+                                [];
+
+
+                            /* =================================================
+                               UPDATE PROFILE STATS
+                            ================================================= */
+
+                            const stats =
+                                document.querySelectorAll(
+                                    ".profile-stat strong"
+                                );
+
+
+                            if (
+                                stats.length > 0
+                            ) {
+
+                                /* Posts */
+
+                                stats[0].textContent =
+                                    posts.length;
+
+
+                                /* Total likes received */
+
+                                const totalLikes =
+                                    posts.reduce(
+                                        function (
+                                            total,
+                                            post
+                                        ) {
+
+                                            return total +
+                                                (
+                                                    Number(
+                                                        post.likes
+                                                    ) ||
+                                                    0
+                                                );
+
+                                        },
+                                        0
+                                    );
+
+
+                                stats[1].textContent =
+                                    totalLikes;
+
+
+                                /* =================================================
+                                   LOAD FOLLOWERS COUNT
+                                ================================================= */
+
+                                const followersResponse =
+                                    await fetch(
+                                        "/api/users/" +
+                                        profileUserId +
+                                        "/followers-count"
+                                    );
+
+
+                                const followersData =
+                                    await followersResponse.json();
+
+
+                                if (
+                                    followersResponse.ok &&
+                                    followersData.success
+                                ) {
+
+                                    stats[2].textContent =
+                                        followersData.count;
+
+                                }
+
+
+                                /* =================================================
+                                   LOAD FOLLOWING COUNT
+                                ================================================= */
+
+                                const followingResponse =
+                                    await fetch(
+                                        "/api/users/" +
+                                        profileUserId +
+                                        "/following-count"
+                                    );
+
+
+                                const followingData =
+                                    await followingResponse.json();
+
+
+                                if (
+                                    followingResponse.ok &&
+                                    followingData.success
+                                ) {
+
+                                    stats[3].textContent =
+                                        followingData.count;
+
+                                }
+
+                            }
+
+
+                            /* =================================================
+                               DISPLAY USER POSTS
+                            ================================================= */
+
+                            const postsGrid =
+                                document.querySelector(
+                                    "#profilePosts .content-grid"
+                                );
+
+
+                            if (!postsGrid) {
+
+                                return;
+
+                            }
+
+
+                            postsGrid.innerHTML =
+                                "";
+
+
+                            if (
+                                posts.length === 0
+                            ) {
+
+                                postsGrid.innerHTML = `
+
+                                    <div class="empty-state">
+
+                                        <div class="empty-icon">
+                                            📝
+                                        </div>
+
+                                        <h3>
+                                            No posts yet
+                                        </h3>
+
+                                        <p>
+                                            Your jokes, memes and stories will appear here.
+                                        </p>
+
+                                        <a
+                                            href="upload.html"
+                                            class="empty-button"
+                                        >
+                                            Create your first post
+                                        </a>
+
+                                    </div>
+
+                                `;
+
+
+                                return;
+
+                            }
+
+
+                            /* =================================================
+                               CREATE POST CARDS
+                            ================================================= */
+
+                            posts.forEach(
+                                function (post) {
+
+                                    const card =
+                                        document.createElement(
+                                            "article"
+                                        );
+
+
+                                    card.className =
+                                        "post-card";
+
+
+                                    card.dataset.id =
+                                        post.id;
+
+
+                                    card.dataset.type =
+                                        post.type;
+
+
+                                    card.dataset.humor =
+                                        post.category ||
+                                        "funny";
+
+
+                                    /* =================================================
+                                       DELETE BUTTON
+                                       ONLY THE OWNER SEES THIS
+                                    ================================================= */
+
+                                    const deleteButtonHTML =
+                                        isOwnProfile
+                                            ? `
+
+                                                <button
+                                                    class="delete-post-btn"
+                                                    type="button"
+                                                >
+                                                    🗑️ Delete
+                                                </button>
+
+                                              `
+                                            : "";
+
+
+                                    if (
+                                        post.type ===
+                                        "meme"
+                                    ) {
+
+                                        card.innerHTML = `
+
+                                            <div class="post-image">
+
+                                                ${
+                                                    post.image_url
+                                                        ? `
+
+                                                            <img
+                                                                src="${post.image_url}"
+                                                                alt="Gleza meme"
+                                                                loading="lazy"
+                                                            >
+
+                                                          `
+                                                        : `
+
+                                                            <div class="post-image-placeholder">
+                                                                😂
+                                                            </div>
+
+                                                          `
+                                                }
+
+                                            </div>
+
+
+                                            <div class="post-actions">
+
+                                                <button
+                                                    class="like-btn"
+                                                    type="button"
+                                                >
+                                                    ❤️ ${Number(post.likes) || 0}
+                                                </button>
+
+
+                                                <button
+                                                    class="comment-btn"
+                                                    type="button"
+                                                >
+                                                    💬 ${Number(post.comments) || 0}
+                                                </button>
+
+
+                                                <span class="view-count">
+                                                    👁️ ${Number(post.views) || 0}
+                                                </span>
+
+
+                                                ${deleteButtonHTML}
+
+                                            </div>
+
+                                        `;
+
+                                    } else {
+
+                                        card.innerHTML = `
+
+                                            <div class="post-text-content">
+
+                                                <p>
+                                                    ${post.content || ""}
+                                                </p>
+
+                                            </div>
+
+
+                                            <div class="post-actions">
+
+                                                <button
+                                                    class="like-btn"
+                                                    type="button"
+                                                >
+                                                    ❤️ ${Number(post.likes) || 0}
+                                                </button>
+
+
+                                                <button
+                                                    class="comment-btn"
+                                                    type="button"
+                                                >
+                                                    💬 ${Number(post.comments) || 0}
+                                                </button>
+
+
+                                                <span class="view-count">
+                                                    👁️ ${Number(post.views) || 0}
+                                                </span>
+
+
+                                                ${deleteButtonHTML}
+
+                                            </div>
+
+                                        `;
+
+                                    }
+
+
+                                    postsGrid.appendChild(
+                                        card
+                                    );
+
+
+                                    /* =================================================
+                                       DELETE POST
+                                       OWNER ONLY
+                                    ================================================= */
+
+                                    const deleteButton =
+                                        card.querySelector(
+                                            ".delete-post-btn"
+                                        );
+
+
+                                    if (
+                                        deleteButton
+                                    ) {
+
+                                        deleteButton.addEventListener(
+                                            "click",
+                                            async function () {
+
+                                                const confirmed =
+                                                    confirm(
+                                                        "Delete this post? This cannot be undone."
+                                                    );
+
+
+                                                if (
+                                                    !confirmed
+                                                ) {
+
+                                                    return;
+
+                                                }
+
+
+                                                try {
+
+                                                    /* =====================================
+                                                       GET CURRENT LOGIN SESSION
+                                                    ===================================== */
+
+                                                    const {
+                                                        data: sessionData,
+                                                        error: sessionError
+                                                    } =
+                                                        await profileSupabase.auth.getSession();
+
+
+                                                    if (
+                                                        sessionError ||
+                                                        !sessionData?.session
+                                                    ) {
+
+                                                        alert(
+                                                            "Please log in again."
+                                                        );
+
+                                                        return;
+
+                                                    }
+
+
+                                                    const accessToken =
+                                                        sessionData.session.access_token;
+
+
+                                                    /* =====================================
+                                                       PREVENT DOUBLE DELETE
+                                                    ===================================== */
+
+                                                    deleteButton.disabled =
+                                                        true;
+
+
+                                                    deleteButton.textContent =
+                                                        "Deleting...";
+
+
+                                                    /* =====================================
+                                                       DELETE FROM BACKEND
+                                                    ===================================== */
+
+                                                    const response =
+                                                        await fetch(
+                                                            `${API_URL}/posts/${encodeURIComponent(post.id)}`,
+                                                            {
+                                                                method:
+                                                                    "DELETE",
+
+                                                                headers: {
+                                                                    "Authorization":
+                                                                        "Bearer " +
+                                                                        accessToken
+                                                                }
+                                                            }
+                                                        );
+
+
+                                                    const result =
+                                                        await response.json();
+
+
+                                                    console.log(
+                                                        "DELETE POST RESPONSE:",
+                                                        result
+                                                    );
+
+
+                                                    if (
+                                                        !response.ok ||
+                                                        !result.success
+                                                    ) {
+
+                                                        throw new Error(
+                                                            result.error ||
+                                                            "Could not delete post."
+                                                        );
+
+                                                    }
+
+
+                                                    /* =====================================
+                                                       REMOVE POST FROM PROFILE
+                                                    ===================================== */
+
+                                                    card.remove();
+
+
+                                                    /* =====================================
+                                                       UPDATE POSTS COUNT
+                                                    ===================================== */
+
+                                                    const remainingPosts =
+                                                        postsGrid.querySelectorAll(
+                                                            ".post-card"
+                                                        ).length;
+
+
+                                                    const profileStats =
+                                                        document.querySelectorAll(
+                                                            ".profile-stat strong"
+                                                        );
+
+
+                                                    if (
+                                                        profileStats.length >
+                                                        0
+                                                    ) {
+
+                                                        profileStats[0].textContent =
+                                                            remainingPosts;
+
+                                                    }
+
+
+                                                    /* =====================================
+                                                       SHOW EMPTY STATE IF LAST POST
+                                                    ===================================== */
+
+                                                    if (
+                                                        remainingPosts ===
+                                                        0
+                                                    ) {
+
+                                                        postsGrid.innerHTML = `
+
+                                                            <div class="empty-state">
+
+                                                                <div class="empty-icon">
+                                                                    📝
+                                                                </div>
+
+                                                                <h3>
+                                                                    No posts yet
+                                                                </h3>
+
+                                                                <p>
+                                                                    Your jokes, memes and stories will appear here.
+                                                                </p>
+
+                                                                <a
+                                                                    href="upload.html"
+                                                                    class="empty-button"
+                                                                >
+                                                                    Create your first post
+                                                                </a>
+
+                                                            </div>
+
+                                                        `;
+
+                                                    }
+
+
+                                                    console.log(
+                                                        "POST DELETED:",
+                                                        post.id
+                                                    );
+
+
+                                                } catch (
+                                                    error
+                                                ) {
+
+                                                    console.error(
+                                                        "DELETE POST ERROR:",
+                                                        error
+                                                    );
+
+
+                                                    alert(
+                                                        error.message ||
+                                                        "Could not delete post."
+                                                    );
+
+
+                                                    deleteButton.disabled =
+                                                        false;
+
+
+                                                    deleteButton.textContent =
+                                                        "🗑️ Delete";
+
+                                                }
+
+                                            }
+                                        );
+
+                                    }
+
+                                }
+                            );
+
+
+                            /* =================================================
+                               CONNECT EXISTING GLEZA BUTTON SYSTEM
+                            ================================================= */
+
+                            if (
+                                typeof attachPostButtons ===
+                                "function"
+                            ) {
+
+                                attachPostButtons();
+
+                            }
+
+
+                            console.log(
+                                "PROFILE POSTS LOADED:",
+                                posts.length
+                            );
+
+
+                        } catch (
+                            error
+                        ) {
+
+                            console.error(
+                                "PROFILE USER ERROR:",
+                                error
+                            );
+
+                        }
+
+                    };
+
+
+                script.onerror =
+                    function () {
+
+                        console.error(
+                            "Could not load Supabase."
+                        );
+
+
+                        window.location.href =
+                            "account.html";
+
+                    };
+
+
+                document.head.appendChild(
+                    script
+                );
+
+
+            } catch (
+                error
+            ) {
+
+                console.error(
+                    "PROFILE CONFIG ERROR:",
+                    error
+                );
+
+
+                window.location.href =
+                    "account.html";
+
+            }
+
+        }
+
+
+        loadProfileUser();
+
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,1662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Account — Gleza</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+
+        <a href="index.html" class="logo">
+
+            <div class="logo-icon">
+                G
+            </div>
+
+            <div class="logo-text">
+                Gleza
+            </div>
+
+        </a>
+
+    </header>
+
+
+    <main class="account-page">
+
+        <section class="account-card">
+
+            <div class="account-logo">
+                G
+            </div>
+
+
+            <h1>
+                Welcome to <span>Gleza</span>
+            </h1>
+
+
+            <p class="account-subtitle">
+                Join Gleza when you're ready to join the fun.
+            </p>
+
+
+            <!-- =====================================================
+                 NORMAL ACCOUNT TABS
+            ====================================================== -->
+
+            <div
+                class="account-tabs"
+                id="accountTabs"
+            >
+
+                <button
+                    type="button"
+                    class="account-tab active"
+                    id="loginTab"
+                >
+                    Log in
+                </button>
+
+
+                <button
+                    type="button"
+                    class="account-tab"
+                    id="signupTab"
+                >
+                    Create account
+                </button>
+
+            </div>
+
+
+            <!-- =====================================================
+                 LOGIN FORM
+            ====================================================== -->
+
+            <form
+                class="account-form"
+                id="loginForm"
+            >
+
+                <div class="account-field">
+
+                    <label for="loginEmail">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="account-field">
+
+                    <label for="loginPassword">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- REMEMBER ME + FORGOT PASSWORD -->
+
+                <div
+                    class="account-login-options"
+                    style="
+                        display:flex;
+                        align-items:center;
+                        justify-content:space-between;
+                        gap:12px;
+                        margin-top:-4px;
+                        margin-bottom:8px;
+                    "
+                >
+
+                    <label
+                        style="
+                            display:flex;
+                            align-items:center;
+                            gap:7px;
+                            font-size:13px;
+                            color:#9999a8;
+                            cursor:pointer;
+                        "
+                    >
+
+                        <input
+                            type="checkbox"
+                            id="rememberMe"
+                        >
+
+                        Remember me
+
+                    </label>
+
+
+                    <button
+                        type="button"
+                        id="forgotPasswordButton"
+                        style="
+                            border:none;
+                            background:none;
+                            padding:0;
+                            color:#b28cff;
+                            font-size:13px;
+                            cursor:pointer;
+                        "
+                    >
+                        Forgot password?
+                    </button>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="account-submit"
+                    id="loginButton"
+                >
+                    Log in
+                </button>
+
+            </form>
+
+
+            <!-- =====================================================
+                 FACEBOOK LOGIN
+            ====================================================== -->
+
+            <div
+                id="facebookLoginArea"
+                style="margin-top:14px;"
+            >
+
+                <div
+                    style="
+                        display:flex;
+                        align-items:center;
+                        gap:10px;
+                        margin:12px 0;
+                        color:#77778a;
+                        font-size:12px;
+                    "
+                >
+
+                    <div
+                        style="
+                            flex:1;
+                            height:1px;
+                            background:rgba(255,255,255,0.08);
+                        "
+                    ></div>
+
+                    <span>OR</span>
+
+                    <div
+                        style="
+                            flex:1;
+                            height:1px;
+                            background:rgba(255,255,255,0.08);
+                        "
+                    ></div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="facebookLoginButton"
+                    style="
+                        width:100%;
+                        min-height:48px;
+                        border:none;
+                        border-radius:12px;
+                        background:#1877f2;
+                        color:white;
+                        font-size:15px;
+                        font-weight:700;
+                        cursor:pointer;
+                    "
+                >
+                    Continue with Facebook
+                </button>
+
+            </div>
+
+
+            <!-- =====================================================
+                 SIGNUP FORM
+            ====================================================== -->
+
+            <form
+                class="account-form"
+                id="signupForm"
+                style="display:none;"
+            >
+
+                <div class="account-field">
+
+                    <label for="signupName">
+                        Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="signupName"
+                        placeholder="Your name"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="account-field">
+
+                    <label for="signupEmail">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="signupEmail"
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="account-field">
+
+                    <label for="signupPassword">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="signupPassword"
+                        placeholder="Create a password"
+                        autocomplete="new-password"
+                        minlength="6"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="account-submit"
+                    id="signupButton"
+                >
+                    Create account
+                </button>
+
+            </form>
+
+
+            <!-- =====================================================
+                 FACEBOOK SIGNUP
+            ====================================================== -->
+
+            <div
+                id="facebookSignupArea"
+                style="
+                    display:none;
+                    margin-top:14px;
+                "
+            >
+
+                <div
+                    style="
+                        display:flex;
+                        align-items:center;
+                        gap:10px;
+                        margin:12px 0;
+                        color:#77778a;
+                        font-size:12px;
+                    "
+                >
+
+                    <div
+                        style="
+                            flex:1;
+                            height:1px;
+                            background:rgba(255,255,255,0.08);
+                        "
+                    ></div>
+
+                    <span>OR</span>
+
+                    <div
+                        style="
+                            flex:1;
+                            height:1px;
+                            background:rgba(255,255,255,0.08);
+                        "
+                    ></div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="facebookSignupButton"
+                    style="
+                        width:100%;
+                        min-height:48px;
+                        border:none;
+                        border-radius:12px;
+                        background:#1877f2;
+                        color:white;
+                        font-size:15px;
+                        font-weight:700;
+                        cursor:pointer;
+                    "
+                >
+                    Continue with Facebook
+                </button>
+
+            </div>
+
+
+            <!-- =====================================================
+                 FORGOT PASSWORD AREA
+            ====================================================== -->
+
+            <div
+                id="forgotPasswordArea"
+                style="display:none;"
+            >
+
+                <h2
+                    style="
+                        margin:0 0 8px;
+                        font-size:21px;
+                    "
+                >
+                    Reset your password
+                </h2>
+
+
+                <p
+                    style="
+                        margin:0 0 18px;
+                        color:#9999a8;
+                        font-size:14px;
+                        line-height:1.5;
+                    "
+                >
+                    Enter your email and we'll send you a password reset link.
+                </p>
+
+
+                <form
+                    class="account-form"
+                    id="forgotPasswordForm"
+                >
+
+                    <div class="account-field">
+
+                        <label for="resetEmail">
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="resetEmail"
+                            placeholder="Enter your email"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="account-submit"
+                        id="resetButton"
+                    >
+                        Send reset link
+                    </button>
+
+                </form>
+
+
+                <button
+                    type="button"
+                    id="backToLoginButton"
+                    style="
+                        width:100%;
+                        margin-top:12px;
+                        min-height:44px;
+                        border:1px solid rgba(255,255,255,0.10);
+                        border-radius:12px;
+                        background:transparent;
+                        color:#aaaabc;
+                        cursor:pointer;
+                    "
+                >
+                    Back to login
+                </button>
+
+            </div>
+
+
+            <!-- =====================================================
+                 NEW PASSWORD AREA
+            ====================================================== -->
+
+            <div
+                id="newPasswordArea"
+                style="display:none;"
+            >
+
+                <h2
+                    style="
+                        margin:0 0 8px;
+                        font-size:21px;
+                    "
+                >
+                    Create a new password
+                </h2>
+
+
+                <p
+                    style="
+                        margin:0 0 18px;
+                        color:#9999a8;
+                        font-size:14px;
+                        line-height:1.5;
+                    "
+                >
+                    Choose a new password for your Gleza account.
+                </p>
+
+
+                <form
+                    class="account-form"
+                    id="newPasswordForm"
+                >
+
+                    <div class="account-field">
+
+                        <label for="newPassword">
+                            New password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="newPassword"
+                            placeholder="Create a new password"
+                            autocomplete="new-password"
+                            minlength="6"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="account-field">
+
+                        <label for="confirmPassword">
+                            Confirm password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            placeholder="Enter the password again"
+                            autocomplete="new-password"
+                            minlength="6"
+                            required
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="account-submit"
+                        id="updatePasswordButton"
+                    >
+                        Update password
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- MESSAGE -->
+
+            <p
+                class="account-message"
+                id="accountMessage"
+            ></p>
+
+
+            <!-- GUEST MESSAGE -->
+
+            <p
+                id="guestMessage"
+                style="
+                    margin-top:18px;
+                    text-align:center;
+                    color:#77778a;
+                    font-size:13px;
+                    line-height:1.5;
+                "
+            >
+                You can enjoy Gleza without an account.
+            </p>
+
+        </section>
+
+    </main>
+
+
+<script>
+
+/* =========================================================
+   GLEZA — SUPABASE ACCOUNT SYSTEM
+========================================================= */
+
+
+let supabaseClient = null;
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const loginTab =
+    document.getElementById("loginTab");
+
+const signupTab =
+    document.getElementById("signupTab");
+
+const loginForm =
+    document.getElementById("loginForm");
+
+const signupForm =
+    document.getElementById("signupForm");
+
+const loginButton =
+    document.getElementById("loginButton");
+
+const signupButton =
+    document.getElementById("signupButton");
+
+const facebookLoginButton =
+    document.getElementById("facebookLoginButton");
+
+const facebookSignupButton =
+    document.getElementById("facebookSignupButton");
+
+const facebookLoginArea =
+    document.getElementById("facebookLoginArea");
+
+const facebookSignupArea =
+    document.getElementById("facebookSignupArea");
+
+const accountTabs =
+    document.getElementById("accountTabs");
+
+const forgotPasswordArea =
+    document.getElementById("forgotPasswordArea");
+
+const forgotPasswordButton =
+    document.getElementById("forgotPasswordButton");
+
+const forgotPasswordForm =
+    document.getElementById("forgotPasswordForm");
+
+const backToLoginButton =
+    document.getElementById("backToLoginButton");
+
+const newPasswordArea =
+    document.getElementById("newPasswordArea");
+
+const newPasswordForm =
+    document.getElementById("newPasswordForm");
+
+const guestMessage =
+    document.getElementById("guestMessage");
+
+const accountMessage =
+    document.getElementById("accountMessage");
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+function showMessage(message) {
+
+    if (accountMessage) {
+
+        accountMessage.textContent =
+            message;
+
+    }
+
+}
+
+
+/* =========================================================
+   LOAD SUPABASE
+========================================================= */
+
+async function loadSupabase() {
+
+    try {
+
+        const response =
+            await fetch("/api/config");
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Could not load Supabase configuration."
+            );
+
+        }
+
+
+        const config =
+            await response.json();
+
+
+        const script =
+            document.createElement("script");
+
+
+        script.src =
+            "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
+
+
+        script.onload =
+            async function () {
+
+                createSupabaseClient(
+                    config
+                );
+
+                console.log(
+                    "GLEZA SUPABASE AUTH READY"
+                );
+
+
+                await checkPasswordResetState();
+
+            };
+
+
+        script.onerror =
+            function () {
+
+                console.error(
+                    "Could not load Supabase library."
+                );
+
+
+                showMessage(
+                    "Could not connect to Gleza."
+                );
+
+            };
+
+
+        document.head.appendChild(
+            script
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "SUPABASE CONFIG ERROR:",
+            error
+        );
+
+
+        showMessage(
+            "Could not connect to Gleza."
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   CREATE SUPABASE CLIENT
+========================================================= */
+
+function createSupabaseClient(config) {
+
+    let rememberMe =
+        localStorage.getItem(
+            "gleza-remember-me"
+        ) === "true";
+
+
+    let storage =
+        rememberMe
+            ? window.localStorage
+            : window.sessionStorage;
+
+
+    supabaseClient =
+        window.supabase.createClient(
+
+            config.supabaseUrl,
+
+            config.supabasePublishableKey,
+
+            {
+
+                auth: {
+
+                    persistSession:
+                        true,
+
+                    autoRefreshToken:
+                        true,
+
+                    detectSessionInUrl:
+                        true,
+
+                    storage:
+                        storage
+
+                }
+
+            }
+
+        );
+
+}
+
+
+/* =========================================================
+   SHOW LOGIN
+========================================================= */
+
+function showLogin() {
+
+    accountTabs.style.display =
+        "flex";
+
+    loginForm.style.display =
+        "flex";
+
+    signupForm.style.display =
+        "none";
+
+    facebookLoginArea.style.display =
+        "block";
+
+    facebookSignupArea.style.display =
+        "none";
+
+    forgotPasswordArea.style.display =
+        "none";
+
+    newPasswordArea.style.display =
+        "none";
+
+    guestMessage.style.display =
+        "block";
+
+
+    loginTab.classList.add(
+        "active"
+    );
+
+    signupTab.classList.remove(
+        "active"
+    );
+
+
+    showMessage("");
+
+}
+
+
+/* =========================================================
+   SHOW SIGNUP
+========================================================= */
+
+function showSignup() {
+
+    accountTabs.style.display =
+        "flex";
+
+    loginForm.style.display =
+        "none";
+
+    signupForm.style.display =
+        "flex";
+
+    facebookLoginArea.style.display =
+        "none";
+
+    facebookSignupArea.style.display =
+        "block";
+
+    forgotPasswordArea.style.display =
+        "none";
+
+    newPasswordArea.style.display =
+        "none";
+
+    guestMessage.style.display =
+        "block";
+
+
+    signupTab.classList.add(
+        "active"
+    );
+
+    loginTab.classList.remove(
+        "active"
+    );
+
+
+    showMessage("");
+
+}
+
+
+/* =========================================================
+   SHOW FORGOT PASSWORD
+========================================================= */
+
+function showForgotPassword() {
+
+    accountTabs.style.display =
+        "none";
+
+    loginForm.style.display =
+        "none";
+
+    signupForm.style.display =
+        "none";
+
+    facebookLoginArea.style.display =
+        "none";
+
+    facebookSignupArea.style.display =
+        "none";
+
+    forgotPasswordArea.style.display =
+        "block";
+
+    newPasswordArea.style.display =
+        "none";
+
+    guestMessage.style.display =
+        "none";
+
+
+    showMessage("");
+
+}
+
+
+/* =========================================================
+   SHOW NEW PASSWORD
+========================================================= */
+
+function showNewPassword() {
+
+    accountTabs.style.display =
+        "none";
+
+    loginForm.style.display =
+        "none";
+
+    signupForm.style.display =
+        "none";
+
+    facebookLoginArea.style.display =
+        "none";
+
+    facebookSignupArea.style.display =
+        "none";
+
+    forgotPasswordArea.style.display =
+        "none";
+
+    newPasswordArea.style.display =
+        "block";
+
+    guestMessage.style.display =
+        "none";
+
+
+    showMessage("");
+
+}
+
+
+/* =========================================================
+   LOGIN TAB
+========================================================= */
+
+loginTab.addEventListener(
+    "click",
+    function () {
+
+        showLogin();
+
+    }
+);
+
+
+/* =========================================================
+   SIGNUP TAB
+========================================================= */
+
+signupTab.addEventListener(
+    "click",
+    function () {
+
+        showSignup();
+
+    }
+);
+
+
+/* =========================================================
+   FORGOT PASSWORD BUTTON
+========================================================= */
+
+forgotPasswordButton.addEventListener(
+    "click",
+    function () {
+
+        showForgotPassword();
+
+    }
+);
+
+
+/* =========================================================
+   BACK TO LOGIN
+========================================================= */
+
+backToLoginButton.addEventListener(
+    "click",
+    function () {
+
+        showLogin();
+
+    }
+);
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+loginForm.addEventListener(
+    "submit",
+    async function (event) {
+
+        event.preventDefault();
+
+
+        if (!supabaseClient) {
+
+            showMessage(
+                "Please wait a moment and try again."
+            );
+
+            return;
+
+        }
+
+
+        const email =
+            document
+                .getElementById("loginEmail")
+                .value
+                .trim();
+
+
+        const password =
+            document
+                .getElementById("loginPassword")
+                .value;
+
+
+        const rememberMe =
+            document
+                .getElementById("rememberMe")
+                .checked;
+
+
+        /*
+         * Save the user's preference.
+         */
+
+        if (rememberMe) {
+
+            localStorage.setItem(
+                "gleza-remember-me",
+                "true"
+            );
+
+        } else {
+
+            localStorage.setItem(
+                "gleza-remember-me",
+                "false"
+            );
+
+        }
+
+
+        showMessage(
+            "Logging in..."
+        );
+
+
+        loginButton.disabled =
+            true;
+
+
+        /*
+         * Sign in.
+         */
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient.auth.signInWithPassword({
+
+                email:
+                    email,
+
+                password:
+                    password
+
+            });
+
+
+        loginButton.disabled =
+            false;
+
+
+        if (error) {
+
+            console.error(
+                "LOGIN ERROR:",
+                error
+            );
+
+
+            showMessage(
+                error.message
+            );
+
+            return;
+
+        }
+
+
+        console.log(
+            "GLEZA LOGIN SUCCESS:",
+            data.user
+        );
+
+
+        showMessage(
+            "Login successful!"
+        );
+
+
+        setTimeout(
+            function () {
+
+                window.location.href =
+                    "index.html";
+
+            },
+            500
+        );
+
+    }
+);
+
+
+/* =========================================================
+   CREATE ACCOUNT
+========================================================= */
+
+signupForm.addEventListener(
+    "submit",
+    async function (event) {
+
+        event.preventDefault();
+
+
+        if (!supabaseClient) {
+
+            showMessage(
+                "Please wait a moment and try again."
+            );
+
+            return;
+
+        }
+
+
+        const name =
+            document
+                .getElementById("signupName")
+                .value
+                .trim();
+
+
+        const email =
+            document
+                .getElementById("signupEmail")
+                .value
+                .trim();
+
+
+        const password =
+            document
+                .getElementById("signupPassword")
+                .value;
+
+
+        showMessage(
+            "Creating your account..."
+        );
+
+
+        signupButton.disabled =
+            true;
+
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient.auth.signUp({
+
+                email:
+                    email,
+
+                password:
+                    password,
+
+                options: {
+
+                    data: {
+
+                        name:
+                            name
+
+                    }
+
+                }
+
+            });
+
+
+        signupButton.disabled =
+            false;
+
+
+        if (error) {
+
+            console.error(
+                "SIGNUP ERROR:",
+                error
+            );
+
+
+            showMessage(
+                error.message
+            );
+
+            return;
+
+        }
+
+
+        console.log(
+            "GLEZA SIGNUP SUCCESS:",
+            data.user
+        );
+
+
+        if (data.session) {
+
+            showMessage(
+                "Account created successfully!"
+            );
+
+
+            setTimeout(
+                function () {
+
+                    window.location.href =
+                        "profile.html";
+
+                },
+                500
+            );
+
+
+        } else {
+
+            showMessage(
+                "Account created! Check your email to confirm your account."
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   FACEBOOK LOGIN / SIGNUP
+========================================================= */
+
+async function continueWithFacebook() {
+
+    if (!supabaseClient) {
+
+        showMessage(
+            "Please wait a moment and try again."
+        );
+
+        return;
+
+    }
+
+
+    /*
+     * Remember the user's preference before
+     * leaving the page for Facebook.
+     */
+
+    const rememberCheckbox =
+        document.getElementById(
+            "rememberMe"
+        );
+
+
+    if (rememberCheckbox) {
+
+        localStorage.setItem(
+            "gleza-remember-me",
+            rememberCheckbox.checked
+                ? "true"
+                : "false"
+        );
+
+    }
+
+
+    showMessage(
+        "Connecting to Facebook..."
+    );
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient.auth.signInWithOAuth({
+
+            provider:
+                "facebook",
+
+            options: {
+
+                redirectTo:
+                    window.location.origin +
+                    "/index.html"
+
+            }
+
+        });
+
+
+    if (error) {
+
+        console.error(
+            "FACEBOOK LOGIN ERROR:",
+            error
+        );
+
+
+        showMessage(
+            error.message
+        );
+
+    }
+
+}
+
+
+facebookLoginButton.addEventListener(
+    "click",
+    continueWithFacebook
+);
+
+
+facebookSignupButton.addEventListener(
+    "click",
+    continueWithFacebook
+);
+
+
+/* =========================================================
+   FORGOT PASSWORD
+========================================================= */
+
+forgotPasswordForm.addEventListener(
+    "submit",
+    async function (event) {
+
+        event.preventDefault();
+
+
+        if (!supabaseClient) {
+
+            showMessage(
+                "Please wait a moment and try again."
+            );
+
+            return;
+
+        }
+
+
+        const email =
+            document
+                .getElementById("resetEmail")
+                .value
+                .trim();
+
+
+        const resetButton =
+            document.getElementById(
+                "resetButton"
+            );
+
+
+        showMessage(
+            "Sending password reset link..."
+        );
+
+
+        resetButton.disabled =
+            true;
+
+
+        const {
+            error
+        } =
+            await supabaseClient.auth.resetPasswordForEmail(
+
+                email,
+
+                {
+
+                    redirectTo:
+                        window.location.origin +
+                        "/account.html?reset=1"
+
+                }
+
+            );
+
+
+        resetButton.disabled =
+            false;
+
+
+        if (error) {
+
+            console.error(
+                "PASSWORD RESET ERROR:",
+                error
+            );
+
+
+            showMessage(
+                error.message
+            );
+
+            return;
+
+        }
+
+
+        showMessage(
+            "Reset link sent. Check your email."
+        );
+
+    }
+);
+
+
+/* =========================================================
+   CHECK PASSWORD RESET STATE
+========================================================= */
+
+async function checkPasswordResetState() {
+
+    const url =
+        new URL(
+            window.location.href
+        );
+
+
+    const isReset =
+        url.searchParams.get(
+            "reset"
+        ) === "1";
+
+
+    if (!isReset) {
+
+        return;
+
+    }
+
+
+    /*
+     * Supabase handles the recovery session
+     * from the email link.
+     */
+
+    showNewPassword();
+
+}
+
+
+/* =========================================================
+   UPDATE PASSWORD
+========================================================= */
+
+newPasswordForm.addEventListener(
+    "submit",
+    async function (event) {
+
+        event.preventDefault();
+
+
+        if (!supabaseClient) {
+
+            showMessage(
+                "Please wait a moment and try again."
+            );
+
+            return;
+
+        }
+
+
+        const password =
+            document
+                .getElementById("newPassword")
+                .value;
+
+
+        const confirmPassword =
+            document
+                .getElementById("confirmPassword")
+                .value;
+
+
+        if (password.length < 6) {
+
+            showMessage(
+                "Password must be at least 6 characters."
+            );
+
+            return;
+
+        }
+
+
+        if (password !== confirmPassword) {
+
+            showMessage(
+                "Passwords do not match."
+            );
+
+            return;
+
+        }
+
+
+        const updateButton =
+            document.getElementById(
+                "updatePasswordButton"
+            );
+
+
+        showMessage(
+            "Updating your password..."
+        );
+
+
+        updateButton.disabled =
+            true;
+
+
+        const {
+            error
+        } =
+            await supabaseClient.auth.updateUser({
+
+                password:
+                    password
+
+            });
+
+
+        updateButton.disabled =
+            false;
+
+
+        if (error) {
+
+            console.error(
+                "PASSWORD UPDATE ERROR:",
+                error
+            );
+
+
+            showMessage(
+                error.message
+            );
+
+            return;
+
+        }
+
+
+        showMessage(
+            "Password updated successfully!"
+        );
+
+
+        /*
+         * Remove reset parameter.
+         */
+
+        window.history.replaceState(
+            {},
+            document.title,
+            "account.html"
+        );
+
+
+        setTimeout(
+            function () {
+
+                window.location.href =
+                    "index.html";
+
+            },
+            900
+        );
+
+    }
+);
+
+
+/* =========================================================
+   START
+========================================================= */
+
+loadSupabase();
+
+</script>
+
+</body>
+</html>

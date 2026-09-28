@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & Support — Gleza</title>
+    <meta
+        name="description"
+        content="Get help, report problems and suggest ideas on Gleza."
+    >
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* =========================================================
+           GLEZA HELP & SUPPORT — PAGE ONLY
+           These styles only affect help.html
+        ========================================================= */
+        .help-page {
+            padding-bottom: 120px;
+        }
+        .help-intro {
+            margin-top: 10px;
+        }
+        /* =========================
+           FAQ
+        ========================= */
+        .help-faq-card {
+            margin-top: 18px;
+        }
+        .help-faq-title {
+            margin: 0 0 15px;
+            color: #fff;
+            font-size: 19px;
+        }
+        .help-faq {
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+        }
+        .help-faq-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+        .help-faq-question {
+            width: 100%;
+            border: 0;
+            background: transparent;
+            color: #fff;
+            padding: 17px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            text-align: left;
+            cursor: pointer;
+            font: inherit;
+            font-weight: 700;
+        }
+        .help-faq-question:hover {
+            color: #c4b5fd;
+        }
+        .help-faq-icon {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(139, 92, 246, 0.12);
+            color: #c4b5fd;
+            font-size: 18px;
+            transition: transform 0.2s ease;
+        }
+        .help-faq-item.open .help-faq-icon {
+            transform: rotate(45deg);
+        }
+        .help-faq-answer {
+            display: none;
+            padding: 0 42px 17px 0;
+            color: #aaaab8;
+            font-size: 14px;
+            line-height: 1.65;
+        }
+        .help-faq-item.open .help-faq-answer {
+            display: block;
+        }
+        /* =========================
+           SEARCH
+        ========================= */
+        .help-search {
+            margin-top: 18px;
+            position: relative;
+        }
+        .help-search input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 14px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.035);
+            color: #fff;
+            outline: none;
+            font: inherit;
+        }
+        .help-search input:focus {
+            border-color: rgba(167, 139, 250, 0.7);
+        }
+        .help-search-empty {
+            display: none;
+            padding: 15px 0 0;
+            color: #9999a8;
+            font-size: 14px;
+        }
+        /* =========================
+           FORM
+        ========================= */
+        .help-form-card {
+            margin-top: 18px;
+        }
+        .help-form-card[hidden],
+        .help-contact-card[hidden] {
+            display: none !important;
+        }
+        .help-form-description {
+            color: #9999a8;
+            margin-top: 5px;
+        }
+        .help-form-card textarea {
+            width: 100%;
+            box-sizing: border-box;
+            resize: vertical;
+            min-height: 140px;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            background: rgba(255, 255, 255, 0.035);
+            color: #fff;
+            outline: none;
+            font: inherit;
+            line-height: 1.5;
+        }
+        .help-form-card textarea:focus {
+            border-color: rgba(167, 139, 250, 0.7);
+        }
+        .help-form-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .help-cancel-btn,
+        .help-send-btn {
+            flex: 1;
+            min-height: 45px;
+            border: 0;
+            border-radius: 10px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font: inherit;
+            font-weight: 700;
+        }
+        .help-cancel-btn {
+            background: rgba(255, 255, 255, 0.06);
+            color: #bbb;
+        }
+        .help-send-btn {
+            background: #8b5cf6;
+            color: #fff;
+        }
+        .help-cancel-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .help-send-btn:hover {
+            background: #7c3aed;
+        }
+        /* =========================
+           CONTACT
+        ========================= */
+        .help-contact-card {
+            margin-top: 18px;
+        }
+        .help-contact-options {
+            display: grid;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .help-contact-option {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.035);
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .help-contact-option:hover {
+            background: rgba(139, 92, 246, 0.1);
+        }
+        .help-contact-icon {
+            font-size: 22px;
+        }
+        .help-contact-text {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .help-contact-text strong {
+            color: #fff;
+        }
+        .help-contact-text span {
+            color: #9999a8;
+            font-size: 13px;
+        }
+        /* =========================
+           SUCCESS MESSAGE
+        ========================= */
+        .help-success {
+            display: none;
+            margin-top: 15px;
+            padding: 14px;
+            border-radius: 12px;
+            background: rgba(34, 197, 94, 0.09);
+            border: 1px solid rgba(34, 197, 94, 0.18);
+            color: #b9f6c7;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+        .help-success.show {
+            display: block;
+        }
+        /* =========================
+           BACK BUTTON
+        ========================= */
+        .help-close-link {
+            display: inline-flex;
+            margin-top: 18px;
+            color: #aaaab8;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .help-close-link:hover {
+            color: #fff;
+        }
+        /* =========================
+           MOBILE
+        ========================= */
+        @media (max-width: 600px) {
+            .help-page {
+                padding-bottom: 105px;
+            }
+            .help-faq-question {
+                font-size: 14px;
+            }
+            .help-faq-answer {
+                font-size: 13px;
+            }
+            .help-form-actions {
+                flex-direction: column-reverse;
+            }
+            .help-cancel-btn,
+            .help-send-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- =========================================================
+         HEADER
+    ========================================================== -->
+    <header class="header">
+        <a href="profile.html" class="logo">
+            <span class="logo-icon">G</span>
+            <span class="logo-text">Gleza</span>
+        </a>
+        <a
+            href="profile.html"
+            class="settings-back"
+            aria-label="Back to profile"
+        >
+            ←
+        </a>
+    </header>
+    <!-- =========================================================
+         MAIN
+    ========================================================== -->
+    <main class="settings-page help-page">
+        <!-- PAGE HEADER -->
+        <section class="settings-header">
+            <p class="section-label">
+                🆘 SUPPORT
+            </p>
+            <h1>
+                Help & Support
+            </h1>
+            <p class="help-intro">
+                Need help with Gleza? Find an answer or let us know what's happening.
+            </p>
+        </section>
+        <!-- =====================================================
+             SEARCH HELP
+        ====================================================== -->
+        <section class="settings-card">
+            <div class="help-search">
+                <input
+                    type="search"
+                    id="helpSearch"
+                    placeholder="Search help..."
+                    autocomplete="off"
+                >
+            </div>
+        </section>
+        <!-- =====================================================
+             FAQ
+        ====================================================== -->
+        <section
+            class="settings-card help-faq-card"
+            id="faqCard"
+        >
+            <h2 class="help-faq-title">
+                Frequently Asked Questions
+            </h2>
+            <div class="help-faq" id="helpFaq">
+                <div class="help-faq-item">
+                    <button
+                        type="button"
+                        class="help-faq-question"
+                    >
+                        <span>How do I create a post?</span>
+                        <span class="help-faq-icon">+</span>
+                    </button>
+                    <div class="help-faq-answer">
+                        Open the Create button, choose Meme, Joke or Story,
+                        add your content and publish it.
+                    </div>
+                </div>
+                <div class="help-faq-item">
+                    <button
+                        type="button"
+                        class="help-faq-question"
+                    >
+                        <span>What can I post on Gleza?</span>
+                        <span class="help-faq-icon">+</span>
+                    </button>
+                    <div class="help-faq-answer">
+                        You can share funny memes, jokes and stories.
+                        Please keep your content respectful and suitable for the Gleza community.
+                    </div>
+                </div>
+                <div class="help-faq-item">
+                    <button
+                        type="button"
+                        class="help-faq-question"
+                    >
+                        <span>Can I download a meme?</span>
+                        <span class="help-faq-icon">+</span>
+                    </button>
+                    <div class="help-faq-answer">
+                        Yes. When a meme has a downloadable image, you can use
+                        the Download button on the post.
+                    </div>
+                </div>
+                <div class="help-faq-item">
+                    <button
+                        type="button"
+                        class="help-faq-question"
+                    >
+                        <span>How do I report a problem?</span>
+                        <span class="help-faq-icon">+</span>
+                    </button>
+                    <div class="help-faq-answer">
+                        Tap Report a Problem below, describe what happened,
+                        and send your report.
+                    </div>
+                </div>
+                <div class="help-faq-item">
+                    <button
+                        type="button"
+                        class="help-faq-question"
+                    >
+                        <span>How can I suggest a new feature?</span>
+                        <span class="help-faq-icon">+</span>
+                    </button>
+                    <div class="help-faq-answer">
+                        Tap Suggest an Idea and tell us what you think Gleza should add or improve.
+                    </div>
+                </div>
+                <div class="help-faq-item">
+                    <button
+                        type="button"
+                        class="help-faq-question"
+                    >
+                        <span>Are my reports actually sent to Gleza?</span>
+                        <span class="help-faq-icon">+</span>
+                    </button>
+                    <div class="help-faq-answer">
+                        For now, reports are saved on this device while Gleza's
+                        backend support system is being built.
+                    </div>
+                </div>
+            </div>
+            <p
+                class="help-search-empty"
+                id="helpSearchEmpty"
+            >
+                No matching help articles found.
+            </p>
+        </section>
+        <!-- =====================================================
+             SUPPORT OPTIONS
+        ====================================================== -->
+        <section class="settings-card">
+            <!-- REPORT PROBLEM -->
+            <button
+                type="button"
+                class="settings-menu-item help-menu-button"
+                id="reportProblemButton"
+            >
+                <div class="settings-menu-icon">
+                    🐛
+                </div>
+                <div class="settings-menu-content">
+                    <strong>
+                        Report a Problem
+                    </strong>
+                    <span>
+                        Tell us if something isn't working properly.
+                    </span>
+                </div>
+                <span class="settings-menu-arrow">
+                    →
+                </span>
+            </button>
+            <!-- SUGGEST IDEA -->
+            <button
+                type="button"
+                class="settings-menu-item help-menu-button"
+                id="suggestIdeaButton"
+            >
+                <div class="settings-menu-icon">
+                    💡
+                </div>
+                <div class="settings-menu-content">
+                    <strong>
+                        Suggest an Idea
+                    </strong>
+                    <span>
+                        Have an idea that could make Gleza better?
+                    </span>
+                </div>
+                <span class="settings-menu-arrow">
+                    →
+                </span>
+            </button>
+            <!-- CONTACT -->
+            <button
+                type="button"
+                class="settings-menu-item help-menu-button"
+                id="contactGlezaButton"
+            >
+                <div class="settings-menu-icon">
+                    📩
+                </div>
+                <div class="settings-menu-content">
+                    <strong>
+                        Contact Gleza
+                    </strong>
+                    <span>
+                        Find out how to contact the Gleza team.
+                    </span>
+                </div>
+                <span class="settings-menu-arrow">
+                    →
+                </span>
+            </button>
+        </section>
+        <!-- =====================================================
+             REPORT / IDEA FORM
+        ====================================================== -->
+        <section
+            class="settings-card help-form-card"
+            id="helpFormCard"
+            hidden
+        >
+            <div class="settings-card-header">
+                <div>
+                    <h2 id="helpFormTitle">
+                        Report a Problem
+                    </h2>
+                    <p
+                        id="helpFormDescription"
+                        class="help-form-description"
+                    >
+                        Tell us what went wrong.
+                    </p>
+                </div>
+            </div>
+            <form id="helpForm">
+                <div class="settings-field">
+                    <label for="helpMessage">
+                        Message
+                    </label>
+                    <textarea
+                        id="helpMessage"
+                        name="message"
+                        rows="6"
+                        maxlength="1000"
+                        placeholder="Tell us what happened..."
+                        required
+                    ></textarea>
+                    <small
+                        id="helpCharacterCount"
+                        style="display:block;margin-top:6px;color:#777783;"
+                    >
+                        0 / 1000
+                    </small>
+                </div>
+                <div
+                    class="help-success"
+                    id="helpSuccess"
+                    role="status"
+                    aria-live="polite"
+                ></div>
+                <div class="help-form-actions">
+                    <button
+                        type="button"
+                        class="help-cancel-btn"
+                        id="cancelHelpForm"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        type="submit"
+                        class="help-send-btn"
+                    >
+                        Send
+                    </button>
+                </div>
+            </form>
+        </section>
+        <!-- =====================================================
+             CONTACT CARD
+        ====================================================== -->
+        <section
+            class="settings-card help-contact-card"
+            id="contactCard"
+            hidden
+        >
+            <div class="settings-card-header">
+                <div>
+                    <h2>
+                        📩 Contact Gleza
+                    </h2>
+                    <p>
+                        Choose how you'd like to get in touch.
+                    </p>
+                </div>
+            </div>
+            <div class="help-contact-options">
+                <!--
+                    Replace the email address later with
+                    Gleza's real support email.
+                -->
+                <a
+                    href="mailto:support@gleza.com"
+                    class="help-contact-option"
+                >
+                    <span class="help-contact-icon">
+                        📧
+                    </span>
+                    <span class="help-contact-text">
+                        <strong>
+                            Email Support
+                        </strong>
+                        <span>
+                            Send us an email about your issue.
+                        </span>
+                    </span>
+                </a>
+                <div class="help-contact-option">
+                    <span class="help-contact-icon">
+                        💬
+                    </span>
+                    <span class="help-contact-text">
+                        <strong>
+                            Gleza Support Chat
+                        </strong>
+                        <span>
+                            Direct support chat will be available later.
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <button
+                type="button"
+                class="help-cancel-btn"
+                id="closeContactCard"
+                style="width:100%;margin-top:15px;"
+            >
+                Close
+            </button>
+        </section>
+        <!-- BACK -->
+        <a
+            href="profile.html"
+            class="settings-back-link"
+        >
+            ← Back to Profile
+        </a>
+    </main>
+    <!-- =========================================================
+         MOBILE NAVIGATION
+    ========================================================== -->
+    <nav class="bottom-nav">
+        <a
+            href="index.html"
+            class="bottom-item"
+        >
+            <span>⌂</span>
+            <small>Home</small>
+        </a>
+        <a
+            href="trending.html"
+            class="bottom-item"
+        >
+            <span>🔥</span>
+            <small>Trending</small>
+        </a>
+        <a
+            href="upload.html"
+            class="create-button"
+            aria-label="Create"
+        >
+            +
+        </a>
+        <a
+            href="liked.html"
+            class="bottom-item"
+        >
+            <span>❤️</span>
+            <small>Liked</small>
+        </a>
+        <a
+            href="profile.html"
+            class="bottom-item active"
+        >
+            <span>👤</span>
+            <small>Profile</small>
+        </a>
+    </nav>
+    <!-- =========================================================
+         HELP PAGE JAVASCRIPT
+         This script belongs ONLY to help.html
+    ========================================================== -->
+    <script>
+        /* =====================================================
+           ELEMENTS
+        ===================================================== */
+        const reportProblemButton =
+            document.getElementById("reportProblemButton");
+        const suggestIdeaButton =
+            document.getElementById("suggestIdeaButton");
+        const contactGlezaButton =
+            document.getElementById("contactGlezaButton");
+        const helpFormCard =
+            document.getElementById("helpFormCard");
+        const contactCard =
+            document.getElementById("contactCard");
+        const helpFormTitle =
+            document.getElementById("helpFormTitle");
+        const helpFormDescription =
+            document.getElementById("helpFormDescription");
+        const helpMessage =
+            document.getElementById("helpMessage");
+        const helpForm =
+            document.getElementById("helpForm");
+        const cancelHelpForm =
+            document.getElementById("cancelHelpForm");
+        const helpSuccess =
+            document.getElementById("helpSuccess");
+        const helpCharacterCount =
+            document.getElementById("helpCharacterCount");
+        const closeContactCard =
+            document.getElementById("closeContactCard");
+        const helpSearch =
+            document.getElementById("helpSearch");
+        const faqItems =
+            document.querySelectorAll(".help-faq-item");
+        /* =====================================================
+           SHOW / HIDE SECTIONS
+        ===================================================== */
+        function hideSupportSections() {
+            helpFormCard.hidden = true;
+            contactCard.hidden = true;
+        }
+        function openHelpForm(type) {
+            hideSupportSections();
+            helpFormCard.hidden = false;
+            helpForm.dataset.type = type;
+            helpSuccess.classList.remove("show");
+            helpSuccess.textContent = "";
+            helpMessage.value = "";
+            updateCharacterCount();
+            if (type === "problem") {
+                helpFormTitle.textContent =
+                    "Report a Problem";
+                helpFormDescription.textContent =
+                    "Tell us what went wrong.";
+                helpMessage.placeholder =
+                    "Example: The like button is not working...";
+            } else {
+                helpFormTitle.textContent =
+                    "Suggest an Idea";
+                helpFormDescription.textContent =
+                    "Tell us what you would like to see on Gleza.";
+                helpMessage.placeholder =
+                    "Example: I think Gleza should have...";
+            }
+            helpFormCard.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+            setTimeout(function() {
+                helpMessage.focus();
+            }, 350);
+        }
+        /* =====================================================
+           REPORT PROBLEM
+        ===================================================== */
+        if (reportProblemButton) {
+            reportProblemButton.addEventListener(
+                "click",
+                function() {
+                    openHelpForm("problem");
+                }
+            );
+        }
+        /* =====================================================
+           SUGGEST IDEA
+        ===================================================== */
+        if (suggestIdeaButton) {
+            suggestIdeaButton.addEventListener(
+                "click",
+                function() {
+                    openHelpForm("idea");
+                }
+            );
+        }
+        /* =====================================================
+           CONTACT
+        ===================================================== */
+        if (contactGlezaButton) {
+            contactGlezaButton.addEventListener(
+                "click",
+                function() {
+                    hideSupportSections();
+                    contactCard.hidden = false;
+                    contactCard.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+                }
+            );
+        }
+        /* =====================================================
+           CLOSE CONTACT
+        ===================================================== */
+        if (closeContactCard) {
+            closeContactCard.addEventListener(
+                "click",
+                function() {
+                    contactCard.hidden = true;
+                }
+            );
+        }
+        /* =====================================================
+           CANCEL FORM
+        ===================================================== */
+        if (cancelHelpForm) {
+            cancelHelpForm.addEventListener(
+                "click",
+                function() {
+                    helpFormCard.hidden = true;
+                    helpMessage.value = "";
+                    helpSuccess.classList.remove("show");
+                    helpSuccess.textContent = "";
+                    updateCharacterCount();
+                }
+            );
+        }
+        /* =====================================================
+           CHARACTER COUNT
+        ===================================================== */
+        function updateCharacterCount() {
+            if (!helpMessage || !helpCharacterCount) return;
+            helpCharacterCount.textContent =
+                `${helpMessage.value.length} / 1000`;
+        }
+        if (helpMessage) {
+            helpMessage.addEventListener(
+                "input",
+                updateCharacterCount
+            );
+            updateCharacterCount();
+        }
+        /* =====================================================
+           SAVE SUPPORT MESSAGE
+        ===================================================== */
+        function saveSupportMessage(type, message) {
+            const storageKey =
+                "glezaSupportMessages";
+            let existingMessages = [];
+            try {
+                existingMessages =
+                    JSON.parse(
+                        localStorage.getItem(storageKey) || "[]"
+                    );
+                if (!Array.isArray(existingMessages)) {
+                    existingMessages = [];
+                }
+            } catch (error) {
+                existingMessages = [];
+            }
+            existingMessages.push({
+                id:
+                    "support-" +
+                    Date.now() +
+                    "-" +
+                    Math.random()
+                        .toString(36)
+                        .slice(2, 8),
+                type: type,
+                message: message,
+                date:
+                    new Date().toISOString()
+            });
+            localStorage.setItem(
+                storageKey,
+                JSON.stringify(existingMessages)
+            );
+        }
+        /* =====================================================
+           FORM SUBMISSION
+        ===================================================== */
+        if (helpForm) {
+            helpForm.addEventListener(
+                "submit",
+                function(event) {
+                    event.preventDefault();
+                    const message =
+                        helpMessage.value.trim();
+                    if (!message) {
+                        helpMessage.focus();
+                        return;
+                    }
+                    if (message.length < 5) {
+                        helpSuccess.textContent =
+                            "Please give us a little more detail so we can understand the issue.";
+                        helpSuccess.classList.add("show");
+                        helpMessage.focus();
+                        return;
+                    }
+                    const type =
+                        helpForm.dataset.type === "idea"
+                            ? "Idea"
+                            : "Problem";
+                    saveSupportMessage(
+                        type,
+                        message
+                    );
+                    helpMessage.value = "";
+                    updateCharacterCount();
+                    helpSuccess.textContent =
+                        type === "Idea"
+                            ? "💡 Thanks! Your idea has been saved. We appreciate you helping us make Gleza better."
+                            : "🐛 Thanks! Your problem has been reported. We have saved the details for now.";
+                    helpSuccess.classList.add("show");
+                    setTimeout(function() {
+                        helpFormCard.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+                    }, 100);
+                }
+            );
+        }
+        /* =====================================================
+           FAQ ACCORDION
+        ===================================================== */
+        faqItems.forEach(function(item) {
+            const question =
+                item.querySelector(".help-faq-question");
+            question.addEventListener(
+                "click",
+                function() {
+                    const wasOpen =
+                        item.classList.contains("open");
+                    faqItems.forEach(function(otherItem) {
+                        otherItem.classList.remove("open");
+                    });
+                    if (!wasOpen) {
+                        item.classList.add("open");
+                    }
+                }
+            );
+        });
+        /* =====================================================
+           FAQ SEARCH
+        ===================================================== */
+        if (helpSearch) {
+            helpSearch.addEventListener(
+                "input",
+                function() {
+                    const searchTerm =
+                        helpSearch.value
+                            .trim()
+                            .toLowerCase();
+                    let visibleCount = 0;
+                    faqItems.forEach(function(item) {
+                        const question =
+                            item
+                                .querySelector(
+                                    ".help-faq-question span"
+                                )
+                                ?.textContent
+                                .toLowerCase() || "";
+                        const answer =
+                            item
+                                .querySelector(
+                                    ".help-faq-answer"
+                                )
+                                ?.textContent
+                                .toLowerCase() || "";
+                        const matches =
+                            !searchTerm ||
+                            question.includes(searchTerm) ||
+                            answer.includes(searchTerm);
+                        item.style.display =
+                            matches
+                                ? ""
+                                : "none";
+                        if (matches) {
+                            visibleCount++;
+                        }
+                    });
+                    const searchEmpty =
+                        document.getElementById(
+                            "helpSearchEmpty"
+                        );
+                    if (searchEmpty) {
+                        searchEmpty.style.display =
+                            visibleCount === 0
+                                ? "block"
+                                : "none";
+                    }
+                }
+            );
+        }
+        /* =====================================================
+           ESCAPE KEY
+        ===================================================== */
+        document.addEventListener(
+            "keydown",
+            function(event) {
+                if (event.key !== "Escape") return;
+                if (helpFormCard && !helpFormCard.hidden) {
+                    helpFormCard.hidden = true;
+                }
+                if (contactCard && !contactCard.hidden) {
+                    contactCard.hidden = true;
+                }
+            }
+        );
+    </script>
+</body>
+</html>

@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Liked — Gleza</title>
+    <meta name="description" content="View the posts you liked on Gleza.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <a href="index.html" class="logo">
+            <span class="logo-icon">G</span>
+            <span class="logo-text">Gleza</span>
+        </a>
+
+        <button
+            class="search-btn"
+            aria-label="Search"
+            onclick="window.location.href='search.html'">
+            🔍
+        </button>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main>
+
+        <!-- PAGE INTRO -->
+        <section class="page-hero">
+
+            <p class="small-text">
+                ❤️ YOUR COLLECTION
+            </p>
+
+            <h1>
+                Things you <span>liked.</span>
+            </h1>
+
+            <p>
+                All the posts you don't want to lose.
+            </p>
+
+        </section>
+
+
+        <!-- LIKED FILTERS -->
+        <nav class="category-nav">
+
+            <button
+                class="category active"
+                data-liked-filter="all">
+                All
+            </button>
+
+            <button
+                class="category"
+                data-liked-filter="meme">
+                😂 Memes
+            </button>
+
+            <button
+                class="category"
+                data-liked-filter="joke">
+                🤣 Jokes
+            </button>
+
+            <button
+                class="category"
+                data-liked-filter="story">
+                📝 Stories
+            </button>
+
+        </nav>
+
+
+        <!-- LIKED CONTENT -->
+        <section class="content-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="section-label">
+                        ❤️ SAVED BY YOU
+                    </p>
+
+                    <h2>
+                        Your liked posts
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <!-- LOADING -->
+            <div id="likedLoading" class="empty-state">
+
+                <div class="empty-icon">
+                    ⏳
+                </div>
+
+                <h3>
+                    Loading your likes...
+                </h3>
+
+            </div>
+
+
+            <!-- POSTS -->
+            <div
+                class="content-grid"
+                id="likedPostsGrid">
+            </div>
+
+
+            <!-- EMPTY STATE -->
+            <div
+                class="empty-state"
+                id="likedEmptyState"
+                style="display:none;">
+
+                <div class="empty-icon">
+                    ❤️
+                </div>
+
+                <h3>
+                    Nothing here yet
+                </h3>
+
+                <p>
+                    Start liking posts and they'll show up here.
+                </p>
+
+                <a
+                    href="index.html"
+                    class="empty-button">
+                    Explore Gleza
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- MOBILE NAVIGATION -->
+    <nav class="bottom-nav">
+
+        <a
+            href="index.html"
+            class="bottom-item">
+
+            <span>⌂</span>
+
+            <small>
+                Home
+            </small>
+
+        </a>
+
+
+        <a
+            href="trending.html"
+            class="bottom-item">
+
+            <span>🔥</span>
+
+            <small>
+                Trending
+            </small>
+
+        </a>
+
+
+        <a
+            href="upload.html"
+            class="create-button"
+            aria-label="Create">
+            +
+        </a>
+
+
+        <a
+            href="liked.html"
+            class="bottom-item active">
+
+            <span>❤️</span>
+
+            <small>
+                Liked
+            </small>
+
+        </a>
+
+
+        <a
+            href="profile.html"
+            class="bottom-item">
+
+            <span>👤</span>
+
+            <small>
+                Profile
+            </small>
+
+        </a>
+
+    </nav>
+
+
+    <!-- SUPABASE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="script.js"></script>
+
+
+    <!-- SUPABASE CONFIG -->
+    <script>
+
+        let glezaSupabase = null;
+
+
+        async function getGlezaSupabase() {
+
+            if (glezaSupabase) {
+                return glezaSupabase;
+            }
+
+
+            const configResponse =
+                await fetch("/api/config");
+
+
+            const config =
+                await configResponse.json();
+
+
+            if (
+                !config.supabaseUrl ||
+                !config.supabasePublishableKey
+            ) {
+
+                throw new Error(
+                    "Supabase configuration is missing."
+                );
+
+            }
+
+
+            glezaSupabase =
+                supabase.createClient(
+                    config.supabaseUrl,
+                    config.supabasePublishableKey
+                );
+
+
+            return glezaSupabase;
+
+        }
+
+    </script>
+
+
+    <!-- LIKED PAGE JAVASCRIPT -->
+    <script>
+
+        let likedPosts = [];
+
+        let currentLikedFilter = "all";
+
+
+        async function loadLikedPosts() {
+
+            const loading =
+                document.getElementById(
+                    "likedLoading"
+                );
+
+
+            const grid =
+                document.getElementById(
+                    "likedPostsGrid"
+                );
+
+
+            const empty =
+                document.getElementById(
+                    "likedEmptyState"
+                );
+
+
+            try {
+
+                const supabaseClient =
+                    await getGlezaSupabase();
+
+
+                /* ==========================================
+                   CHECK LOGIN
+                ========================================== */
+
+                const {
+                    data: sessionData,
+                    error: sessionError
+                } =
+                    await supabaseClient.auth.getSession();
+
+
+                if (
+                    sessionError ||
+                    !sessionData ||
+                    !sessionData.session
+                ) {
+
+                    window.location.href =
+                        "account.html";
+
+                    return;
+
+                }
+
+
+                /* ==========================================
+                   USER IS LOGGED IN
+                ========================================== */
+
+                const accessToken =
+                    sessionData.session.access_token;
+
+
+                const response =
+                    await fetch(
+                        API_URL +
+                        "/users/me/liked-posts",
+                        {
+                            method: "GET",
+
+                            headers: {
+                                "Authorization":
+                                    "Bearer " +
+                                    accessToken
+                            }
+                        }
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                if (
+                    !response.ok ||
+                    !result.success
+                ) {
+
+                    throw new Error(
+                        result.error ||
+                        "Could not load liked posts."
+                    );
+
+                }
+
+
+                likedPosts =
+                    Array.isArray(result.posts)
+                        ? result.posts
+                        : [];
+
+
+                loading.style.display =
+                    "none";
+
+
+                renderLikedPosts();
+
+
+            } catch (error) {
+
+                console.error(
+                    "LIKED POSTS ERROR:",
+                    error
+                );
+
+
+                loading.style.display =
+                    "none";
+
+
+                empty.style.display =
+                    "block";
+
+
+                empty.querySelector("h3").textContent =
+                    "Could not load your likes.";
+
+
+                empty.querySelector("p").textContent =
+                    "Please refresh the page and try again.";
+
+            }
+
+        }
+
+
+        function renderLikedPosts() {
+
+            const grid =
+                document.getElementById(
+                    "likedPostsGrid"
+                );
+
+
+            const empty =
+                document.getElementById(
+                    "likedEmptyState"
+                );
+
+
+            grid.innerHTML =
+                "";
+
+
+            let filteredPosts =
+                likedPosts.filter(
+                    function(post) {
+
+                        if (
+                            currentLikedFilter ===
+                            "all"
+                        ) {
+
+                            return true;
+
+                        }
+
+
+                        return (
+                            String(
+                                post.type || ""
+                            )
+                                .toLowerCase()
+                            ===
+                            currentLikedFilter
+                        );
+
+                    }
+                );
+
+
+            if (
+                !filteredPosts.length
+            ) {
+
+                empty.style.display =
+                    "block";
+
+                return;
+
+            }
+
+
+            empty.style.display =
+                "none";
+
+
+            filteredPosts.forEach(
+                function(post) {
+
+                    const card =
+                        document.createElement(
+                            "article"
+                        );
+
+
+                    card.className =
+                        "post-card";
+
+
+                    card.dataset.id =
+                        post.id;
+
+
+                    const type =
+                        String(
+                            post.type ||
+                            "post"
+                        )
+                            .toUpperCase();
+
+
+                    const title =
+                        post.title ||
+                        post.content ||
+                        "Untitled post";
+
+
+                    const likes =
+                        Number(
+                            post.likes
+                        ) ||
+                        0;
+
+
+                    const comments =
+                        Number(
+                            post.comments
+                        ) ||
+                        0;
+
+
+                    let imageHTML =
+                        "";
+
+
+                    if (
+                        post.image_url
+                    ) {
+
+                        imageHTML = `
+
+                            <div class="post-image">
+
+                                <img
+                                    src="${escapeLikedHTML(post.image_url)}"
+                                    alt="${escapeLikedHTML(title)}"
+                                    loading="lazy"
+                                >
+
+                            </div>
+
+                        `;
+
+                    } else {
+
+                        let emoji =
+                            "😂";
+
+
+                        if (
+                            String(
+                                post.type
+                            )
+                                .toLowerCase()
+                            ===
+                            "joke"
+                        ) {
+
+                            emoji =
+                                "🤣";
+
+                        } else if (
+                            String(
+                                post.type
+                            )
+                                .toLowerCase()
+                            ===
+                            "story"
+                        ) {
+
+                            emoji =
+                                "📝";
+
+                        }
+
+
+                        imageHTML = `
+
+                            <div class="post-image">
+
+                                ${emoji}
+
+                            </div>
+
+                        `;
+
+                    }
+
+
+                    card.innerHTML = `
+
+                        ${imageHTML}
+
+                        <div class="post-info">
+
+                            <span class="post-type">
+                                ${escapeLikedHTML(type)}
+                            </span>
+
+
+                            <h3>
+                                ${escapeLikedHTML(title)}
+                            </h3>
+
+
+                            <div class="post-actions">
+
+                                <span class="liked-heart">
+                                    ❤️ ${formatLikedNumber(likes)}
+                                </span>
+
+
+                                <span>
+                                    💬 ${formatLikedNumber(comments)}
+                                </span>
+
+
+                                <span>
+                                    ↗️
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+
+                    card.addEventListener(
+                        "click",
+                        function() {
+
+                            window.location.href =
+                                "index.html?post=" +
+                                encodeURIComponent(
+                                    post.id
+                                );
+
+                        }
+                    );
+
+
+                    grid.appendChild(
+                        card
+                    );
+
+                }
+            );
+
+        }
+
+
+        function escapeLikedHTML(
+            value
+        ) {
+
+            return String(
+                value || ""
+            )
+                .replace(
+                    /&/g,
+                    "&amp;"
+                )
+                .replace(
+                    /</g,
+                    "&lt;"
+                )
+                .replace(
+                    />/g,
+                    "&gt;"
+                )
+                .replace(
+                    /"/g,
+                    "&quot;"
+                )
+                .replace(
+                    /'/g,
+                    "&#039;"
+                );
+
+        }
+
+
+        function formatLikedNumber(
+            number
+        ) {
+
+            number =
+                Number(number) ||
+                0;
+
+
+            if (
+                number >= 1000000
+            ) {
+
+                return (
+                    (
+                        number /
+                        1000000
+                    )
+                        .toFixed(1)
+                        .replace(
+                            ".0",
+                            ""
+                        )
+                    +
+                    "M"
+                );
+
+            }
+
+
+            if (
+                number >= 1000
+            ) {
+
+                return (
+                    (
+                        number /
+                        1000
+                    )
+                        .toFixed(1)
+                        .replace(
+                            ".0",
+                            ""
+                        )
+                    +
+                    "K"
+                );
+
+            }
+
+
+            return String(
+                number
+            );
+
+        }
+
+
+        document.addEventListener(
+            "click",
+            function(event) {
+
+                const button =
+                    event.target.closest(
+                        "[data-liked-filter]"
+                    );
+
+
+                if (!button) {
+                    return;
+                }
+
+
+                document
+                    .querySelectorAll(
+                        "[data-liked-filter]"
+                    )
+                    .forEach(
+                        function(item) {
+
+                            item.classList.remove(
+                                "active"
+                            );
+
+                        }
+                    );
+
+
+                button.classList.add(
+                    "active"
+                );
+
+
+                currentLikedFilter =
+                    button.dataset.likedFilter;
+
+
+                renderLikedPosts();
+
+            }
+        );
+
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function() {
+
+                loadLikedPosts();
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>

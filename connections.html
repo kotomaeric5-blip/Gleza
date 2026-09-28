@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Connections — Gleza</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="top-header">
+
+        <button
+            class="back-btn"
+            id="backBtn"
+            type="button"
+        >
+            ←
+        </button>
+
+        <div class="header-title">
+            <h1 id="pageTitle">
+                Followers
+            </h1>
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         CONNECTIONS CONTENT
+    ====================================================== -->
+
+    <main class="connections-page">
+
+        <div
+            class="connections-loading"
+            id="connectionsLoading"
+        >
+            Loading...
+        </div>
+
+
+        <div
+            class="connections-list"
+            id="connectionsList"
+        ></div>
+
+
+        <div
+            class="connections-empty"
+            id="connectionsEmpty"
+            style="display: none;"
+        >
+            <div class="empty-icon">
+                👥
+            </div>
+
+            <h2 id="emptyTitle">
+                No followers yet
+            </h2>
+
+            <p id="emptyText">
+                This profile doesn't have any followers yet.
+            </p>
+        </div>
+
+
+        <div
+            class="connections-error"
+            id="connectionsError"
+            style="display: none;"
+        >
+            <div class="empty-icon">
+                ⚠️
+            </div>
+
+            <h2>
+                Something went wrong
+            </h2>
+
+            <p id="errorText">
+                We couldn't load the connections.
+            </p>
+
+            <button
+                id="retryBtn"
+                type="button"
+            >
+                Try Again
+            </button>
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         PAGE JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        /*
+        ========================================================
+        READ URL
+        ========================================================
+        */
+
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const profileUserId =
+            params.get("user");
+
+
+        const connectionType =
+            params.get("type") || "followers";
+
+
+        /*
+        ========================================================
+        ELEMENTS
+        ========================================================
+        */
+
+        const pageTitle =
+            document.getElementById(
+                "pageTitle"
+            );
+
+
+        const loading =
+            document.getElementById(
+                "connectionsLoading"
+            );
+
+
+        const connectionsList =
+            document.getElementById(
+                "connectionsList"
+            );
+
+
+        const empty =
+            document.getElementById(
+                "connectionsEmpty"
+            );
+
+
+        const emptyTitle =
+            document.getElementById(
+                "emptyTitle"
+            );
+
+
+        const emptyText =
+            document.getElementById(
+                "emptyText"
+            );
+
+
+        const error =
+            document.getElementById(
+                "connectionsError"
+            );
+
+
+        const errorText =
+            document.getElementById(
+                "errorText"
+            );
+
+
+        const retryBtn =
+            document.getElementById(
+                "retryBtn"
+            );
+
+
+        const backBtn =
+            document.getElementById(
+                "backBtn"
+            );
+
+
+        /*
+        ========================================================
+        SET PAGE TITLE
+        ========================================================
+        */
+
+        if (
+            connectionType ===
+            "following"
+        ) {
+
+            pageTitle.textContent =
+                "Following";
+
+            emptyTitle.textContent =
+                "Not following anyone yet";
+
+            emptyText.textContent =
+                "This profile isn't following anyone yet.";
+
+        } else {
+
+            pageTitle.textContent =
+                "Followers";
+
+            emptyTitle.textContent =
+                "No followers yet";
+
+            emptyText.textContent =
+                "This profile doesn't have any followers yet.";
+
+        }
+
+
+        /*
+        ========================================================
+        BACK BUTTON
+        ========================================================
+        */
+
+        backBtn.addEventListener(
+            "click",
+            function () {
+
+                history.back();
+
+            }
+        );
+
+
+        /*
+        ========================================================
+        CHECK URL
+        ========================================================
+        */
+
+        if (!profileUserId) {
+
+            loading.style.display =
+                "none";
+
+            error.style.display =
+                "block";
+
+            errorText.textContent =
+                "No profile was specified.";
+
+        }
+
+
+        /*
+        ========================================================
+        LOAD CONNECTIONS
+        ========================================================
+        */
+
+        async function loadConnections() {
+
+            if (!profileUserId) {
+                return;
+            }
+
+
+            loading.style.display =
+                "block";
+
+            connectionsList.innerHTML =
+                "";
+
+            empty.style.display =
+                "none";
+
+            error.style.display =
+                "none";
+
+
+            try {
+
+                /*
+                ------------------------------------------------
+                FOR NOW WE TEST THE CONNECTION DATA THROUGH
+                THE EXISTING FOLLOW TABLE.
+                ------------------------------------------------
+                */
+
+                const endpoint =
+                    connectionType ===
+                    "following"
+
+                        ? "/api/users/" +
+                          profileUserId +
+                          "/following"
+
+                        : "/api/users/" +
+                          profileUserId +
+                          "/followers";
+
+
+                const response =
+                    await fetch(
+                        endpoint
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                console.log(
+                    "CONNECTIONS RESPONSE:",
+                    result
+                );
+
+
+                if (
+                    !response.ok ||
+                    !result.success
+                ) {
+
+                    throw new Error(
+                        result.error ||
+                        "Could not load connections."
+                    );
+
+                }
+
+
+                loading.style.display =
+                    "none";
+
+
+                const users =
+                    result.users || [];
+
+
+                /*
+                ------------------------------------------------
+                NO USERS
+                ------------------------------------------------
+                */
+
+                if (
+                    users.length ===
+                    0
+                ) {
+
+                    empty.style.display =
+                        "block";
+
+                    return;
+
+                }
+
+
+                /*
+                ------------------------------------------------
+                DISPLAY USERS
+                ------------------------------------------------
+                */
+
+                users.forEach(
+                    function (connectionUser) {
+
+                        const card =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        card.className =
+                            "connection-card";
+
+
+                        const name =
+                            connectionUser.name ||
+                            "Gleza User";
+
+
+                        const userId =
+                            connectionUser.id;
+
+
+                        card.innerHTML = `
+
+                            <div class="connection-avatar">
+                                👤
+                            </div>
+
+                            <div class="connection-info">
+
+                                <strong>
+                                    ${escapeHtml(name)}
+                                </strong>
+
+                                <span>
+                                    View profile
+                                </span>
+
+                            </div>
+
+                            <button
+                                class="connection-profile-btn"
+                                type="button"
+                            >
+                                View
+                            </button>
+
+                        `;
+
+
+                        const viewButton =
+                            card.querySelector(
+                                ".connection-profile-btn"
+                            );
+
+
+                        viewButton.addEventListener(
+                            "click",
+                            function () {
+
+                                window.location.href =
+                                    "profile.html?user=" +
+                                    encodeURIComponent(
+                                        userId
+                                    );
+
+                            }
+                        );
+
+
+                        connectionsList.appendChild(
+                            card
+                        );
+
+                    }
+                );
+
+
+            } catch (err) {
+
+                console.error(
+                    "CONNECTIONS ERROR:",
+                    err
+                );
+
+
+                loading.style.display =
+                    "none";
+
+
+                error.style.display =
+                    "block";
+
+
+                errorText.textContent =
+                    err.message ||
+                    "Could not load connections.";
+
+            }
+
+        }
+
+
+        /*
+        ========================================================
+        ESCAPE HTML
+        ========================================================
+        */
+
+        function escapeHtml(
+            text
+        ) {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+            div.textContent =
+                text;
+
+            return div.innerHTML;
+
+        }
+
+
+        /*
+        ========================================================
+        RETRY
+        ========================================================
+        */
+
+        retryBtn.addEventListener(
+            "click",
+            loadConnections
+        );
+
+
+        /*
+        ========================================================
+        START
+        ========================================================
+        */
+
+        loadConnections();
+
+    </script>
+
+</body>
+</html>

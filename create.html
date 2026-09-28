@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create — Gleza</title>
+    <meta name="description" content="Create and share memes, jokes and stories on Gleza.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <a href="index.html" class="logo">
+            <span class="logo-icon">G</span>
+            <span class="logo-text">Gleza</span>
+        </a>
+
+        <button class="search-btn" aria-label="Search">
+            🔍
+        </button>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main>
+
+        <!-- PAGE INTRO -->
+        <section class="page-hero">
+
+            <p class="small-text">
+                ✨ CREATE SOMETHING
+            </p>
+
+            <h1>
+                Share it with <span>Gleza.</span>
+            </h1>
+
+            <p>
+                Got a meme, joke or funny story? Put it out there.
+            </p>
+
+        </section>
+
+
+        <!-- CREATE FORM -->
+        <section class="create-section">
+
+            <div class="create-card">
+
+                <!-- CONTENT TYPE -->
+                <div class="form-group">
+
+                    <label for="postType">
+                        What are you posting?
+                    </label>
+
+                    <div class="post-type-options">
+
+                        <button
+                            type="button"
+                            class="post-type-option active"
+                            data-post-type="meme"
+                        >
+                            😂
+                            <span>Meme</span>
+                        </button>
+
+                        <button
+                            type="button"
+                            class="post-type-option"
+                            data-post-type="joke"
+                        >
+                            🤣
+                            <span>Joke</span>
+                        </button>
+
+                        <button
+                            type="button"
+                            class="post-type-option"
+                            data-post-type="story"
+                        >
+                            📝
+                            <span>Story</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TEXT -->
+                <div class="form-group">
+
+                    <label for="postText">
+                        Your content
+                    </label>
+
+                    <textarea
+                        id="postText"
+                        name="postText"
+                        rows="7"
+                        maxlength="1000"
+                        placeholder="Make us laugh... 😂"
+                    ></textarea>
+
+                    <div class="character-count">
+                        <span id="characterCount">0</span>/1000
+                    </div>
+
+                </div>
+
+
+                <!-- IMAGE -->
+                <div class="form-group">
+
+                    <label>
+                        Add an image
+                    </label>
+
+                    <label for="postImage" class="image-upload">
+
+                        <span class="upload-icon">
+                            📸
+                        </span>
+
+                        <strong>
+                            Add a photo
+                        </strong>
+
+                        <small>
+                            JPG, PNG or WEBP
+                        </small>
+
+                        <input
+                            type="file"
+                            id="postImage"
+                            accept="image/jpeg,image/png,image/webp"
+                            hidden
+                        >
+
+                    </label>
+
+                </div>
+
+
+                <!-- HUMOR CATEGORY -->
+                <div class="form-group">
+
+                    <label for="humorCategory">
+                        Category
+                    </label>
+
+                    <select id="humorCategory">
+
+                        <option value="funny">
+                            😂 Funny
+                        </option>
+
+                        <option value="savage">
+                            💀 Savage
+                        </option>
+
+                        <option value="one-liners">
+                            🤣 One-Liners
+                        </option>
+
+                        <option value="relationship">
+                            ❤️ Relationship
+                        </option>
+
+                        <option value="school">
+                            🏫 School
+                        </option>
+
+                        <option value="money">
+                            💰 Money
+                        </option>
+
+                        <option value="family">
+                            👨‍👩‍👧 Family
+                        </option>
+
+                        <option value="sports">
+                            ⚽ Sports
+                        </option>
+
+                        <option value="gaming">
+                            🎮 Gaming
+                        </option>
+
+                        <option value="ghana">
+                            🇬🇭 Ghana
+                        </option>
+
+                        <option value="african">
+                            🌍 African
+                        </option>
+
+                        <option value="animals">
+                            🐶 Animals
+                        </option>
+
+                        <option value="food">
+                            🍔 Food
+                        </option>
+
+                        <option value="random">
+                            🎲 Random
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- POST BUTTON -->
+                <button
+                    type="button"
+                    class="publish-btn"
+                    id="publishPost"
+                >
+                    🚀 Post to Gleza
+                </button>
+
+
+                <p class="posting-note">
+                    Your post will appear on Gleza after posting.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- MOBILE NAVIGATION -->
+    <nav class="bottom-nav">
+
+        <!-- HOME -->
+        <a href="index.html" class="bottom-item">
+
+            <span>
+                ⌂
+            </span>
+
+            <small>
+                Home
+            </small>
+
+        </a>
+
+
+        <!-- TRENDING -->
+        <a href="trending.html" class="bottom-item">
+
+            <span>
+                🔥
+            </span>
+
+            <small>
+                Trending
+            </small>
+
+        </a>
+
+
+        <!-- CREATE -->
+        <a href="upload.html" class="create-button active" aria-label="Create">
+            +
+        </a>
+
+
+        <!-- LIKED -->
+        <a href="liked.html" class="bottom-item">
+
+            <span>
+                ❤️
+            </span>
+
+            <small>
+                Liked
+            </small>
+
+        </a>
+
+
+        <!-- PROFILE -->
+        <a href="profile.html" class="bottom-item">
+
+            <span>
+                👤
+            </span>
+
+            <small>
+                Profile
+            </small>
+
+        </a>
+
+    </nav>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

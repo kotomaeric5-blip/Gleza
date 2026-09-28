@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Edit Profile — Gleza</title>
+
+    <meta
+        name="description"
+        content="Edit your Gleza profile."
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <a href="index.html" class="logo">
+
+            <span class="logo-icon">
+                G
+            </span>
+
+            <span class="logo-text">
+                Gleza
+            </span>
+
+        </a>
+
+
+        <button
+            class="search-btn"
+            aria-label="Search"
+            type="button"
+            onclick="window.location.href='search.html'"
+        >
+            🔍
+        </button>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main>
+
+        <section class="settings-page">
+
+            <a
+                href="profile.html"
+                class="settings-back"
+            >
+                ← Back to Profile
+            </a>
+
+
+            <div class="settings-page-header">
+
+                <p class="section-label">
+                    ✏️ PROFILE
+                </p>
+
+                <h1>
+                    Edit Profile
+                </h1>
+
+                <p>
+                    Update your Gleza profile information.
+                </p>
+
+            </div>
+
+
+            <!-- PROFILE PICTURE -->
+            <div class="edit-profile-avatar-section">
+
+                <div
+                    class="edit-profile-avatar"
+                    id="avatarPreview"
+                >
+                    👤
+                </div>
+
+
+                <button
+                    type="button"
+                    class="change-avatar-btn"
+                    id="changeAvatar"
+                    disabled
+                >
+                    Change photo
+                </button>
+
+
+                <input
+                    type="file"
+                    id="avatarInput"
+                    accept="image/*"
+                    hidden
+                >
+
+            </div>
+
+
+            <!-- PROFILE FORM -->
+            <form
+                class="settings-form"
+                id="editProfileForm"
+            >
+
+                <div class="form-group">
+
+                    <label for="profileName">
+                        Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="profileName"
+                        name="profileName"
+                        placeholder="Your name"
+                        maxlength="40"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="profileUsername">
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="profileUsername"
+                        name="profileUsername"
+                        placeholder="@username"
+                        maxlength="30"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="profileBio">
+                        Bio
+                    </label>
+
+                    <textarea
+                        id="profileBio"
+                        name="profileBio"
+                        placeholder="Tell people a little about yourself..."
+                        maxlength="160"
+                    >Just here to laugh and make people laugh 😂</textarea>
+
+                    <small>
+                        <span id="bioCount">
+                            0
+                        </span>/160
+                    </small>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="save-settings-btn"
+                    id="saveProfileBtn"
+                >
+                    Save Changes
+                </button>
+
+
+                <p
+                    id="profileMessage"
+                    style="
+                        margin-top: 12px;
+                        text-align: center;
+                        font-size: 14px;
+                    "
+                ></p>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- MOBILE NAVIGATION -->
+    <nav class="bottom-nav">
+
+        <a
+            href="index.html"
+            class="bottom-item"
+        >
+
+            <span>
+                ⌂
+            </span>
+
+            <small>
+                Home
+            </small>
+
+        </a>
+
+
+        <a
+            href="trending.html"
+            class="bottom-item"
+        >
+
+            <span>
+                🔥
+            </span>
+
+            <small>
+                Trending
+            </small>
+
+        </a>
+
+
+        <a
+            href="upload.html"
+            class="create-button"
+            aria-label="Create"
+        >
+            +
+        </a>
+
+
+        <a
+            href="liked.html"
+            class="bottom-item"
+        >
+
+            <span>
+                ❤️
+            </span>
+
+            <small>
+                Liked
+            </small>
+
+        </a>
+
+
+        <a
+            href="profile.html"
+            class="bottom-item active"
+        >
+
+            <span>
+                👤
+            </span>
+
+            <small>
+                Profile
+            </small>
+
+        </a>
+
+    </nav>
+
+
+<script>
+
+/* =========================================================
+   GLEZA — EDIT PROFILE + AVATAR
+========================================================= */
+
+let supabaseClient = null;
+
+let currentUser = null;
+
+let selectedAvatarFile = null;
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const avatarPreview =
+    document.getElementById(
+        "avatarPreview"
+    );
+
+
+const changeAvatar =
+    document.getElementById(
+        "changeAvatar"
+    );
+
+
+const avatarInput =
+    document.getElementById(
+        "avatarInput"
+    );
+
+
+const editProfileForm =
+    document.getElementById(
+        "editProfileForm"
+    );
+
+
+const profileName =
+    document.getElementById(
+        "profileName"
+    );
+
+
+const profileUsername =
+    document.getElementById(
+        "profileUsername"
+    );
+
+
+const profileBio =
+    document.getElementById(
+        "profileBio"
+    );
+
+
+const bioCount =
+    document.getElementById(
+        "bioCount"
+    );
+
+
+const saveProfileBtn =
+    document.getElementById(
+        "saveProfileBtn"
+    );
+
+
+const profileMessage =
+    document.getElementById(
+        "profileMessage"
+    );
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+function showProfileMessage(message) {
+
+    profileMessage.textContent =
+        message;
+
+}
+
+
+/* =========================================================
+   BIO COUNTER
+========================================================= */
+
+function updateBioCount() {
+
+    bioCount.textContent =
+        profileBio.value.length;
+
+}
+
+
+profileBio.addEventListener(
+    "input",
+    updateBioCount
+);
+
+
+/* =========================================================
+   CHANGE AVATAR BUTTON
+========================================================= */
+
+changeAvatar.addEventListener(
+    "click",
+    function () {
+
+        avatarInput.click();
+
+    }
+);
+
+
+/* =========================================================
+   SELECT AVATAR
+========================================================= */
+
+avatarInput.addEventListener(
+    "change",
+    function () {
+
+        const file =
+            avatarInput.files[0];
+
+
+        if (!file) {
+
+            return;
+
+        }
+
+
+        /* CHECK FILE TYPE */
+
+        if (
+            !file.type.startsWith(
+                "image/"
+            )
+        ) {
+
+            showProfileMessage(
+                "Please select an image."
+            );
+
+            return;
+
+        }
+
+
+        /* CHECK FILE SIZE */
+
+        if (
+            file.size >
+            5 * 1024 * 1024
+        ) {
+
+            showProfileMessage(
+                "Please choose an image smaller than 5MB."
+            );
+
+            avatarInput.value =
+                "";
+
+            return;
+
+        }
+
+
+        selectedAvatarFile =
+            file;
+
+
+        /* SHOW PREVIEW */
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload =
+            function (event) {
+
+                avatarPreview.innerHTML = `
+
+                    <img
+                        src="${event.target.result}"
+                        alt="Profile preview"
+                    >
+
+                `;
+
+            };
+
+
+        reader.readAsDataURL(
+            file
+        );
+
+
+        showProfileMessage(
+            "Photo selected. Tap Save Changes to upload it."
+        );
+
+    }
+);
+
+
+/* =========================================================
+   LOAD SUPABASE
+========================================================= */
+
+async function loadSupabase() {
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/config"
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Could not load Gleza configuration."
+            );
+
+        }
+
+
+        const config =
+            await response.json();
+
+
+        const script =
+            document.createElement(
+                "script"
+            );
+
+
+        script.src =
+            "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
+
+
+        script.onload =
+            async function () {
+
+                try {
+
+                    supabaseClient =
+                        window.supabase.createClient(
+                            config.supabaseUrl,
+                            config.supabasePublishableKey
+                        );
+
+
+                    const {
+                        data,
+                        error
+                    } =
+                        await supabaseClient.auth.getUser();
+
+
+                    /* =========================================
+                       LOGIN REQUIRED
+                    ========================================= */
+
+                    if (
+                        error ||
+                        !data?.user
+                    ) {
+
+                        window.location.href =
+                            "account.html";
+
+                        return;
+
+                    }
+
+
+                    currentUser =
+                        data.user;
+
+
+                    console.log(
+                        "EDIT PROFILE USER:",
+                        currentUser.id
+                    );
+
+
+                    /* LOAD EXISTING PROFILE */
+
+                    profileName.value =
+                        currentUser.user_metadata?.name ||
+                        currentUser.email?.split("@")[0] ||
+                        "";
+
+
+                    profileUsername.value =
+                        currentUser.user_metadata?.username ||
+                        "";
+
+
+                    profileBio.value =
+                        currentUser.user_metadata?.bio ||
+                        "Just here to laugh and make people laugh 😂";
+
+
+                    /* LOAD EXISTING AVATAR */
+
+                    const existingAvatar =
+                        currentUser.user_metadata?.avatar_url;
+
+
+                    if (existingAvatar) {
+
+                        avatarPreview.innerHTML = `
+
+                            <img
+                                src="${existingAvatar}"
+                                alt="Profile photo"
+                            >
+
+                        `;
+
+                    }
+
+
+                    updateBioCount();
+
+
+                    console.log(
+                        "GLEZA EDIT PROFILE READY"
+                    );
+
+
+                } catch (error) {
+
+                    console.error(
+                        "EDIT PROFILE USER ERROR:",
+                        error
+                    );
+
+
+                    showProfileMessage(
+                        "Could not load your profile."
+                    );
+
+                }
+
+            };
+
+
+        script.onerror =
+            function () {
+
+                console.error(
+                    "Could not load Supabase."
+                );
+
+
+                showProfileMessage(
+                    "Could not connect to Gleza."
+                );
+
+            };
+
+
+        document.head.appendChild(
+            script
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "CONFIG ERROR:",
+            error
+        );
+
+
+        showProfileMessage(
+            "Could not connect to Gleza."
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   UPLOAD AVATAR
+========================================================= */
+
+async function uploadAvatar() {
+
+    if (!selectedAvatarFile) {
+
+        return null;
+
+    }
+
+
+    if (!currentUser) {
+
+        throw new Error(
+            "You are not logged in."
+        );
+
+    }
+
+
+    const fileExtension =
+        selectedAvatarFile.name
+            .split(".")
+            .pop()
+            .toLowerCase();
+
+
+    const filePath =
+        currentUser.id +
+        "/avatar." +
+        fileExtension;
+
+
+    console.log(
+        "UPLOADING AVATAR:",
+        filePath
+    );
+
+
+    const {
+        error: uploadError
+    } =
+        await supabaseClient.storage
+            .from("avatars")
+            .upload(
+                filePath,
+                selectedAvatarFile,
+                {
+                    upsert: true,
+                    contentType:
+                        selectedAvatarFile.type
+                }
+            );
+
+
+    if (uploadError) {
+
+        console.error(
+            "AVATAR UPLOAD ERROR:",
+            uploadError
+        );
+
+
+        throw new Error(
+            uploadError.message ||
+            "Could not upload your photo."
+        );
+
+    }
+
+
+    /* GET PUBLIC URL */
+
+    const {
+        data: publicUrlData
+    } =
+        supabaseClient.storage
+            .from("avatars")
+            .getPublicUrl(
+                filePath
+            );
+
+
+    if (
+        !publicUrlData?.publicUrl
+    ) {
+
+        throw new Error(
+            "Could not create avatar URL."
+        );
+
+    }
+
+
+    /*
+       ADD A CACHE-BUSTING VALUE
+       SO THE NEW PHOTO APPEARS
+       AFTER REPLACING THE OLD ONE.
+    */
+
+    const avatarUrl =
+        publicUrlData.publicUrl +
+        "?v=" +
+        Date.now();
+
+
+    console.log(
+        "AVATAR URL:",
+        avatarUrl
+    );
+
+
+    return avatarUrl;
+
+}
+
+
+/* =========================================================
+   SAVE PROFILE
+========================================================= */
+
+editProfileForm.addEventListener(
+    "submit",
+    async function (event) {
+
+        event.preventDefault();
+
+
+        if (
+            !supabaseClient ||
+            !currentUser
+        ) {
+
+            showProfileMessage(
+                "Please wait a moment and try again."
+            );
+
+            return;
+
+        }
+
+
+        try {
+
+            saveProfileBtn.disabled =
+                true;
+
+
+            saveProfileBtn.textContent =
+                "Saving...";
+
+
+            showProfileMessage(
+                "Saving your profile..."
+            );
+
+
+            let avatarUrl =
+                currentUser.user_metadata?.avatar_url ||
+                null;
+
+
+            /* UPLOAD NEW AVATAR */
+
+            if (selectedAvatarFile) {
+
+                avatarUrl =
+                    await uploadAvatar();
+
+            }
+
+
+            /* SAVE PROFILE DATA */
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient.auth.updateUser({
+
+                    data: {
+
+                        name:
+                            profileName.value.trim(),
+
+                        username:
+                            profileUsername.value.trim(),
+
+                        bio:
+                            profileBio.value.trim(),
+
+                        avatar_url:
+                            avatarUrl
+
+                    }
+
+                });
+
+
+            if (error) {
+
+                console.error(
+                    "PROFILE UPDATE ERROR:",
+                    error
+                );
+
+
+                throw new Error(
+                    error.message ||
+                    "Could not save your profile."
+                );
+
+            }
+
+
+            currentUser =
+                data.user;
+
+
+            selectedAvatarFile =
+                null;
+
+
+            avatarInput.value =
+                "";
+
+
+            showProfileMessage(
+                "Profile updated successfully! 🎉"
+            );
+
+
+            saveProfileBtn.textContent =
+                "Saved ✓";
+
+
+            setTimeout(
+                function () {
+
+                    window.location.href =
+                        "profile.html";
+
+                },
+                800
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "SAVE PROFILE ERROR:",
+                error
+            );
+
+
+            showProfileMessage(
+                error.message ||
+                "Could not save your profile."
+            );
+
+
+            saveProfileBtn.disabled =
+                false;
+
+
+            saveProfileBtn.textContent =
+                "Save Changes";
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   START
+========================================================= */
+
+loadSupabase();
+
+</script>
+
+</body>
+</html>

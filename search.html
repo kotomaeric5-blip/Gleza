@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Search - Gleza</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="header">
+
+        <a href="index.html" class="logo">
+            Gleza
+        </a>
+
+        <button
+            class="search-btn"
+            type="button"
+            aria-label="Search"
+        >
+            🔍
+        </button>
+
+    </header>
+
+
+    <!-- =========================
+         SEARCH PAGE
+    ========================== -->
+
+    <main class="search-page">
+
+        <section class="search-section">
+
+            <div class="search-top">
+
+                <button
+                    id="closeSearch"
+                    class="search-back"
+                    type="button"
+                    aria-label="Go back"
+                >
+                    ←
+                </button>
+
+
+                <div class="search-box">
+
+                    <span class="search-icon">
+                        🔍
+                    </span>
+
+                    <input
+                        type="search"
+                        id="searchInput"
+                        placeholder="Search Gleza..."
+                        autocomplete="off"
+                        aria-label="Search Gleza"
+                    >
+
+                    <button
+                        type="button"
+                        class="clear-search"
+                        id="clearSearch"
+                        aria-label="Clear search"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 SEARCH INTRO
+            ========================== -->
+
+            <div
+                class="search-intro"
+                id="searchIntro"
+            >
+
+                <div class="search-intro-icon">
+                    🔍
+                </div>
+
+                <h1>
+                    Search Gleza
+                </h1>
+
+                <p>
+                    Find memes, jokes, stories and
+                    funny content.
+                </p>
+
+            </div>
+
+
+            <!-- =========================
+                 SEARCH RESULTS
+            ========================== -->
+
+            <section
+                class="search-results-section"
+                aria-label="Search results"
+            >
+
+                <div
+                    class="search-results-header"
+                    id="searchResultsHeader"
+                    style="display: none;"
+                >
+
+                    <h2>
+                        Search results
+                    </h2>
+
+                    <span
+                        id="searchResultCount"
+                    >
+                        0 results
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="searchResults"
+                    class="content-grid search-results"
+                >
+                </div>
+
+
+                <!-- =========================
+                     NO RESULTS
+                ========================== -->
+
+                <div
+                    id="searchEmpty"
+                    class="empty-state search-empty"
+                    style="display: none;"
+                >
+
+                    <div class="empty-icon">
+                        😭
+                    </div>
+
+                    <h3>
+                        No results found
+                    </h3>
+
+                    <p>
+                        Try searching for something
+                        else.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         BOTTOM NAVIGATION
+    ========================== -->
+
+    <nav class="bottom-nav">
+
+        <a
+            href="index.html"
+            class="bottom-item"
+        >
+
+            <span>🏠</span>
+
+            <small>
+                Home
+            </small>
+
+        </a>
+
+
+        <a
+            href="trending.html"
+            class="bottom-item"
+        >
+
+            <span>🔥</span>
+
+            <small>
+                Trending
+            </small>
+
+        </a>
+
+
+        <a
+            href="upload.html"
+            class="bottom-item create-button"
+        >
+
+            <span>➕</span>
+
+            <small>
+                Create
+            </small>
+
+        </a>
+
+
+        <a
+            href="liked.html"
+            class="bottom-item"
+        >
+
+            <span>❤️</span>
+
+            <small>
+                Liked
+            </small>
+
+        </a>
+
+
+        <a
+            href="profile.html"
+            class="bottom-item"
+        >
+
+            <span>👤</span>
+
+            <small>
+                Profile
+            </small>
+
+        </a>
+
+    </nav>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>

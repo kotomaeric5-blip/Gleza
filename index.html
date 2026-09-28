@@ -1,0 +1,2878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gleza — Your Daily Dose of Fun</title>
+    <meta name="description" content="Gleza is your place for memes, jokes, funny stories and trending entertainment.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#08080d">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Gleza">
+
+</head>
+
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <a href="index.html" class="logo">
+            <span class="logo-icon">G</span>
+            <span class="logo-text">Gleza</span>
+        </a>
+
+        <button class="search-btn" aria-label="Search">
+            🔍
+        </button>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main>
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <p class="small-text">
+                    WELCOME TO GLEZA
+                </p>
+
+                <h1>
+                    Bored?<br>
+                    <span>Let's fix that.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Memes, jokes, funny stories and things worth sharing.
+                </p>
+
+                <button class="laugh-btn" id="makeMeLaugh">
+                    🎲 Make Me Laugh
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- RANDOM JOKE -->
+        <section class="joke-section" id="jokeSection">
+
+            <div class="section-label">
+                😂 MAKE ME LAUGH
+            </div>
+
+            <div class="joke-card">
+
+                <p id="jokeText">
+                    Click the button and let's see what you've got 😂
+                </p>
+
+                <button id="anotherJoke">
+                    Another one →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTENT TYPES -->
+        <nav class="category-nav">
+
+            <button class="category active" data-filter="all">
+                For You
+            </button>
+
+            <button class="category" data-filter="meme">
+                😂 Memes
+            </button>
+
+            <button class="category" data-filter="joke">
+                🤣 Jokes
+            </button>
+
+            <button class="category" data-filter="story">
+                📝 Stories
+            </button>
+
+        </nav>
+
+
+        <!-- EXPLORE HUMOR -->
+        <section class="humor-section">
+
+            <div class="humor-heading">
+
+                <div>
+
+                    <p class="section-label">
+                        🎭 EXPLORE
+                    </p>
+
+                    <h2>
+                        What are you in the mood for?
+                    </h2>
+
+                    <p class="humor-description">
+                        Pick something you want to laugh at.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- MAIN HUMOR TYPES -->
+            <div class="humor-type-grid">
+
+                <button
+                    class="humor-type-card"
+                    data-humor-type="meme"
+                >
+
+                    <span class="humor-type-icon">
+                        😂
+                    </span>
+
+                    <span class="humor-type-text">
+                        <strong>Memes</strong>
+                        <small>Funny pictures & moments</small>
+                    </span>
+
+                    <span class="humor-type-arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="humor-type-card"
+                    data-humor-type="joke"
+                >
+
+                    <span class="humor-type-icon">
+                        🤣
+                    </span>
+
+                    <span class="humor-type-text">
+                        <strong>Jokes</strong>
+                        <small>Quick laughs & one-liners</small>
+                    </span>
+
+                    <span class="humor-type-arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="humor-type-card"
+                    data-humor-type="story"
+                >
+
+                    <span class="humor-type-icon">
+                        📝
+                    </span>
+
+                    <span class="humor-type-text">
+                        <strong>Stories</strong>
+                        <small>Funny things people experienced</small>
+                    </span>
+
+                    <span class="humor-type-arrow">
+                        →
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <!-- MEME CATEGORIES -->
+            <div
+                class="humor-category-panel"
+                id="memeCategories"
+                data-category-panel="meme"
+                hidden
+            >
+
+                <div class="category-panel-header">
+
+                    <div>
+
+                        <p class="section-label">
+                            😂 MEMES
+                        </p>
+
+                        <h3>
+                            What kind of memes?
+                        </h3>
+
+                    </div>
+
+                    <button
+                        class="close-category-panel"
+                        data-close-panel="meme"
+                        aria-label="Close meme categories"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+
+                <div class="humor-categories">
+
+                    <button class="humor-category active" data-humor="all">
+                        🤯 All
+                    </button>
+
+                    <button class="humor-category" data-humor="funny">
+                        😂 Funny
+                    </button>
+
+                    <button class="humor-category" data-humor="savage">
+                        💀 Savage
+                    </button>
+
+                    <button class="humor-category" data-humor="school">
+                        🏫 School
+                    </button>
+
+                    <button class="humor-category" data-humor="relationship">
+                        ❤️ Relationship
+                    </button>
+
+                    <button class="humor-category" data-humor="money">
+                        💰 Money
+                    </button>
+
+                    <button class="humor-category" data-humor="family">
+                        👨‍👩‍👧 Family
+                    </button>
+
+                    <button class="humor-category" data-humor="sports">
+                        ⚽ Sports
+                    </button>
+
+                    <button class="humor-category" data-humor="gaming">
+                        🎮 Gaming
+                    </button>
+
+                    <button class="humor-category" data-humor="ghana">
+                        🇬🇭 Ghana
+                    </button>
+
+                    <button class="humor-category" data-humor="african">
+                        🌍 African
+                    </button>
+
+                    <button class="humor-category" data-humor="animals">
+                        🐶 Animals
+                    </button>
+
+                    <button class="humor-category" data-humor="food">
+                        🍔 Food
+                    </button>
+
+                    <button class="humor-category" data-humor="random">
+                        🎲 Random
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- JOKE CATEGORIES -->
+            <div
+                class="humor-category-panel"
+                id="jokeCategories"
+                data-category-panel="joke"
+                hidden
+            >
+
+                <div class="category-panel-header">
+
+                    <div>
+
+                        <p class="section-label">
+                            🤣 JOKES
+                        </p>
+
+                        <h3>
+                            What kind of jokes?
+                        </h3>
+
+                    </div>
+
+                    <button
+                        class="close-category-panel"
+                        data-close-panel="joke"
+                        aria-label="Close joke categories"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+
+                <div class="humor-categories">
+
+                    <button class="humor-category active" data-humor="all">
+                        🤯 All
+                    </button>
+
+                    <button class="humor-category" data-humor="funny">
+                        😂 Funny
+                    </button>
+
+                    <button class="humor-category" data-humor="one-liners">
+                        🤣 One-Liners
+                    </button>
+
+                    <button class="humor-category" data-humor="savage">
+                        💀 Savage
+                    </button>
+
+                    <button class="humor-category" data-humor="relationship">
+                        ❤️ Relationship
+                    </button>
+
+                    <button class="humor-category" data-humor="school">
+                        🏫 School
+                    </button>
+
+                    <button class="humor-category" data-humor="money">
+                        💰 Money
+                    </button>
+
+                    <button class="humor-category" data-humor="family">
+                        👨‍👩‍👧 Family
+                    </button>
+
+                    <button class="humor-category" data-humor="sports">
+                        ⚽ Sports
+                    </button>
+
+                    <button class="humor-category" data-humor="gaming">
+                        🎮 Gaming
+                    </button>
+
+                    <button class="humor-category" data-humor="ghana">
+                        🇬🇭 Ghana
+                    </button>
+
+                    <button class="humor-category" data-humor="african">
+                        🌍 African
+                    </button>
+
+                    <button class="humor-category" data-humor="food">
+                        🍔 Food
+                    </button>
+
+                    <button class="humor-category" data-humor="random">
+                        🎲 Random
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- STORY CATEGORIES -->
+            <div
+                class="humor-category-panel"
+                id="storyCategories"
+                data-category-panel="story"
+                hidden
+            >
+
+                <div class="category-panel-header">
+
+                    <div>
+
+                        <p class="section-label">
+                            📝 STORIES
+                        </p>
+
+                        <h3>
+                            What kind of stories?
+                        </h3>
+
+                    </div>
+
+                    <button
+                        class="close-category-panel"
+                        data-close-panel="story"
+                        aria-label="Close story categories"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+
+                <div class="humor-categories">
+
+                    <button class="humor-category active" data-humor="all">
+                        🤯 All
+                    </button>
+
+                    <button class="humor-category" data-humor="funny">
+                        😂 Funny
+                    </button>
+
+                    <button class="humor-category" data-humor="school">
+                        🏫 School
+                    </button>
+
+                    <button class="humor-category" data-humor="relationship">
+                        ❤️ Relationship
+                    </button>
+
+                    <button class="humor-category" data-humor="family">
+                        👨‍👩‍👧 Family
+                    </button>
+
+                    <button class="humor-category" data-humor="money">
+                        💰 Money
+                    </button>
+
+                    <button class="humor-category" data-humor="sports">
+                        ⚽ Sports
+                    </button>
+
+                    <button class="humor-category" data-humor="gaming">
+                        🎮 Gaming
+                    </button>
+
+                    <button class="humor-category" data-humor="ghana">
+                        🇬🇭 Ghana
+                    </button>
+
+                    <button class="humor-category" data-humor="african">
+                        🌍 African
+                    </button>
+
+                    <button class="humor-category" data-humor="animals">
+                        🐶 Animals
+                    </button>
+
+                    <button class="humor-category" data-humor="food">
+                        🍔 Food
+                    </button>
+
+                    <button class="humor-category" data-humor="random">
+                        🎲 Random
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTENT PREVIEW -->
+        <section class="content-section">
+
+            <div class="section-heading">
+
+           <div></div>
+
+            </div>
+          
+
+
+            <!-- CONTENT GRID -->
+            <div class="content-grid">
+
+
+               <!-- POST 1 — MEME -->
+<article
+    class="post-card post-card-meme"
+    data-id="sample-meme-1"
+    data-type="meme"
+    data-humor="funny school"
+    data-title=""
+    data-content=""
+    data-image=""
+>
+
+    <div class="post-image meme-one">
+        😂
+    </div>
+
+    <div class="post-info">
+
+        <span class="post-type">
+            MEME
+        </span>
+
+        <div class="post-actions">
+
+            <button
+                class="like-btn"
+                type="button"
+            >
+                ❤️ 1.2K
+            </button>
+
+            <button
+                class="comment-btn"
+                type="button"
+            >
+                💬 84
+            </button>
+
+            <button
+                class="copy-link-btn"
+                type="button"
+            >
+                🔗 Copy
+            </button>
+
+            <button
+                class="download-btn"
+                type="button"
+                style="display:none;"
+            >
+                ⬇️ Download
+            </button>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+<!-- POST 2 — JOKE -->
+<article
+    class="post-card post-card-joke"
+    data-id="sample-joke-1"
+    data-type="joke"
+    data-humor="funny money"
+    data-title="This joke should not be this funny 😂"
+    data-content="This joke should not be this funny 😂"
+    data-image=""
+>
+
+    <div class="post-text-card">
+
+        <div class="post-type">
+            🤣 JOKE
+        </div>
+
+        <h3>
+            This joke should not be this funny 😂
+        </h3>
+
+        <p class="post-content">
+            This joke should not be this funny 😂
+        </p>
+
+    </div>
+
+    <div class="post-actions">
+
+        <button
+            class="like-btn"
+            type="button"
+        >
+            ❤️ 940
+        </button>
+
+        <button
+            class="comment-btn"
+            type="button"
+        >
+            💬 51
+        </button>
+
+        <button
+            class="copy-link-btn"
+            type="button"
+        >
+            🔗 Copy
+        </button>
+
+    </div>
+
+</article>
+
+
+<!-- POST 3 — STORY -->
+<article
+    class="post-card post-card-story"
+    data-id="sample-story-1"
+    data-type="story"
+    data-humor="school funny"
+    data-title="The funniest thing that happened at school..."
+    data-content="The funniest thing that happened at school..."
+    data-image=""
+>
+
+    <div class="post-text-card">
+
+        <div class="post-type">
+            📝 STORY
+        </div>
+
+        <h3>
+            The funniest thing that happened at school...
+        </h3>
+
+        <p class="post-content">
+            The funniest thing that happened at school...
+        </p>
+
+    </div>
+
+    <div class="post-actions">
+
+        <button
+            class="like-btn"
+            type="button"
+        >
+            ❤️ 720
+        </button>
+
+        <button
+            class="comment-btn"
+            type="button"
+        >
+            💬 38
+        </button>
+
+        <button
+            class="copy-link-btn"
+            type="button"
+        >
+            🔗 Copy
+        </button>
+
+    </div>
+
+</article>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- MOBILE NAVIGATION -->
+    <nav class="bottom-nav">
+
+        <!-- HOME -->
+        <a href="index.html" class="bottom-item active">
+
+            <span>
+                ⌂
+            </span>
+
+            <small>
+                Home
+            </small>
+
+        </a>
+
+
+        <!-- TRENDING -->
+        <a href="trending.html" class="bottom-item">
+
+            <span>
+                🔥
+            </span>
+
+            <small>
+                Trending
+            </small>
+
+        </a>
+
+
+        <!-- CREATE / UPLOAD -->
+        <a href="upload.html" class="create-button" aria-label="Create">
+            +
+        </a>
+
+
+        <!-- LIKED -->
+        <a href="liked.html" class="bottom-item">
+
+            <span>
+                ❤️
+            </span>
+
+            <small>
+                Liked
+            </small>
+
+        </a>
+
+
+        <!-- PROFILE -->
+        <a href="profile.html" class="bottom-item">
+
+            <span>
+                👤
+            </span>
+
+            <small>
+                Profile
+            </small>
+
+        </a>
+
+    </nav>
+
+   <!-- =========================================================
+     GLEZA COMMENTS SLIDE
+========================================================= -->
+
+<div
+    class="gleza-comments-slide-backdrop"
+    id="glezaCommentsBackdrop"
+></div>
+
+<section
+    class="gleza-comments-slide"
+    id="glezaCommentsSlide"
+    aria-label="Comments"
+>
+
+    <div class="gleza-comments-slide-header">
+
+        <div>
+            <h2 class="gleza-comments-slide-title">
+                Comments
+            </h2>
+
+            <p
+                class="gleza-comments-slide-count"
+                id="glezaCommentsCount"
+            >
+                0 comments
+            </p>
+        </div>
+
+        <button
+            class="gleza-comments-close"
+            id="glezaCommentsClose"
+            type="button"
+        >
+            ×
+        </button>
+
+    </div>
+
+    <div
+        class="gleza-comments-slide-list"
+        id="glezaCommentsList"
+    >
+        <div class="gleza-comments-empty">
+            No comments yet. Be the first 😂
+        </div>
+    </div>
+
+    <!-- =========================================================
+     GLEZA COMMENT / REPLY COMPOSER
+     Always stays at the bottom of the comments slide
+========================================================= -->
+
+<div class="gleza-comments-composer">
+
+    <!-- Reply indicator is inserted here dynamically -->
+    <div
+        id="glezaReplyIndicator"
+        class="gleza-reply-indicator"
+        style="display:none;"
+    ></div>
+
+    <form
+        class="gleza-comments-form"
+        id="glezaCommentsForm"
+    >
+
+        <input
+            class="gleza-comments-input"
+            id="glezaCommentsInput"
+            type="text"
+            maxlength="300"
+            placeholder="Write a comment..."
+            autocomplete="off"
+        >
+
+        <button
+            class="gleza-comments-submit"
+            id="glezaCommentsSubmit"
+            type="submit"
+        >
+            Post
+        </button>
+
+    </form>
+
+</div>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+
+<script>
+/* =========================================================
+   GLEZA PUSH NOTIFICATIONS
+========================================================= */
+
+const enableNotificationsBtn =
+    document.getElementById("enableNotificationsBtn");
+
+const notificationStatus =
+    document.getElementById("notificationStatus");
+
+async function enableGlezaNotifications() {
+
+    if (!("Notification" in window)) {
+
+        notificationStatus.textContent =
+            "Notifications are not supported on this device.";
+
+        return;
+
+    }
+
+    if (!("serviceWorker" in navigator)) {
+
+        notificationStatus.textContent =
+            "Your browser does not support notifications.";
+
+        return;
+
+    }
+
+    try {
+
+        /* -----------------------------------------
+           ASK FOR NOTIFICATION PERMISSION
+        ----------------------------------------- */
+
+        const permission =
+            await Notification.requestPermission();
+
+        if (permission !== "granted") {
+
+            notificationStatus.textContent =
+                "Notifications are turned off.";
+
+            return;
+
+        }
+
+
+        /* -----------------------------------------
+           GET SERVICE WORKER
+        ----------------------------------------- */
+
+        const registration =
+            await navigator.serviceWorker.ready;
+
+
+        /* -----------------------------------------
+           GET GLEZA PUBLIC VAPID KEY
+        ----------------------------------------- */
+
+        const keyResponse =
+            await fetch(
+                "/api/notifications/public-key"
+            );
+
+        if (!keyResponse.ok) {
+
+            throw new Error(
+                "Could not get notification key."
+            );
+
+        }
+
+        const keyData =
+            await keyResponse.json();
+
+
+        /* -----------------------------------------
+           CONVERT PUBLIC KEY
+        ----------------------------------------- */
+
+        function urlBase64ToUint8Array(base64String) {
+
+            const padding =
+                "=".repeat(
+                    (4 - base64String.length % 4) % 4
+                );
+
+            const base64 =
+                (
+                    base64String +
+                    padding
+                )
+                    .replace(/-/g, "+")
+                    .replace(/_/g, "/");
+
+            const rawData =
+                window.atob(base64);
+
+            const outputArray =
+                new Uint8Array(
+                    rawData.length
+                );
+
+            for (
+                let i = 0;
+                i < rawData.length;
+                ++i
+            ) {
+
+                outputArray[i] =
+                    rawData.charCodeAt(i);
+
+            }
+
+            return outputArray;
+
+        }
+
+
+        /* -----------------------------------------
+           CREATE PUSH SUBSCRIPTION
+        ----------------------------------------- */
+
+        let subscription =
+            await registration.pushManager.getSubscription();
+
+        if (!subscription) {
+
+            subscription =
+                await registration.pushManager.subscribe({
+
+                    userVisibleOnly: true,
+
+                    applicationServerKey:
+                        urlBase64ToUint8Array(
+                            keyData.publicKey
+                        )
+
+                });
+
+        }
+
+
+        /* -----------------------------------------
+           SAVE SUBSCRIPTION TO GLEZA
+        ----------------------------------------- */
+
+        const response =
+            await fetch(
+                "/api/notifications/subscribe",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        subscription:
+                            subscription,
+
+                        userId:
+                            null
+
+                    })
+
+                }
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                result.error ||
+                "Could not save subscription."
+            );
+
+        }
+
+
+        /* -----------------------------------------
+           SUCCESS
+        ----------------------------------------- */
+
+        notificationStatus.textContent =
+            "🔔 Gleza notifications are now on!";
+
+        enableNotificationsBtn.textContent =
+            "🔔 Notifications On";
+
+        enableNotificationsBtn.disabled =
+            true;
+
+        console.log(
+            "GLEZA NOTIFICATIONS ENABLED"
+        );
+
+    } catch (error) {
+
+        console.error(
+            "GLEZA NOTIFICATION ERROR:",
+            error
+        );
+
+        notificationStatus.textContent =
+            "Could not turn on notifications. Please try again.";
+
+    }
+
+}
+
+
+if (enableNotificationsBtn) {
+
+    enableNotificationsBtn.addEventListener(
+        "click",
+        enableGlezaNotifications
+    );
+
+}
+</script>
+
+<script>
+let glezaSupabase = null;
+
+async function getGlezaSupabase() {
+
+    if (glezaSupabase) {
+        return glezaSupabase;
+    }
+
+    const configResponse =
+        await fetch("/api/config");
+
+    const config =
+        await configResponse.json();
+
+    glezaSupabase =
+        supabase.createClient(
+            config.supabaseUrl,
+            config.supabasePublishableKey
+        );
+
+    return glezaSupabase;
+}
+</script>
+
+<script>
+/* =========================================================
+   GLEZA — SUPABASE COMMENTS + REPLIES + LIKES
+   Page-specific comments system
+========================================================= */
+
+let glezaCurrentCommentPostId = null;
+let glezaReplyingToCommentId = null;
+let glezaReplyingToName = "";
+
+
+/* =========================================================
+   OPEN COMMENTS
+========================================================= */
+
+async function openGlezaComments(postId) {
+
+    if (!postId || postId.startsWith("sample-")) {
+
+        alert(
+            "This sample post is not connected to Supabase yet."
+        );
+
+        return;
+    }
+
+    glezaCurrentCommentPostId = postId;
+    glezaReplyingToCommentId = null;
+    glezaReplyingToName = "";
+
+    const slide =
+        document.getElementById("glezaCommentsSlide");
+
+    const backdrop =
+        document.getElementById("glezaCommentsBackdrop");
+
+    const list =
+        document.getElementById("glezaCommentsList");
+
+    const input =
+        document.getElementById("glezaCommentsInput");
+
+    if (!slide || !backdrop || !list) {
+        return;
+    }
+
+    slide.classList.add("active");
+    backdrop.classList.add("active");
+
+    document.body.classList.add(
+        "gleza-comments-open"
+    );
+
+    list.innerHTML = `
+        <div class="gleza-comments-loading">
+            Loading comments...
+        </div>
+    `;
+
+    clearReplyMode();
+
+    await loadGlezaComments(postId);
+
+    setTimeout(function () {
+
+        if (input) {
+            input.focus();
+        }
+
+    }, 300);
+}
+
+
+/* =========================================================
+   CLOSE COMMENTS
+========================================================= */
+
+function closeGlezaComments() {
+
+    const slide =
+        document.getElementById(
+            "glezaCommentsSlide"
+        );
+
+    const backdrop =
+        document.getElementById(
+            "glezaCommentsBackdrop"
+        );
+
+    if (slide) {
+        slide.classList.remove("active");
+    }
+
+    if (backdrop) {
+        backdrop.classList.remove("active");
+    }
+
+    document.body.classList.remove(
+        "gleza-comments-open"
+    );
+
+    glezaCurrentCommentPostId = null;
+
+    glezaReplyingToCommentId = null;
+    glezaReplyingToName = "";
+
+    clearReplyMode();
+}
+
+
+/* =========================================================
+   START REPLY MODE
+========================================================= */
+
+function startReplyMode(commentId, authorName) {
+
+    if (!commentId) {
+        return;
+    }
+
+    glezaReplyingToCommentId =
+        Number(commentId);
+
+    glezaReplyingToName =
+        authorName ||
+        "Gleza User";
+
+    const input =
+        document.getElementById(
+            "glezaCommentsInput"
+        );
+
+    if (input) {
+
+        input.placeholder =
+            `Reply to ${glezaReplyingToName}...`;
+
+        input.focus();
+    }
+
+    updateReplyIndicator();
+}
+
+
+/* =========================================================
+   CLEAR REPLY MODE
+========================================================= */
+
+function clearReplyMode() {
+
+    glezaReplyingToCommentId = null;
+    glezaReplyingToName = "";
+
+    const input =
+        document.getElementById(
+            "glezaCommentsInput"
+        );
+
+    if (input) {
+
+        input.placeholder =
+            "Write a comment...";
+    }
+
+    const indicator =
+        document.getElementById(
+            "glezaReplyIndicator"
+        );
+
+    if (indicator) {
+        indicator.remove();
+    }
+}
+
+
+
+function updateReplyIndicator() {
+
+    const indicator =
+        document.getElementById(
+            "glezaReplyIndicator"
+        );
+
+    if (!indicator) {
+        return;
+    }
+
+    if (!glezaReplyingToCommentId) {
+
+        indicator.innerHTML = "";
+        indicator.style.display = "none";
+
+        return;
+    }
+
+    indicator.innerHTML = `
+        <span>
+            Replying to
+            <strong>
+                ${escapeHTML(glezaReplyingToName)}
+            </strong>
+        </span>
+
+        <button
+            type="button"
+            id="glezaCancelReply"
+        >
+            Cancel
+        </button>
+    `;
+
+    indicator.style.display = "flex";
+
+    document
+        .getElementById("glezaCancelReply")
+        ?.addEventListener(
+            "click",
+            function () {
+
+                clearReplyMode();
+
+            }
+        );
+}
+
+/* =========================================================
+   LOAD COMMENTS
+========================================================= */
+/* =========================================================
+   LOAD COMMENTS
+   Supports:
+   - Multiple replies
+   - Replies to replies
+   - Unlimited reply levels
+========================================================= */
+
+async function loadGlezaComments(postId) {
+
+    const list =
+        document.getElementById(
+            "glezaCommentsList"
+        );
+
+    const count =
+        document.getElementById(
+            "glezaCommentsCount"
+        );
+
+    if (!list || !postId) {
+        return;
+    }
+
+    try {
+
+       const commentSupabase =
+    await getGlezaSupabase();
+
+const {
+    data: sessionData
+} =
+    await commentSupabase.auth.getSession();
+
+const accessToken =
+    sessionData?.session?.access_token;
+
+const response =
+    await fetch(
+        `/api/posts/${encodeURIComponent(postId)}/comments`,
+        {
+            headers:
+                accessToken
+                    ? {
+                        "Authorization":
+                            `Bearer ${accessToken}`
+                    }
+                    : {}
+        }
+    );
+
+        const result =
+            await response.json();
+
+        if (
+            !response.ok ||
+            !result.success
+        ) {
+
+            throw new Error(
+                result.error ||
+                "Could not load comments."
+            );
+        }
+
+
+        const comments =
+            Array.isArray(result.comments)
+                ? result.comments
+                : [];
+
+
+        console.log(
+            "GLEZA COMMENTS:",
+            comments
+        );
+
+
+        /* =================================================
+           COMMENT COUNT
+        ================================================= */
+
+        if (count) {
+
+            count.textContent =
+                comments.length === 1
+                    ? "1 comment"
+                    : `${comments.length} comments`;
+
+        }
+
+
+        /* =================================================
+           EMPTY STATE
+        ================================================= */
+
+        if (!comments.length) {
+
+            list.innerHTML = `
+                <div class="gleza-comments-empty">
+                    No comments yet. Be the first 😂
+                </div>
+            `;
+
+            return;
+        }
+
+
+        /* =================================================
+           NORMALIZE COMMENTS
+        ================================================= */
+
+        const normalizedComments =
+            comments.map(function (comment) {
+
+                return {
+
+                    ...comment,
+
+                    id:
+                        Number(comment.id),
+
+                    parent_comment_id:
+                        comment.parent_comment_id === null ||
+                        comment.parent_comment_id === undefined ||
+                        comment.parent_comment_id === ""
+                            ? null
+                            : Number(
+                                comment.parent_comment_id
+                            )
+
+                };
+
+            });
+
+
+        /* =================================================
+           CREATE COMMENT MAP
+        ================================================= */
+
+        const commentMap = {};
+
+
+        normalizedComments.forEach(
+            function (comment) {
+
+                commentMap[
+                    String(comment.id)
+                ] = comment;
+
+            }
+        );
+
+
+        /* =================================================
+           CREATE CHILDREN MAP
+        ================================================= */
+
+        const repliesByParent = {};
+
+
+        normalizedComments.forEach(
+            function (comment) {
+
+                const parentId =
+                    comment.parent_comment_id;
+
+
+                /* -----------------------------------------
+                   TOP LEVEL COMMENT
+                ----------------------------------------- */
+
+                if (
+                    parentId === null
+                ) {
+
+                    return;
+
+                }
+
+
+                const parentKey =
+                    String(parentId);
+
+
+                if (
+                    !repliesByParent[parentKey]
+                ) {
+
+                    repliesByParent[parentKey] =
+                        [];
+
+                }
+
+
+                repliesByParent[parentKey].push(
+                    comment
+                );
+
+            }
+        );
+
+
+        console.log(
+            "GLEZA REPLIES BY PARENT:",
+            repliesByParent
+        );
+
+
+        /* =================================================
+           GET TOP LEVEL COMMENTS
+        ================================================= */
+
+        const topLevelComments =
+            normalizedComments.filter(
+                function (comment) {
+
+                    return (
+                        comment.parent_comment_id ===
+                        null
+                    );
+
+                }
+            );
+
+
+        console.log(
+            "GLEZA TOP LEVEL COMMENTS:",
+            topLevelComments
+        );
+
+
+        /* =================================================
+           CLEAR LIST
+        ================================================= */
+
+        list.innerHTML = "";
+
+
+        /* =================================================
+           RENDER TOP LEVEL COMMENTS
+        ================================================= */
+
+        topLevelComments.forEach(
+            function (comment) {
+
+                renderGlezaComment(
+                    comment,
+                    list,
+                    false,
+                    repliesByParent,
+                    commentMap
+                );
+
+            }
+        );
+
+
+        /* =================================================
+           SAFETY CHECK FOR ORPHANED COMMENTS
+        ================================================= */
+
+        normalizedComments.forEach(
+            function (comment) {
+
+                if (
+                    comment.parent_comment_id ===
+                    null
+                ) {
+
+                    return;
+
+                }
+
+
+                const parentExists =
+                    commentMap[
+                        String(
+                            comment.parent_comment_id
+                        )
+                    ];
+
+
+                if (!parentExists) {
+
+                    console.warn(
+                        "GLEZA ORPHAN COMMENT:",
+                        comment
+                    );
+
+
+                    renderGlezaComment(
+                        comment,
+                        list,
+                        true,
+                        repliesByParent,
+                        commentMap
+                    );
+
+                }
+
+            }
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "GLEZA COMMENTS LOAD ERROR:",
+            error
+        );
+
+
+        list.innerHTML = `
+            <div class="gleza-comments-empty">
+                Could not load comments. Please try again.
+            </div>
+        `;
+
+    }
+
+}
+
+
+/* =========================================================
+   RENDER COMMENT TREE
+   This function recursively renders replies.
+========================================================= */
+
+function renderGlezaComment(
+    comment,
+    list,
+    isReply,
+    repliesByParent,
+    commentMap
+) {
+
+    if (
+        !comment ||
+        !list
+    ) {
+
+        return;
+
+    }
+
+
+    /* =================================================
+       COMMENT ITEM
+    ================================================= */
+
+    const item =
+        document.createElement("div");
+
+
+    item.className =
+        isReply
+            ? "gleza-comment-item gleza-comment-reply"
+            : "gleza-comment-item";
+
+
+    item.dataset.commentId =
+        String(comment.id);
+
+
+    /* =================================================
+       AVATAR
+    ================================================= */
+
+    const avatar =
+        document.createElement("div");
+
+
+    avatar.className =
+        "gleza-comment-avatar";
+
+
+    avatar.innerHTML = `
+        <div class="gleza-avatar-logo">
+            G
+        </div>
+    `;
+
+
+    /* =================================================
+       BODY
+    ================================================= */
+
+    const body =
+        document.createElement("div");
+
+
+    body.className =
+        "gleza-comment-body";
+
+
+    /* =================================================
+       NAME
+    ================================================= */
+
+    const name =
+        document.createElement("span");
+
+
+    name.className =
+        "gleza-comment-name";
+
+
+    name.textContent =
+        comment.author_name ||
+        "Gleza User";
+
+
+    /* =================================================
+       TEXT
+    ================================================= */
+
+    const text =
+        document.createElement("div");
+
+
+    text.className =
+        "gleza-comment-text";
+
+
+    text.textContent =
+        comment.content ||
+        "";
+
+
+    /* =================================================
+       ACTIONS
+    ================================================= */
+
+    const actions =
+        document.createElement("div");
+
+
+    actions.className =
+        "gleza-comment-actions";
+
+
+/* =================================================
+   AGREE BUTTON
+================================================= */
+
+const agreeButton =
+    document.createElement("button");
+
+agreeButton.type =
+    "button";
+
+agreeButton.className =
+    "gleza-comment-agree-btn";
+
+const agreeStorageKey =
+    `gleza-agree-${comment.id}`;
+
+const alreadyAgreed =
+    localStorage.getItem(
+        agreeStorageKey
+    ) === "true";
+
+agreeButton.textContent =
+    alreadyAgreed
+        ? "👍 Agreed"
+        : "👍 Agree";
+
+if (alreadyAgreed) {
+    agreeButton.classList.add("agreed");
+}
+
+agreeButton.addEventListener(
+    "click",
+    function (event) {
+
+        event.stopPropagation();
+
+        const isAgreed =
+            localStorage.getItem(
+                agreeStorageKey
+            ) === "true";
+
+        if (isAgreed) {
+
+            localStorage.removeItem(
+                agreeStorageKey
+            );
+
+            agreeButton.textContent =
+                "👍 Agree";
+
+            agreeButton.classList.remove(
+                "agreed"
+            );
+
+        } else {
+
+            localStorage.setItem(
+                agreeStorageKey,
+                "true"
+            );
+
+            agreeButton.textContent =
+                "👍 Agreed";
+
+            agreeButton.classList.add(
+                "agreed"
+            );
+
+        }
+
+    }
+);
+
+actions.appendChild(
+    agreeButton
+);
+
+
+    /* =================================================
+       BUILD COMMENT
+    ================================================= */
+
+    body.appendChild(
+        name
+    );
+
+
+    body.appendChild(
+        text
+    );
+
+
+    body.appendChild(
+        actions
+    );
+
+
+    item.appendChild(
+        avatar
+    );
+
+
+    item.appendChild(
+        body
+    );
+
+
+    list.appendChild(
+        item
+    );
+
+
+    /* =================================================
+       FIND DIRECT REPLIES
+    ================================================= */
+
+    const replies =
+        repliesByParent[
+            String(comment.id)
+        ] || [];
+
+
+    if (
+        !replies.length
+    ) {
+
+        return;
+
+    }
+
+
+    /* =================================================
+       REPLIES CONTAINER
+    ================================================= */
+
+    const repliesSection =
+        document.createElement("div");
+
+
+    repliesSection.className =
+        "gleza-comment-replies";
+
+
+    repliesSection.style.display =
+        "none";
+
+
+    repliesSection.dataset.parentId =
+        String(comment.id);
+
+
+    /* =================================================
+       RENDER EVERY REPLY
+       Each reply can itself contain replies.
+    ================================================= */
+
+    replies.forEach(
+        function (reply) {
+
+            renderGlezaComment(
+                reply,
+                repliesSection,
+                true,
+                repliesByParent,
+                commentMap
+            );
+
+        }
+    );
+
+
+    /* =================================================
+       ADD REPLIES SECTION
+    ================================================= */
+
+    item.appendChild(
+        repliesSection
+    );
+
+
+    /* =================================================
+       VIEW REPLIES BUTTON
+    ================================================= */
+
+    const viewRepliesButton =
+        document.createElement("button");
+
+
+    viewRepliesButton.type =
+        "button";
+
+
+    viewRepliesButton.className =
+        "gleza-view-replies-btn";
+
+
+    function updateRepliesButton() {
+
+        const hidden =
+            repliesSection.style.display ===
+            "none";
+
+
+        if (hidden) {
+
+            viewRepliesButton.textContent =
+                replies.length === 1
+                    ? "View 1 reply"
+                    : `View ${replies.length} replies`;
+
+        } else {
+
+            viewRepliesButton.textContent =
+                replies.length === 1
+                    ? "Hide reply"
+                    : "Hide replies";
+
+        }
+
+    }
+
+
+    updateRepliesButton();
+
+
+    /* =================================================
+       TOGGLE REPLIES
+    ================================================= */
+
+    viewRepliesButton.addEventListener(
+        "click",
+        function (event) {
+
+            event.stopPropagation();
+
+
+            const hidden =
+                repliesSection.style.display ===
+                "none";
+
+
+            if (hidden) {
+
+                repliesSection.style.display =
+                    "block";
+
+            } else {
+
+                repliesSection.style.display =
+                    "none";
+
+            }
+
+
+            updateRepliesButton();
+
+        }
+    );
+
+
+    item.appendChild(
+        viewRepliesButton
+    );
+
+}
+
+/* =========================================================
+   LIKE / UNLIKE COMMENT
+========================================================= */
+
+async function likeGlezaComment(
+    commentId,
+    likeButton
+) {
+
+    if (!commentId || !likeButton) {
+        return;
+    }
+
+    if (
+        likeButton.dataset.liking === "true"
+    ) {
+        return;
+    }
+
+    likeButton.dataset.liking =
+        "true";
+
+    likeButton.disabled =
+        true;
+
+
+    try {
+
+        const commentSupabase =
+            await getGlezaSupabase();
+
+
+        /* =================================================
+           GET CURRENT SESSION
+        ================================================= */
+
+        const {
+            data: sessionData,
+            error: sessionError
+        } =
+            await commentSupabase.auth.getSession();
+
+
+        if (
+            sessionError ||
+            !sessionData?.session
+        ) {
+
+            alert(
+                "Please log in to like comments."
+            );
+
+            return;
+        }
+
+
+        const accessToken =
+            sessionData.session.access_token;
+
+
+        likeButton.textContent =
+            "❤️ Updating...";
+
+
+        /* =================================================
+           SEND LIKE / UNLIKE
+        ================================================= */
+
+        const response =
+            await fetch(
+                `/api/comments/${encodeURIComponent(commentId)}/like`,
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json",
+
+                        "Authorization":
+                            `Bearer ${accessToken}`
+                    }
+                }
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            !response.ok ||
+            !result.success
+        ) {
+
+            throw new Error(
+                result.error ||
+                "Could not update comment like."
+            );
+
+        }
+
+
+        const likes =
+            Number(result.likes) || 0;
+
+
+        likeButton.textContent =
+            result.liked
+                ? `❤️ ${formatNumber(likes)}`
+                : `♡ ${formatNumber(likes)}`;
+
+
+        if (result.liked) {
+
+            likeButton.classList.add(
+                "liked"
+            );
+
+        } else {
+
+            likeButton.classList.remove(
+                "liked"
+            );
+
+        }
+
+
+        console.log(
+            result.liked
+                ? "COMMENT LIKED:"
+                : "COMMENT UNLIKED:",
+            commentId,
+            "TOTAL:",
+            likes
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "GLEZA COMMENT LIKE ERROR:",
+            error
+        );
+
+        alert(
+            error.message ||
+            "Could not update comment like."
+        );
+
+    } finally {
+
+        likeButton.disabled =
+            false;
+
+        likeButton.dataset.liking =
+            "false";
+
+    }
+
+}
+
+
+/* =========================================================
+   POST COMMENT / REPLY
+========================================================= */
+
+async function submitGlezaComment() {
+
+    const input =
+        document.getElementById(
+            "glezaCommentsInput"
+        );
+
+    const submit =
+        document.getElementById(
+            "glezaCommentsSubmit"
+        );
+
+    if (!input || !submit) {
+        return;
+    }
+
+    const text =
+        input.value.trim();
+
+    if (!text) {
+        return;
+    }
+
+    if (!glezaCurrentCommentPostId) {
+        return;
+    }
+
+
+/* =====================================================
+   REQUIRE LOGIN
+===================================================== */
+
+const user =
+    await requireGlezaLogin();
+
+if (!user) {
+    return;
+}
+
+
+    /* =====================================================
+       AUTHOR NAME
+    ===================================================== */
+
+    const authorName =
+        user.user_metadata?.name ||
+        user.email?.split("@")[0] ||
+        "Gleza User";
+
+
+    /* =====================================================
+       PREVENT DOUBLE SUBMIT
+    ===================================================== */
+
+    submit.disabled =
+        true;
+
+    submit.textContent =
+        glezaReplyingToCommentId
+            ? "Replying..."
+            : "Posting...";
+
+
+    try {
+
+        const parentCommentId =
+            glezaReplyingToCommentId
+                ? Number(
+                    glezaReplyingToCommentId
+                )
+                : null;
+
+                console.log(
+    "REPLY DEBUG:",
+    "glezaReplyingToCommentId =",
+    glezaReplyingToCommentId,
+    "parentCommentId =",
+    parentCommentId
+);
+const response =
+    await fetch(
+        `/api/posts/${encodeURIComponent(glezaCurrentCommentPostId)}/comments`,
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        content:
+                            text,
+
+                        author_name:
+                            authorName,
+
+                        parent_comment_id:
+                            parentCommentId
+
+                    })
+                }
+            );
+
+
+        const responseText =
+            await response.text();
+
+
+        let result = {};
+
+
+        try {
+
+            result =
+                JSON.parse(
+                    responseText
+                );
+
+        } catch (parseError) {
+
+            throw new Error(
+                `Server returned ${response.status}: ${responseText.slice(0, 150)}`
+            );
+
+        }
+
+
+        if (
+            !response.ok ||
+            !result.success
+        ) {
+
+            throw new Error(
+                result.error ||
+                `Server returned ${response.status}`
+            );
+
+        }
+
+
+        input.value = "";
+
+        clearReplyMode();
+
+
+        await loadGlezaComments(
+            glezaCurrentCommentPostId
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "GLEZA COMMENT POST ERROR:",
+            error
+        );
+
+        alert(
+            error.message ||
+            "Could not post your comment. Please try again."
+        );
+
+    } finally {
+
+        submit.disabled =
+            false;
+
+        submit.textContent =
+            "Post";
+
+    }
+
+}
+
+
+/* =========================================================
+   COMMENT BUTTON
+========================================================= */
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+        const commentBtn =
+            event.target.closest(
+                ".comment-btn"
+            );
+
+        if (!commentBtn) {
+            return;
+        }
+
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+
+        const card =
+            commentBtn.closest(
+                ".post-card"
+            );
+
+        if (!card) {
+            return;
+        }
+
+        const postId =
+            card.dataset.id;
+
+        openGlezaComments(postId);
+
+    }
+);
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+document.getElementById(
+    "glezaCommentsClose"
+)?.addEventListener(
+    "click",
+    closeGlezaComments
+);
+
+
+document.getElementById(
+    "glezaCommentsBackdrop"
+)?.addEventListener(
+    "click",
+    closeGlezaComments
+);
+
+
+/* =========================================================
+   COMMENT FORM
+========================================================= */
+
+document.getElementById(
+    "glezaCommentsForm"
+)?.addEventListener(
+    "submit",
+    function (event) {
+
+        event.preventDefault();
+
+        submitGlezaComment();
+
+    }
+);
+
+
+/* =========================================================
+   ESC KEY
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Escape" &&
+            glezaCurrentCommentPostId
+        ) {
+
+            closeGlezaComments();
+
+        }
+
+    }
+);
+
+</script>
+
+<script>
+/* =========================================================
+   GLEZA — SMART POST VIEWS
+   Counts a view when a real post stays visible on screen.
+   Prevents the same post from counting again on refresh.
+========================================================= */
+
+(function () {
+
+    const viewedPosts = new Set();
+    const viewTimers = new Map();
+
+    /* =====================================================
+       LOAD POSTS ALREADY VIEWED IN THIS SESSION
+    ===================================================== */
+
+    try {
+
+        const savedViews =
+            JSON.parse(
+                sessionStorage.getItem(
+                    "gleza-viewed-posts"
+                ) || "[]"
+            );
+
+        if (Array.isArray(savedViews)) {
+
+            savedViews.forEach(function (postId) {
+
+                viewedPosts.add(
+                    String(postId)
+                );
+
+            });
+
+        }
+
+    } catch (error) {
+
+        console.warn(
+            "GLEZA VIEW STORAGE LOAD ERROR:",
+            error
+        );
+
+    }
+
+
+    /* =====================================================
+       SAVE VIEWED POST
+    ===================================================== */
+
+    function saveViewedPost(postId) {
+
+        try {
+
+            sessionStorage.setItem(
+                "gleza-viewed-posts",
+                JSON.stringify(
+                    Array.from(viewedPosts)
+                )
+            );
+
+        } catch (error) {
+
+            console.warn(
+                "GLEZA VIEW STORAGE SAVE ERROR:",
+                error
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       INTERSECTION OBSERVER
+    ===================================================== */
+
+    const observer =
+        new IntersectionObserver(
+
+            function (entries) {
+
+                entries.forEach(function (entry) {
+
+                    const postCard =
+                        entry.target;
+
+                    const postId =
+                        postCard.dataset.id;
+
+
+                    /* -------------------------------------
+                       IGNORE INVALID / SAMPLE POSTS
+                    ------------------------------------- */
+
+                    if (
+                        !postId ||
+                        postId.startsWith("sample-")
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    /* -------------------------------------
+                       ALREADY VIEWED
+                    ------------------------------------- */
+
+                    if (
+                        viewedPosts.has(postId)
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    /* -------------------------------------
+                       POST IS REALLY VISIBLE
+                    ------------------------------------- */
+
+                    if (
+                        entry.isIntersecting &&
+                        entry.intersectionRatio >= 0.5
+                    ) {
+
+                        /* Already waiting */
+                        if (
+                            viewTimers.has(postId)
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        /* ---------------------------------
+                           WAIT 800ms BEFORE COUNTING
+                        --------------------------------- */
+
+                        const timer =
+                            setTimeout(
+                                async function () {
+
+                                    viewTimers.delete(
+                                        postId
+                                    );
+
+
+                                    /* -------------------------
+                                       CHECK AGAIN
+                                    ------------------------- */
+
+                                    if (
+                                        viewedPosts.has(
+                                            postId
+                                        )
+                                    ) {
+
+                                        return;
+
+                                    }
+
+
+                                    /* -------------------------
+                                       MAKE SURE CARD STILL EXISTS
+                                    ------------------------- */
+
+                                    if (
+                                        !document.body.contains(
+                                            postCard
+                                        )
+                                    ) {
+
+                                        return;
+
+                                    }
+
+
+                                    try {
+
+                                        const response =
+                                            await fetch(
+                                                `${API_URL}/posts/${encodeURIComponent(postId)}/view`,
+                                                {
+                                                    method: "POST"
+                                                }
+                                            );
+
+
+                                        const result =
+                                            await response.json();
+
+
+                                        if (
+                                            !response.ok ||
+                                            !result.success
+                                        ) {
+
+                                            console.error(
+                                                "GLEZA VIEW ERROR:",
+                                                result.error ||
+                                                "Could not record view."
+                                            );
+
+                                            return;
+
+                                        }
+
+
+                                        /* -------------------------
+                                           SUCCESS
+                                           NOW REMEMBER THE VIEW
+                                        ------------------------- */
+
+                                        viewedPosts.add(
+                                            postId
+                                        );
+
+                                        saveViewedPost(
+                                            postId
+                                        );
+
+
+                                        /* -------------------------
+                                           UPDATE VISIBLE COUNT
+                                        ------------------------- */
+
+                                        const viewCount =
+                                            postCard.querySelector(
+                                                ".view-count"
+                                            );
+
+
+                                        if (
+                                            viewCount &&
+                                            result.post
+                                        ) {
+
+                                            viewCount.textContent =
+                                                `👁️ ${formatNumber(
+                                                    result.post.views
+                                                )}`;
+
+                                        }
+
+
+                                        console.log(
+                                            "GLEZA VIEW RECORDED:",
+                                            postId,
+                                            result.post?.views
+                                        );
+
+
+                                    } catch (error) {
+
+                                        console.error(
+                                            "GLEZA VIEW REQUEST ERROR:",
+                                            error
+                                        );
+
+                                    }
+
+                                },
+                                800
+                            );
+
+
+                        viewTimers.set(
+                            postId,
+                            timer
+                        );
+
+
+                    } else {
+
+                        /* ---------------------------------
+                           POST LEFT SCREEN BEFORE 800ms
+                        --------------------------------- */
+
+                        if (
+                            viewTimers.has(postId)
+                        ) {
+
+                            clearTimeout(
+                                viewTimers.get(postId)
+                            );
+
+                            viewTimers.delete(
+                                postId
+                            );
+
+                        }
+
+                    }
+
+                });
+
+            },
+
+            {
+                threshold: [0.5]
+            }
+
+        );
+
+
+    /* =====================================================
+       OBSERVE POSTS
+    ===================================================== */
+
+    function observePosts() {
+
+        document
+            .querySelectorAll(".post-card")
+            .forEach(function (postCard) {
+
+                if (
+                    postCard.dataset.viewObserverAttached ===
+                    "true"
+                ) {
+
+                    return;
+
+                }
+
+
+                postCard.dataset.viewObserverAttached =
+                    "true";
+
+
+                observer.observe(
+                    postCard
+                );
+
+            });
+
+    }
+
+
+    /* =====================================================
+       INITIAL POSTS
+    ===================================================== */
+
+    observePosts();
+
+
+    /* =====================================================
+       WATCH FOR NEW POSTS
+       Needed because script.js dynamically creates cards.
+    ===================================================== */
+
+    const contentGrid =
+        document.querySelector(
+            ".content-grid"
+        );
+
+
+    if (contentGrid) {
+
+        const mutationObserver =
+            new MutationObserver(
+                function () {
+
+                    observePosts();
+
+                }
+            );
+
+
+        mutationObserver.observe(
+            contentGrid,
+            {
+                childList: true,
+                subtree: true
+            }
+        );
+
+    }
+
+})();
+</script>
+
+<script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("/sw.js")
+            .then(() => {
+                console.log("Gleza service worker registered");
+            })
+            .catch((error) => {
+                console.error(
+                    "Gleza service worker registration failed:",
+                    error
+                );
+            });
+    });
+}
+</script>
+
+</body>
+</html>

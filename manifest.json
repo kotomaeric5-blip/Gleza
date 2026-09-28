@@ -1,0 +1,23 @@
+{
+  "name": "Gleza — Your Daily Dose of Fun",
+  "short_name": "Gleza",
+  "description": "Gleza is your place for memes, jokes, funny stories and trending entertainment.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#08080d",
+  "theme_color": "#08080d",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
