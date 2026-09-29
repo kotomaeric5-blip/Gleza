@@ -7583,3 +7583,48 @@ body {
     }
 
 }
+
+/* =========================
+   BOTTOM NAVIGATION FIX
+========================= */
+
+.bottom-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    width: 100%;
+    max-width: 600px;
+
+    margin: 0 auto;
+    padding: 8px 10px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    transform: none;
+
+    z-index: 9999;
+}
+
+.bottom-item {
+    flex: 1;
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bottom-nav .create-button {
+    flex: 1;
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
