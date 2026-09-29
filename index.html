@@ -2858,6 +2858,303 @@ document.addEventListener(
 </script>
 
 <script>
+/* =========================================================
+   GLEZA — DYNAMIC FEED MIXER
+   Makes the Home feed feel alive by changing the order
+   of posts when the page loads or new posts appear.
+
+   Works with:
+   - Supabase posts loaded dynamically
+   - Sample posts
+   - User uploads
+   - Existing filters
+   - Likes
+   - Comments
+   - Views
+
+   It does NOT delete posts.
+   It only changes their display order.
+========================================================= */
+
+(function () {
+
+    const contentGrid =
+        document.querySelector(".content-grid");
+
+    if (!contentGrid) {
+        return;
+    }
+
+
+    /* =====================================================
+       REMEMBER THE CURRENT SET OF POSTS
+
+       This prevents the feed from reshuffling every time
+       something inside a card changes.
+    ===================================================== */
+
+    let lastPostSet = "";
+
+    let shuffleTimer = null;
+
+
+    /* =====================================================
+       CREATE A UNIQUE SIGNATURE FOR CURRENT POSTS
+    ===================================================== */
+
+    function getPostSetSignature() {
+
+        const cards =
+            Array.from(
+                contentGrid.querySelectorAll(".post-card")
+            );
+
+        return cards
+            .map(function (card) {
+
+                return String(
+                    card.dataset.id || ""
+                );
+
+            })
+            .sort()
+            .join("|");
+
+    }
+
+
+    /* =====================================================
+       SHUFFLE FUNCTION
+       Fisher-Yates shuffle
+    ===================================================== */
+
+    function shufflePosts() {
+
+        const cards =
+            Array.from(
+                contentGrid.querySelectorAll(".post-card")
+            );
+
+
+        /* -----------------------------------------------
+           Nothing to shuffle
+        ----------------------------------------------- */
+
+        if (cards.length <= 1) {
+            return;
+        }
+
+
+        /* -----------------------------------------------
+           FISHER-YATES SHUFFLE
+        ----------------------------------------------- */
+
+        for (
+            let i = cards.length - 1;
+            i > 0;
+            i--
+        ) {
+
+            const randomIndex =
+                Math.floor(
+                    Math.random() * (i + 1)
+                );
+
+
+            const temporary =
+                cards[i];
+
+            cards[i] =
+                cards[randomIndex];
+
+            cards[randomIndex] =
+                temporary;
+
+        }
+
+
+        /* -----------------------------------------------
+           PUT CARDS BACK IN THE NEW ORDER
+        ----------------------------------------------- */
+
+        const fragment =
+            document.createDocumentFragment();
+
+
+        cards.forEach(function (card) {
+
+            fragment.appendChild(card);
+
+        });
+
+
+        contentGrid.appendChild(
+            fragment
+        );
+
+
+        console.log(
+            "GLEZA FEED MIXED 🔀"
+        );
+
+    }
+
+
+    /* =====================================================
+       CHECK WHETHER THE POSTS HAVE CHANGED
+    ===================================================== */
+
+    function checkAndMixFeed() {
+
+        const currentPostSet =
+            getPostSetSignature();
+
+
+        /* -----------------------------------------------
+           No posts yet
+        ----------------------------------------------- */
+
+        if (!currentPostSet) {
+            return;
+        }
+
+
+        /* -----------------------------------------------
+           FIRST LOAD
+        ----------------------------------------------- */
+
+        if (!lastPostSet) {
+
+            lastPostSet =
+                currentPostSet;
+
+            shufflePosts();
+
+            return;
+
+        }
+
+
+        /* -----------------------------------------------
+           NEW POSTS HAVE ARRIVED
+        ----------------------------------------------- */
+
+        if (
+            currentPostSet !==
+            lastPostSet
+        ) {
+
+            lastPostSet =
+                currentPostSet;
+
+            shufflePosts();
+
+        }
+
+    }
+
+
+    /* =====================================================
+       WAIT A LITTLE BEFORE MIXING
+       This gives script.js time to finish loading posts.
+    ===================================================== */
+
+    function scheduleFeedMix() {
+
+        if (shuffleTimer) {
+
+            clearTimeout(
+                shuffleTimer
+            );
+
+        }
+
+
+        shuffleTimer =
+            setTimeout(function () {
+
+                checkAndMixFeed();
+
+            }, 150);
+
+    }
+
+
+    /* =====================================================
+       INITIAL CHECK
+    ===================================================== */
+
+    scheduleFeedMix();
+
+
+    /* =====================================================
+       WATCH THE CONTENT GRID
+       script.js dynamically adds/removes cards.
+    ===================================================== */
+
+    const mutationObserver =
+        new MutationObserver(function () {
+
+            scheduleFeedMix();
+
+        });
+
+
+    mutationObserver.observe(
+        contentGrid,
+        {
+            childList: true,
+            subtree: false
+        }
+    );
+
+
+    /* =====================================================
+       EXTRA CHECK AFTER PAGE LOAD
+       Useful if posts arrive slightly later.
+    ===================================================== */
+
+    window.addEventListener(
+        "load",
+        function () {
+
+            setTimeout(
+                checkAndMixFeed,
+                500
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       EXTRA CHECK WHEN USER RETURNS TO THE PAGE
+       Example:
+       - switches to another app
+       - comes back to Gleza
+       - browser restores the page
+    ===================================================== */
+
+    document.addEventListener(
+        "visibilitychange",
+        function () {
+
+            if (
+                document.visibilityState ===
+                "visible"
+            ) {
+
+                checkAndMixFeed();
+
+            }
+
+        }
+    );
+
+})();
+</script>
+
+<script>
 if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
         navigator.serviceWorker.register("/sw.js")
