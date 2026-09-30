@@ -1482,10 +1482,6 @@ forgotPasswordForm.addEventListener(
 );
 
 
-/* =========================================================
-   CHECK PASSWORD RESET STATE
-========================================================= */
-
 async function checkPasswordResetState() {
 
     const url =
@@ -1508,14 +1504,56 @@ async function checkPasswordResetState() {
 
 
     /*
-     * Supabase handles the recovery session
-     * from the email link.
+     * Wait for Supabase to restore the
+     * recovery session from the email link.
      */
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient.auth.getSession();
+
+
+    if (error) {
+
+        console.error(
+            "PASSWORD RESET SESSION ERROR:",
+            error
+        );
+
+        showMessage(
+            "Your password reset link is invalid or has expired. Please request a new one."
+        );
+
+        return;
+
+    }
+
+
+    if (!data.session) {
+
+        console.error(
+            "PASSWORD RESET: NO SESSION"
+        );
+
+        showMessage(
+            "Your password reset session could not be found. Please request a new reset link."
+        );
+
+        return;
+
+    }
+
+
+    console.log(
+        "GLEZA PASSWORD RESET SESSION READY"
+    );
+
 
     showNewPassword();
 
 }
-
 
 /* =========================================================
    UPDATE PASSWORD
