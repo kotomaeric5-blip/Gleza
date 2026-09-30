@@ -2225,27 +2225,9 @@ async function submitGlezaComment() {
     }
 
 
-/* =====================================================
-   REQUIRE LOGIN
-===================================================== */
-
-const user =
-    await requireGlezaLogin();
-
-if (!user) {
-    return;
-}
 
 
-    /* =====================================================
-       AUTHOR NAME
-    ===================================================== */
-
-    const authorName =
-        user.user_metadata?.name ||
-        user.email?.split("@")[0] ||
-        "Gleza User";
-
+  const authorName = "Gleza User";
 
     /* =====================================================
        PREVENT DOUBLE SUBMIT

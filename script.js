@@ -1089,12 +1089,6 @@ if (likeBtn) {
             event.stopPropagation();
             event.stopImmediatePropagation();
 
-const user = await requireGlezaLogin();
-
-if (!user) {
-    return;
-}
-
 
 
             if (
@@ -1303,6 +1297,33 @@ if (!user) {
                     "false";
 
             }
+
+        }
+    );
+
+}
+
+/* =====================================================
+   COPY LINK
+===================================================== */
+
+if (copyLinkBtn) {
+
+    copyLinkBtn.addEventListener(
+        "click",
+        function(event) {
+
+            event.preventDefault();
+            event.stopPropagation();
+            event.stopImmediatePropagation();
+
+            const post =
+                getViewerPostData(card);
+
+            copyGlezaLink(
+                post,
+                copyLinkBtn
+            );
 
         }
     );
@@ -1690,36 +1711,6 @@ function createPostViewer() {
 
 
 
-
-    /* =====================================================
-       VIEWER COPY LINK
-    ===================================================== */
-
-    const viewerCopy =
-        viewer.querySelector(
-            ".viewer-copy-link-btn"
-        );
-
-
-    if (viewerCopy) {
-
-        viewerCopy.addEventListener(
-            "click",
-            function() {
-
-                if (!viewer.currentPost) {
-                    return;
-                }
-
-                copyGlezaLink(
-    viewer.currentPost,
-    viewerCopy
-);
-
-            }
-        );
-
-    }
 
 
     /* =====================================================
