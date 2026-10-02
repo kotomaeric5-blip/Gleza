@@ -7628,3 +7628,524 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+/* =====================================================
+   GLEZA FEED SKELETON LOADING
+===================================================== */
+
+.gleza-feed-skeleton {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.skeleton-card {
+    width: 100%;
+    background: #111119;
+    border-radius: 18px;
+    padding: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.skeleton-image {
+    width: 100%;
+    height: 220px;
+    border-radius: 14px;
+    background: linear-gradient(
+        90deg,
+        #181820 25%,
+        #242431 50%,
+        #181820 75%
+    );
+    background-size: 200% 100%;
+    animation: glezaSkeletonShimmer 1.5s infinite;
+}
+
+.skeleton-text-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.skeleton-line {
+    border-radius: 8px;
+    background: linear-gradient(
+        90deg,
+        #181820 25%,
+        #242431 50%,
+        #181820 75%
+    );
+    background-size: 200% 100%;
+    animation: glezaSkeletonShimmer 1.5s infinite;
+}
+
+.skeleton-type {
+    width: 80px;
+    height: 14px;
+}
+
+.skeleton-title {
+    width: 75%;
+    height: 22px;
+}
+
+.skeleton-content {
+    width: 100%;
+    height: 15px;
+}
+
+.skeleton-content.short {
+    width: 65%;
+}
+
+.skeleton-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.skeleton-action {
+    width: 70px;
+    height: 32px;
+    border-radius: 10px;
+    background: linear-gradient(
+        90deg,
+        #181820 25%,
+        #242431 50%,
+        #181820 75%
+    );
+    background-size: 200% 100%;
+    animation: glezaSkeletonShimmer 1.5s infinite;
+}
+
+@keyframes glezaSkeletonShimmer {
+
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .skeleton-image {
+        height: 190px;
+    }
+
+    .skeleton-card {
+        padding: 14px;
+        border-radius: 16px;
+    }
+
+}
+
+/* =====================================================
+   GLEZA PROFILE SKELETON LOADING
+===================================================== */
+
+.profile-skeleton {
+    width: 100%;
+    padding: 24px 16px;
+    margin-bottom: 10px;
+}
+
+.profile-skeleton-top {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.profile-skeleton-avatar {
+    width: 88px;
+    height: 88px;
+    flex-shrink: 0;
+    border-radius: 50%;
+
+    background: linear-gradient(
+        90deg,
+        #181820 25%,
+        #242431 50%,
+        #181820 75%
+    );
+
+    background-size: 200% 100%;
+    animation: glezaSkeletonShimmer 1.5s infinite;
+}
+
+.profile-skeleton-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.profile-skeleton-line {
+    border-radius: 8px;
+
+    background: linear-gradient(
+        90deg,
+        #181820 25%,
+        #242431 50%,
+        #181820 75%
+    );
+
+    background-size: 200% 100%;
+    animation: glezaSkeletonShimmer 1.5s infinite;
+}
+
+.profile-skeleton-line.name {
+    width: 55%;
+    height: 22px;
+}
+
+.profile-skeleton-line.username {
+    width: 35%;
+    height: 14px;
+}
+
+.profile-skeleton-line.bio {
+    width: 75%;
+    height: 14px;
+}
+
+.profile-skeleton-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.profile-skeleton-stat {
+    height: 62px;
+    border-radius: 14px;
+
+    background: linear-gradient(
+        90deg,
+        #181820 25%,
+        #242431 50%,
+        #181820 75%
+    );
+
+    background-size: 200% 100%;
+    animation: glezaSkeletonShimmer 1.5s infinite;
+}
+
+.profile-skeleton-post {
+    margin-top: 24px;
+    background: #111119;
+    border-radius: 18px;
+    padding: 14px;
+}
+
+.profile-skeleton-post-image {
+    width: 100%;
+    height: 210px;
+    border-radius: 14px;
+
+    background: linear-gradient(
+        90deg,
+        #181820 25%,
+        #242431 50%,
+        #181820 75%
+    );
+
+    background-size: 200% 100%;
+    animation: glezaSkeletonShimmer 1.5s infinite;
+}
+
+.profile-skeleton-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.profile-skeleton-actions div {
+    width: 70px;
+    height: 32px;
+    border-radius: 10px;
+
+    background: linear-gradient(
+        90deg,
+        #181820 25%,
+        #242431 50%,
+        #181820 75%
+    );
+
+    background-size: 200% 100%;
+    animation: glezaSkeletonShimmer 1.5s infinite;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .profile-skeleton {
+        padding: 20px 14px;
+    }
+
+    .profile-skeleton-avatar {
+        width: 72px;
+        height: 72px;
+    }
+
+    .profile-skeleton-stats {
+        gap: 7px;
+    }
+
+    .profile-skeleton-stat {
+        height: 55px;
+    }
+
+    .profile-skeleton-post-image {
+        height: 190px;
+    }
+
+}
+
+/* =====================================================
+   GLEZA LIKED PAGE SKELETON LOADING
+===================================================== */
+
+.liked-skeleton {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.liked-skeleton-card {
+    width: 100%;
+    display: flex;
+    gap: 14px;
+    padding: 14px;
+    background: #111119;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    overflow: hidden;
+}
+
+.liked-skeleton-image {
+    width: 125px;
+    height: 125px;
+    flex-shrink: 0;
+    border-radius: 14px;
+
+    background: linear-gradient(
+        90deg,
+        #181820 25%,
+        #242431 50%,
+        #181820 75%
+    );
+
+    background-size: 200% 100%;
+    animation: glezaSkeletonShimmer 1.5s infinite;
+}
+
+.liked-skeleton-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+}
+
+.liked-skeleton-line {
+    border-radius: 8px;
+
+    background: linear-gradient(
+        90deg,
+        #181820 25%,
+        #242431 50%,
+        #181820 75%
+    );
+
+    background-size: 200% 100%;
+    animation: glezaSkeletonShimmer 1.5s infinite;
+}
+
+.liked-skeleton-line.type {
+    width: 65px;
+    height: 13px;
+}
+
+.liked-skeleton-line.title {
+    width: 80%;
+    height: 20px;
+}
+
+.liked-skeleton-line.content {
+    width: 60%;
+    height: 14px;
+}
+
+.liked-skeleton-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 3px;
+}
+
+.liked-skeleton-actions div {
+    width: 52px;
+    height: 28px;
+    border-radius: 9px;
+
+    background: linear-gradient(
+        90deg,
+        #181820 25%,
+        #242431 50%,
+        #181820 75%
+    );
+
+    background-size: 200% 100%;
+    animation: glezaSkeletonShimmer 1.5s infinite;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .liked-skeleton-card {
+        padding: 12px;
+        gap: 12px;
+    }
+
+    .liked-skeleton-image {
+        width: 105px;
+        height: 105px;
+    }
+
+    .liked-skeleton-line.title {
+        width: 90%;
+    }
+
+}
+
+/* =================================================
+   TRENDING PAGE SKELETON
+================================================= */
+
+.trending-skeleton {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.trending-skeleton-card {
+    width: 100%;
+    display: flex;
+    gap: 14px;
+    padding: 14px;
+    background: #111119;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.04);
+    overflow: hidden;
+}
+
+.trending-skeleton-image {
+    width: 125px;
+    height: 125px;
+    flex-shrink: 0;
+    border-radius: 14px;
+
+    background: linear-gradient(
+        90deg,
+        #181820 25%,
+        #242431 50%,
+        #181820 75%
+    );
+
+    background-size: 200% 100%;
+    animation: glezaSkeletonShimmer 1.5s infinite;
+}
+
+.trending-skeleton-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+}
+
+.trending-skeleton-line {
+    border-radius: 8px;
+
+    background: linear-gradient(
+        90deg,
+        #181820 25%,
+        #242431 50%,
+        #181820 75%
+    );
+
+    background-size: 200% 100%;
+    animation: glezaSkeletonShimmer 1.5s infinite;
+}
+
+.trending-skeleton-line.type {
+    width: 65px;
+    height: 13px;
+}
+
+.trending-skeleton-line.title {
+    width: 80%;
+    height: 20px;
+}
+
+.trending-skeleton-line.content {
+    width: 60%;
+    height: 14px;
+}
+
+.trending-skeleton-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 3px;
+}
+
+.trending-skeleton-actions div {
+    width: 52px;
+    height: 28px;
+    border-radius: 9px;
+
+    background: linear-gradient(
+        90deg,
+        #181820 25%,
+        #242431 50%,
+        #181820 75%
+    );
+
+    background-size: 200% 100%;
+    animation: glezaSkeletonShimmer 1.5s infinite;
+}
+
+@media (max-width: 600px) {
+
+    .trending-skeleton-card {
+        padding: 12px;
+        gap: 12px;
+    }
+
+    .trending-skeleton-image {
+        width: 105px;
+        height: 105px;
+    }
+
+    .trending-skeleton-line.title {
+        width: 90%;
+    }
+
+}

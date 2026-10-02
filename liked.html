@@ -100,20 +100,90 @@
 
             </div>
 
+<!-- =====================================================
+     LIKED PAGE SKELETON LOADING
+====================================================== -->
 
-            <!-- LOADING -->
-            <div id="likedLoading" class="empty-state">
+<div
+    class="liked-skeleton"
+    id="likedSkeleton"
+>
 
-                <div class="empty-icon">
-                    ⏳
-                </div>
+    <div class="liked-skeleton-card">
 
-                <h3>
-                    Loading your likes...
-                </h3>
+        <div class="liked-skeleton-image"></div>
+
+        <div class="liked-skeleton-info">
+
+            <div class="liked-skeleton-line type"></div>
+
+            <div class="liked-skeleton-line title"></div>
+
+            <div class="liked-skeleton-line content"></div>
+
+            <div class="liked-skeleton-actions">
+
+                <div></div>
+                <div></div>
+                <div></div>
 
             </div>
 
+        </div>
+
+    </div>
+
+
+    <div class="liked-skeleton-card">
+
+        <div class="liked-skeleton-image"></div>
+
+        <div class="liked-skeleton-info">
+
+            <div class="liked-skeleton-line type"></div>
+
+            <div class="liked-skeleton-line title"></div>
+
+            <div class="liked-skeleton-line content"></div>
+
+            <div class="liked-skeleton-actions">
+
+                <div></div>
+                <div></div>
+                <div></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="liked-skeleton-card">
+
+        <div class="liked-skeleton-image"></div>
+
+        <div class="liked-skeleton-info">
+
+            <div class="liked-skeleton-line type"></div>
+
+            <div class="liked-skeleton-line title"></div>
+
+            <div class="liked-skeleton-line content"></div>
+
+            <div class="liked-skeleton-actions">
+
+                <div></div>
+                <div></div>
+                <div></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
             <!-- POSTS -->
             <div
@@ -370,20 +440,35 @@
 
                 }
 
-
-                likedPosts =
-                    Array.isArray(result.posts)
-                        ? result.posts
-                        : [];
-
-
-                loading.style.display =
-                    "none";
+likedPosts =
+    Array.isArray(result.posts)
+        ? result.posts
+        : [];
 
 
-                renderLikedPosts();
+/* =================================================
+   HIDE LIKED PAGE SKELETON
+================================================= */
+
+const likedSkeleton =
+    document.getElementById(
+        "likedSkeleton"
+    );
+
+if (likedSkeleton) {
+
+    likedSkeleton.style.display =
+        "none";
+
+}
 
 
+if (loading) {
+    loading.style.display = "none";
+}
+
+renderLikedPosts();
+             
             } catch (error) {
 
                 console.error(

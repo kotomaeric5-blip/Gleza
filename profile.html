@@ -155,9 +155,35 @@
             </a>
 
 
-            <!-- LOG OUT -->
+  <!-- LOG OUT -->
 
-  
+<button
+    type="button"
+    class="profile-menu-item profile-logout-btn"
+    id="profileLogoutBtn"
+>
+
+    <span class="profile-menu-icon">
+        🚪
+    </span>
+
+    <span class="profile-menu-text">
+
+        <strong>
+            Log Out
+        </strong>
+
+        <small>
+            Sign out of your Gleza account.
+        </small>
+
+    </span>
+
+    <span class="profile-menu-arrow">
+        →
+    </span>
+
+</button>
 
         </div>
 
@@ -176,6 +202,61 @@
 
         <section class="profile-section">
 
+<!-- =====================================================
+     PROFILE SKELETON LOADING
+====================================================== -->
+
+<div
+    class="profile-skeleton"
+    id="profileSkeleton"
+>
+
+    <div class="profile-skeleton-top">
+
+        <div class="profile-skeleton-avatar"></div>
+
+        <div class="profile-skeleton-info">
+
+            <div class="profile-skeleton-line name"></div>
+
+            <div class="profile-skeleton-line username"></div>
+
+            <div class="profile-skeleton-line bio"></div>
+
+        </div>
+
+    </div>
+
+
+    <div class="profile-skeleton-stats">
+
+        <div class="profile-skeleton-stat"></div>
+
+        <div class="profile-skeleton-stat"></div>
+
+        <div class="profile-skeleton-stat"></div>
+
+        <div class="profile-skeleton-stat"></div>
+
+    </div>
+
+
+    <div class="profile-skeleton-post">
+
+        <div class="profile-skeleton-post-image"></div>
+
+        <div class="profile-skeleton-actions">
+
+            <div></div>
+            <div></div>
+            <div></div>
+
+        </div>
+
+    </div>
+
+</div>
+
             <div
                 class="profile-avatar"
                 id="profileAvatar"
@@ -191,7 +272,6 @@
             <div class="profile-info">
 
                 <h1 id="profileName">
-                    Loading...
                 </h1>
 
                 <p
@@ -917,10 +997,10 @@ const isOwnProfile =
                                 profileUserId
                             );
 
-console.log(
-    "LOGGED IN USER ID:",
-    user ? user.id : "Guest"
-);
+                            console.log(
+                                 "LOGGED IN USER ID:",
+                                 user ? user.id : "Guest"
+                            );
 
 
                             console.log(
@@ -1053,13 +1133,6 @@ console.log(
                                     async function () {
 
                                      try {
-
-    const user =
-        await requireGlezaLogin();
-
-    if (!user) {
-        return;
-    }
 
     const {
         data: sessionData,
@@ -1888,6 +1961,21 @@ console.log(
                                 posts.length
                             );
 
+/* =================================================
+   HIDE PROFILE SKELETON
+================================================= */
+
+const profileSkeleton =
+    document.getElementById(
+        "profileSkeleton"
+    );
+
+if (profileSkeleton) {
+
+    profileSkeleton.style.display =
+        "none";
+
+}
 
                         } catch (
                             error

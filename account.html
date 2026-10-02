@@ -1481,7 +1481,6 @@ forgotPasswordForm.addEventListener(
     }
 );
 
-
 async function checkPasswordResetState() {
 
     const url =
@@ -1497,15 +1496,47 @@ async function checkPasswordResetState() {
 
 
     if (!isReset) {
-
         return;
-
     }
 
 
     /*
-     * Wait for Supabase to restore the
-     * recovery session from the email link.
+     * Supabase handles the recovery link
+     * and emits PASSWORD_RECOVERY when
+     * the user returns from the email.
+     */
+
+    supabaseClient.auth.onAuthStateChange(
+        function (event, session) {
+
+            console.log(
+                "GLEZA AUTH EVENT:",
+                event
+            );
+
+
+            if (
+                event === "PASSWORD_RECOVERY" &&
+                session
+            ) {
+
+                console.log(
+                    "GLEZA PASSWORD RECOVERY READY"
+                );
+
+
+                showNewPassword();
+
+            }
+
+        }
+    );
+
+
+    /*
+     * Also check the current session in case
+     * Supabase restored it before the listener
+     * was registered.
      */
 
     const {
@@ -1522,36 +1553,21 @@ async function checkPasswordResetState() {
             error
         );
 
-        showMessage(
-            "Your password reset link is invalid or has expired. Please request a new one."
-        );
-
         return;
 
     }
 
 
-    if (!data.session) {
+    if (data.session) {
 
-        console.error(
-            "PASSWORD RESET: NO SESSION"
+        console.log(
+            "GLEZA PASSWORD RESET SESSION READY"
         );
 
-        showMessage(
-            "Your password reset session could not be found. Please request a new reset link."
-        );
 
-        return;
+        showNewPassword();
 
     }
-
-
-    console.log(
-        "GLEZA PASSWORD RESET SESSION READY"
-    );
-
-
-    showNewPassword();
 
 }
 

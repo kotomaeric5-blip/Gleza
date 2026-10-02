@@ -2923,6 +2923,31 @@ function mixGlezaPosts(posts) {
 }
 
 /* =========================================================
+   HOME CATEGORY FILTERS
+========================================================= */
+
+categoryButtons.forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        categoryButtons.forEach(function(btn) {
+            btn.classList.remove("active");
+        });
+
+        this.classList.add("active");
+
+        currentHomeFilter =
+            this.dataset.filter || "all";
+
+        currentHumorFilter = "all";
+
+        applyHomeFilters();
+
+    });
+
+});
+
+/* =========================================================
    GLEZA — HOME FILTERS + CARDS MIXER
 ========================================================= */
 
